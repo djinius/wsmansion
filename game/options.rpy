@@ -173,6 +173,7 @@ init python:
 
     ## 파일을 None으로 분류하여 배포판으로부터 제외하십시오.
 
+    build.classify('**.rpy', None)
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
@@ -201,3 +202,6 @@ init python:
 ## 다.
 
 # define build.itch_project = "renpytom/test-project"
+
+# Full screen is default
+define config.default_fullscreen = True
