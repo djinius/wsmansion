@@ -4,8 +4,8 @@
 # image eileen happy = "eileen_happy.png"
 
 # 게임에서 사용할 캐릭터를 정의합니다.
-define 난설 = Character('난설', color="#c8ffc8")
-define 아비게일 = Character('아비게일', color="#c8ffc8")
+define 난설 = Character('난설', color="#C5CAB6")
+define 아비게일 = Character('아비게일', color="#FFDF01")
 
 
 # 여기에서부터 게임이 시작합니다.
@@ -14,7 +14,23 @@ label start:
     난설 "Canary Yellow의 2024년 여름 워크샵 게임입니다."
     아비게일 "첫번째 이야기야."
 
-    call screen explore01
+label explore:
+    call screen exploreMap
+
+    if _return == "Finished!!":
+        jump continueStory
+
+    $ objectFound(_return)
+    call screen exploreFound(_return)
+
+    if objects:
+        jump explore
+
+label continueStory:
+    if objects:
+        난설 "못 찾은게 있는 듯 한데."
+    else:
+        난설 "전부 찾았어요."
 
     난설 "두번째 이야기를 시작해 볼까요?"
 
