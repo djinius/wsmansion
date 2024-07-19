@@ -1,70 +1,5 @@
-init python:
-    def getProSprite():
-        global moveDirection
-        return "nanseol walk " + moveDirection
-
-    def moveUp():
-        global positionX
-        global positionY
-        global moveDirection
-
-        if positionY > 0:
-            positionY -= 1
-        moveDirection = "up"
-
-        return explorePosition(positionX, positionY)
-
-    def moveDown():
-        global positionX
-        global positionY
-        global moveDirection
-
-        if positionY < 12:
-            positionY += 1
-        moveDirection = "down"
-
-        return explorePosition(positionX, positionY)
-
-    def moveLeft():
-        global positionX
-        global positionY
-        global moveDirection
-
-        if positionX > 0:
-            positionX -= 1
-        moveDirection = "left"
-
-        return explorePosition(positionX, positionY)
-
-    def moveRight():
-        global positionX
-        global positionY
-        global moveDirection
-
-        if positionX < 37:
-            positionX += 1
-        moveDirection = "right"
-
-        return explorePosition(positionX, positionY)
-
-    def explorePosition(xp, yp):
-        global objects
-
-        for (s, x, y) in objects:
-            if x == xp and y == yp:
-                return s
-
-    def getMapPosition(x, y):
-        return (x * 50 + 20, y * 50 + 300)
-
-    def objectFound(object):
-        for k in objects:
-            (s, x, y) = k
-            if s == object:
-                objects.remove(k)
-                found.append(object)
-
-default moveDirection = "down"
+default spriteDirection = "down"
+default moveDirection = None
 default positionX = 18
 default positionY = 6
 
@@ -86,6 +21,7 @@ transform foundTransform:
 
 screen exploreBase(dim = False):
     tag explore
+    default direction = None
 
     frame:
         xysize (1., 1.)
@@ -107,7 +43,9 @@ screen exploreBase(dim = False):
                 imagebutton:
                     auto "images/minigame/" + o + "_%s.png"
                     action NullAction()
-            
+
+    add "images/minigame/elly_idle.png":
+        pos getMapPosition(19, 12) anchor (.5, .5)
 
 screen exploreMap():
     tag explore
@@ -116,14 +54,25 @@ screen exploreMap():
 
     use exploreBase
 
-    key "K_LEFT"    action Function(moveLeft)
-    key "K_RIGHT"   action Function(moveRight)
-    key "K_UP"      action Function(moveUp)
-    key "K_DOWN"    action Function(moveDown)
-
-    textbutton "닫기":
-        align (.05, 1.)
+    imagebutton:
+        auto "images/minigame/elly_%s.png"
+        pos getMapPosition(19, 12) anchor (.5, .5)
         action Return("Finished!!")
+
+    key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
+    key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
+    key "K_UP"      action Function(movePos, xp = 0, yp = -1)
+    key "K_DOWN"    action Function(movePos, xp = 0, yp = 1)
+
+    key "repeat_K_LEFT"    action NullAction()
+    key "repeat_K_RIGHT"   action NullAction()
+    key "repeat_K_UP"      action NullAction()
+    key "repeat_K_DOWN"    action NullAction()
+
+    add moveHelper() xysize (0, 0) pos(0, 0)
+
+    if moveDirection is not None:
+        timer .2 repeat True action Function(movePos)
 
 screen exploreFound(object):
     tag explore

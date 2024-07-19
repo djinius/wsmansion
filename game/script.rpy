@@ -35,6 +35,7 @@ label start:
     나 "집 안을 조사해 보자."
 
 label explore:
+    $ moveDirection = None
     call screen exploreMap
 
     if _return == "Finished!!":
