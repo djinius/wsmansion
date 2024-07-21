@@ -15,6 +15,8 @@ label splashscreen:
     scene apricot with dissolve
     나 "감은 눈 사이로 빛이 녹아든다."
     나 "따스하다. 왜 나는 이렇게 양지바른 곳에 누워 있는 걸까."
+    나 "하굣길에 건널목을 건너다가 트럭에 치인 것까지는 기억난다."
+    나 "여기가 말로만 듣던 이세계일까?"
 
     scene black
     show text "조각상 이미지":
