@@ -3,27 +3,6 @@
 # image 문을 사용해 이미지를 정의합니다.
 # image eileen happy = "eileen_happy.png"
 
-# 게임에서 사용할 캐릭터를 정의합니다.
-define 나 = Character(None)
-define 난설 = Character('난설', color="#C5CAB6")
-define 아비게일 = Character('아비게일', color="#FFDF01")
-
-label splashscreen:
-    scene black with dissolve
-
-    show text "{size=+10}두 날개는 녹슬지 않는다.{/size}" with dissolve
-    pause 3.
-
-    scene black with dissolve
-
-    난설 "Canary Yellow의 2024년 여름 워크샵 게임입니다."
-    나 "눈을 떠 보니 대저택 안뜰이다."
-    난설 "똑똑."
-    아비게일 "뿌지직."
-    난설 "지금부터 게임이 시작됩니다."
-
-    return
-
 # 여기에서부터 게임이 시작합니다.
 label start:
 
