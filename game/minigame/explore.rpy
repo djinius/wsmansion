@@ -6,6 +6,10 @@ default positionY = 6
 default objects = [("ring", 3, 1), ("snowball", 28, 2), ("angel", 5, 11), ("monkey", 15, 0), ("maria", 21, 7), ("camera", 29, 6)]
 default found = []
 
+image photoFound:
+    "images/minigame/photo_large.png"
+    "images/minigame/photo_dark.png" with Dissolve(1.)
+
 transform fromRightAppear:
     xoffset 106
     easein .5 xoffset 6
@@ -95,26 +99,83 @@ screen exploreFound(object):
             pos (.5, .5) anchor (.5, .5)
             action SetScreenVariable("confirmed", True)
 
+screen explorePhotoFound():
+    tag explore
+
+    default confirmed = False
+    modal True
+
+    use exploreBase(True)
+
+    if confirmed:
+        add "photo_dark" at foundTransform
+
+        timer 1. action Return()
+        key "mouseup_1" action Return()
+
+    else:
+        imagebutton:
+            idle "photoFound"
+            pos (.5, .5) anchor (.5, .5)
+            action SetScreenVariable("confirmed", True)
 
 screen cameraMinigame:
     tag explore
 
     default blurry = 5.
     default saturation = 0.
+    default rotateLeft = 60
+    default rotateRight = 330
+    default toRotate = None
+    default rotating = None
 
     modal True
+
     use exploreBase(True)
     add Solid("#0004")
 
-    add "images/minigame/camera.png" align (.5, .5)
-    if blurry == 0.:
+    frame:
+        xysize (588, 800) align (.5, .5)
+        padding (0, 0)
+        background "images/minigame/camera_minigame.png"
+
+        imagebutton:
+            pos (104, 439) anchor (.5, .5)
+            insensitive "images/minigame/camera_leftdial_idle.png"
+            idle Transform("images/minigame/camera_leftdial_idle.png", rotate=rotateLeft)
+            if toRotate == "Left":
+                hover Transform("images/minigame/camera_leftdial_hover.png", rotate=rotateLeft)
+            selected_idle Transform("images/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
+            selected_hover Transform("images/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
+            selected (rotating == "Left")
+            action NullAction()
+
+        imagebutton:
+            pos (358, 442) anchor (.5, .5)
+            insensitive "images/minigame/camera_rightdial_idle.png"
+            idle Transform("images/minigame/camera_rightdial_idle.png", rotate=rotateRight)
+            if toRotate == "Right":
+                hover Transform("images/minigame/camera_rightdial_hover.png", rotate=rotateRight)
+            selected_idle Transform("images/minigame/camera_rightdial_selected.png", rotate=rotateRight)
+            selected_hover Transform("images/minigame/camera_rightdial_selected.png", rotate=rotateRight)
+            selected (rotating == "Right")
+            action NullAction()
+
+    if blurry == 0. and saturation == 1.:
+        imagebutton:
+            idle "images/minigame/photo_large.png"
+            align (.1, .5)
+            action Return()
+
+    elif blurry == 0.:
         add im.MatrixColor("images/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.1, .5)
     else:
         add im.MatrixColor(im.Blur("images/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.1, .5)
 
-    key "K_LEFT"    action If(blurry==0. and saturation==1., Return(), SetScreenVariable("blurry", max(0., blurry - .5)))
-    key "K_RIGHT"   action If(blurry==0. and saturation==1., Return(), SetScreenVariable("blurry", blurry + .5))
-    key "K_UP"      action If(blurry==0. and saturation==1., Return(), SetScreenVariable("saturation", max(0., saturation - .1)))
-    key "K_DOWN"    action If(blurry==0. and saturation==1., Return(), SetScreenVariable("saturation", min(1., saturation + .1)))
+    add rotateHelper() xysize (0, 0) pos(0, 0)
 
+    key "repeat_K_LEFT"    action NullAction()
+    key "repeat_K_RIGHT"   action NullAction()
+    key "repeat_K_UP"      action NullAction()
+    key "repeat_K_DOWN"    action NullAction()
 

@@ -25,8 +25,8 @@ label camera_found:
 
     call screen cameraMinigame
     $ found.append("photo")
-    call screen exploreFound("photo")
+    call screen explorePhotoFound
     show screen exploreBase
-    나 "사진이 한 장 나왔다. 엘리라는 그 애를 찍은 사진 같다."
+    나 "사진이 한 장 나왔다. 엘리라는 그 애를 찍은 사진 같았는데 사진이 시커멓게 변색돼 버렸다."
 
     return
