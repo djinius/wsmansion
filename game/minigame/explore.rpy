@@ -119,6 +119,11 @@ screen explorePhotoFound():
             pos (.5, .5) anchor (.5, .5)
             action SetScreenVariable("confirmed", True)
 
+transform disappearExplain():
+    alpha 3.5
+    pause 1.
+    easeout 1.5 alpha .0
+
 screen cameraMinigame:
     tag explore
 
@@ -138,6 +143,14 @@ screen cameraMinigame:
         xysize (588, 800) align (.5, .5)
         padding (0, 0)
         background "images/minigame/camera_minigame.png"
+
+        frame:
+            xysize (320, 197)
+            padding (2, 2, 2, 50)
+            pos (74, 400) anchor (.0, 1.)
+            background "images/minigame/biexplainballoon.png"
+            text "다이얼을 돌려서\n사진을 선명하게 만들어 보세요." color "#000" size 22 align (.5, .5) text_align .5
+            at disappearExplain
 
         imagebutton:
             pos (104, 439) anchor (.5, .5)
