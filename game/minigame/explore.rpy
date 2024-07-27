@@ -3,7 +3,7 @@ default moveDirection = None
 default positionX = 18
 default positionY = 6
 
-default objects = [("ring", 3, 1), ("snowball", 28, 2), ("angel", 5, 11), ("monkey", 15, 0), ("maria", 21, 7), ("camera", 29, 6)]
+default objects = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
 default found = []
 
 image photoFound:
@@ -87,7 +87,7 @@ screen exploreFound(object):
     use exploreBase(True)
 
     if confirmed:
-        add "images/minigame/" + object + "_large.png":
+        add "images/minigame/" + object + "_large_idle.png":
             at foundTransform
 
         timer 1. action Return()
@@ -95,7 +95,7 @@ screen exploreFound(object):
 
     else:
         imagebutton:
-            idle "images/minigame/" + object + "_large.png"
+            auto "images/minigame/" + object + "_large_%s.png"
             pos (.5, .5) anchor (.5, .5)
             action SetScreenVariable("confirmed", True)
 

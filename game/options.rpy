@@ -11,7 +11,7 @@
 ##
 ## 문자열을 _()로 둘러 쌓으면 씌우면 번역의 대상으로 표시됩니다.
 
-define config.name = _("wsmansion")
+define config.name = _("빛 바랜 날개")
 
 
 ## 위에 주어진 제목이 주 메뉴 화면에 표시되는지 결정합니다. 제목을 숨기려면 이것
@@ -205,3 +205,6 @@ init python:
 
 # Full screen is default
 define config.default_fullscreen = True
+
+# 사이드이미지
+define config.side_image_only_not_showing = True
