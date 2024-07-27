@@ -208,3 +208,6 @@ define config.default_fullscreen = True
 
 # 사이드이미지
 define config.side_image_only_not_showing = True
+
+# 언어 띄어쓰기 설정
+define gui.language = "korean-with-spaces"
