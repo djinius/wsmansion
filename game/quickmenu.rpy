@@ -3,6 +3,10 @@
 ## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
 
 default persistent.showQuickMenu = True
+default quick_menu = True
+
+## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
+## 출력되게 합니다.
 
 init python:
     def isQuickVisible():
@@ -25,20 +29,13 @@ screen quick_menu():
 
             hotspot (180, 0, 60, 60) action Preference("auto-forward", "toggle")
             hotspot (240, 0, 60, 60) action Skip()
-            hotspot (300, 0, 60, 60) action Skip(fast=True, confirm=True)
+            hotspot (300, 0, 60, 60) action Skip(fast=True, confirm=False)
             hotspot (360, 0, 60, 60) action ShowMenu('save')
             hotspot (420, 0, 60, 60) action ShowMenu('preferences')
             hotspot (480, 0, 60, 60) action HideInterface()
 
         key "mousedown_4" action ShowMenu("history")
         key "mousedown_5" action ShowMenu("history")
-
-## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
-## 출력되게 합니다.
-init python:
-    config.overlay_screens.append("quick_menu")
-
-default quick_menu = True
 
 style quick_button is default
 style quick_button_text is button_text

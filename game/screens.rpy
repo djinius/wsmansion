@@ -871,10 +871,6 @@ screen keyboard_help():
         text _("스크린샷 저장.")
 
     hbox:
-        label "V"
-        text _("{a=https://www.renpy.org/l/voicing}대사 읽어주기 기능{/a} 토글.")
-
-    hbox:
         label "Shift+A"
         text _("접근성 메뉴를 엽니다.")
 

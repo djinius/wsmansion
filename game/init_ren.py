@@ -13,3 +13,4 @@ config.keymap['rollback'].clear()
 config.keymap['rollforward'].clear()
 # mousedown_4, mousedown_5
 
+config.overlay_screens.append("quick_menu")
