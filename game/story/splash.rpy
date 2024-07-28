@@ -3,6 +3,9 @@ image apricot = Solid("#FBCEB1")
 label splashscreen:
     scene black with dissolve
 
+    if persistent.replayPrologue is False:
+        return
+
     pause 1.5
 
     show text "{size=+10}HISTORY, WITH HER VOLUMES VAST,\nHATH BUT ONE PAGE.{/size}":

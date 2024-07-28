@@ -664,6 +664,18 @@ screen preferences():
                     textbutton _("선택지 이후") action Preference("after choices", "toggle")
                     textbutton _("화면 전환 효과") action InvertSelected(Preference("transitions", "toggle"))
 
+                vbox:
+                    style_prefix "check"
+                    label _("퀵메뉴")
+                    textbutton _("보이기") action SetField(persistent, "showQuickMenu", True)
+                    textbutton _("숨기기") action SetField(persistent, "showQuickMenu", False)
+
+                vbox:
+                    style_prefix "check"
+                    label _("도입부")
+                    textbutton _("항상 보기") action SetField(persistent, "replayPrologue", True)
+                    textbutton _("건너뛰기") action SetField(persistent, "replayPrologue", False)
+
                 ## "radio_pref" 나 "check_pref" 를 추가하여 그 외에도 환경설정
                 ## 항목을 추가할 수 있습니다.
 
@@ -851,19 +863,11 @@ screen keyboard_help():
         text _("대사 스킵 토글.")
 
     hbox:
-        label _("페이지 업(Page Up)")
-        text _("이전 대사로 롤백.")
-
-    hbox:
-        label _("페이지 다운(Page Down)")
-        text _("이후 대사로 롤포워드.")
-
-    hbox:
         label "H"
         text _("UI를 숨김.")
 
     hbox:
-        label "S"
+        label "F12"
         text _("스크린샷 저장.")
 
     hbox:
@@ -891,11 +895,11 @@ screen mouse_help():
 
     hbox:
         label _("휠 위로")
-        text _("이전 대사로 롤백.")
+        text _("대사록 화면 열기.")
 
     hbox:
         label _("휠 아래로")
-        text _("이후 대사로 롤포워드.")
+        text _("대사록 화면 열기.")
 
 
 screen gamepad_help():

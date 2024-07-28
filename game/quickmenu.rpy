@@ -2,11 +2,13 @@
 ##
 ## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
 
+default persistent.showQuickMenu = True
+
 init python:
     def isQuickVisible():
         global quick_menu
 
-        return quick_menu and (renpy.get_screen("exploreMap") is None) and (renpy.get_screen("exploreFound") is None) and (renpy.get_screen("cameraMinigame") is None)
+        return quick_menu and persistent.showQuickMenu and (renpy.get_screen("exploreMap") is None) and (renpy.get_screen("exploreFound") is None) and (renpy.get_screen("cameraMinigame") is None)
 
 screen quick_menu():
 
