@@ -4,7 +4,7 @@ default positionX = 18
 default positionY = 6
 
 default objects = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
-default found = []
+default myInventory = []
 
 image photoFound:
     "images/minigame/photo_large.png"
@@ -16,6 +16,7 @@ transform fromRightAppear:
 
 transform foundTransform:
     pos (.5, .5) anchor (.5, .5)
+    pause 2.75
     parallel:
         linear .75 xpos 1. xanchor 1. xoffset -6
     parallel:
@@ -43,7 +44,7 @@ screen exploreBase(dim = False):
                 at fromRightAppear
             else:
                 xoffset 6
-            for (n, o) in enumerate(found):
+            for (n, o) in enumerate(myInventory):
                 imagebutton:
                     auto "images/minigame/" + o + "_%s.png"
                     action NullAction()
@@ -86,42 +87,27 @@ screen exploreFound(object):
 
     use exploreBase(True)
 
-    if confirmed:
-        add "images/minigame/" + object + "_large_idle.png":
-            at foundTransform
+    add "images/minigame/" + object + "_large_idle.png":
+        at foundTransform
 
-        timer 1. action Return()
-        key "mouseup_1" action Return()
-
-    else:
-        imagebutton:
-            auto "images/minigame/" + object + "_large_%s.png"
-            pos (.5, .5) anchor (.5, .5)
-            action SetScreenVariable("confirmed", True)
+    timer 3.5 action Return()
+    key "mouseup_1" action Return()
 
 screen explorePhotoFound():
     tag explore
 
-    default confirmed = False
     modal True
 
     use exploreBase(True)
 
-    if confirmed:
-        add "photo_dark" at foundTransform
+    add "photo_dark" at foundTransform
 
-        timer 1. action Return()
-        key "mouseup_1" action Return()
-
-    else:
-        imagebutton:
-            idle "photoFound"
-            pos (.5, .5) anchor (.5, .5)
-            action SetScreenVariable("confirmed", True)
+    timer 3.5 action Return()
+    key "mouseup_1" action Return()
 
 transform disappearExplain():
-    alpha 3.5
-    pause 1.
+    alpha 1
+    pause 2.5
     easeout 1.5 alpha .0
 
 screen cameraMinigame:

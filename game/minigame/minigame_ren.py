@@ -92,7 +92,7 @@ def objectFound(object):
         (s, x, y) = k
         if s == object:
             objects.remove(k)
-            found.append(object)
+            myInventory.append(object)
 
 
 ## Rotate dials

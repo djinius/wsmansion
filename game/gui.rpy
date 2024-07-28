@@ -59,13 +59,13 @@ define gui.interface_text_color = '#ffffff'
 ## 글자와 글자 크기 ###################################################################
 
 ## 인-게임 글자에 사용됩니다.
-define gui.text_font = "SourceHanSansLite.ttf"
+define gui.text_font = "NEXON Lv2 Gothic Medium.ttf"
 
 ## 캐릭터의 이름에 사용됩니다.
-define gui.name_text_font = "SourceHanSansLite.ttf"
+define gui.name_text_font = "NEXON Lv2 Gothic Medium.ttf"
 
 ## 인터페이스에 사용됩니다.
-define gui.interface_text_font = "SourceHanSansLite.ttf"
+define gui.interface_text_font = "NEXON Lv2 Gothic Medium.ttf"
 
 ## 일반 대사의 글자 크기입니다.
 define gui.text_size = 33
@@ -346,13 +346,13 @@ define gui.history_spacing = 0
 
 ## 말하는 캐릭터의 이름을 나타내는 레이블의 위치, 너비, 그리고 정렬입니다.
 define gui.history_name_xpos = 233
-define gui.history_name_ypos = 0
+define gui.history_name_ypos = 0.25
 define gui.history_name_width = 233
 define gui.history_name_xalign = 1.0
 
 ## 대사 글자의 위치, 너비, 그리고 정렬입니다.
 define gui.history_text_xpos = 255
-define gui.history_text_ypos = 3
+define gui.history_text_ypos = 0.25
 define gui.history_text_width = 1110
 define gui.history_text_xalign = 0.0
 

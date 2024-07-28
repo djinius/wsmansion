@@ -179,7 +179,7 @@ label cameraFound:
     나 "선명하게 볼 방법이 없을까?"
 
     call screen cameraMinigame
-    $ found.append("photo")
+    $ myInventory.append("photo")
     call screen explorePhotoFound
     hide screen exploreBase
 
