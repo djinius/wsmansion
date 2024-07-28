@@ -62,7 +62,8 @@ screen exploreMap():
     imagebutton:
         auto "images/minigame/elly_%s.png"
         pos getMapPosition(19, 12) anchor (.5, .5)
-        action Return("Finished!!")
+        action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
+        sensitive "camera" in myInventory
 
     key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
     key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
