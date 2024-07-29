@@ -10,7 +10,7 @@ default itemDescriptions = {
 
 screen inventory():
     modal True
-
+    
     default description = ""
 
     frame:

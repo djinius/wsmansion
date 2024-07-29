@@ -670,6 +670,12 @@ screen preferences():
                     textbutton _("보이기") action SetField(persistent, "showQuickMenu", True)
                     textbutton _("숨기기") action SetField(persistent, "showQuickMenu", False)
 
+                    null height(10)
+
+                    label _("툴팁")
+                    textbutton _("보이기") action SetField(persistent, "showTooltip", True)
+                    textbutton _("숨기기") action SetField(persistent, "showTooltip", False)
+
                 vbox:
                     style_prefix "check"
                     label _("도입부")
@@ -865,6 +871,18 @@ screen keyboard_help():
     hbox:
         label "H"
         text _("UI를 숨김.")
+
+    hbox:
+        label "S"
+        text _("저장 화면 열기.")
+
+    hbox:
+        label "L"
+        text _("대사록 보기.")
+
+    hbox:
+        label "P"
+        text _("설정 화면 열기.")
 
     hbox:
         label "F12"
