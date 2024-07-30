@@ -29,7 +29,7 @@ screen quick_menu():
 
     if isQuickVisible():
 
-        $ tooltip = GetTooltip()
+        $ tooltip = GetTooltip('quick_menu')
 
         if persistent.showTooltip and (tooltip is not None):
             $ [t, d, p, a] = tooltip
