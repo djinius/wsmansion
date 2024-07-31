@@ -1,24 +1,18 @@
 ## 마우스 커서 - 애니메이션 #########################################################################
 image pressed_say:
-    "gui/cursors/pressed_say_f1.png" with Dissolve(.5)
-    pause .5
-    "gui/cursors/pressed_say_f2.png" with Dissolve(.5)
-    pause .5
-    repeat
+    Animation(
+        "gui/cursors/pressed_say_f1.png", .5,
+        "gui/cursors/pressed_say_f2.png", .5)
 
 image button_cursor:
-    "gui/cursors/button_f1.png" with Dissolve(.5)
-    pause .5
-    "gui/cursors/button_f2.png" with Dissolve(.5)
-    pause .5
-    repeat
+    Animation(
+        "gui/cursors/button_f1.png", .5,
+        "gui/cursors/button_f2.png", .5)
 
 image pressed_button_cursor:
-    "gui/cursors/pressed_button_f1.png" with Dissolve(.5)
-    pause .5
-    "gui/cursors/pressed_button_f2.png" with Dissolve(.5)
-    pause .5
-    repeat
+    Animation(
+        "gui/cursors/pressed_button_f1.png", .5,
+        "gui/cursors/pressed_button_f2.png", .5)
 
 ## 마우스 커서 #########################################################################
 define config.mouse_displayable = MouseDisplayable(
