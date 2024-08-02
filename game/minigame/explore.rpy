@@ -2,8 +2,14 @@ default spriteDirection = "down"
 default moveDirection = None
 default positionX = 18
 default positionY = 6
+default explorePhase = 0
+default mirrorBegin = False
+default fragmentsFound = [False, False, False, False, False]
+default mirrorFound = False
 
-default objects = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
+default objectsPart1 = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
+default objectsPart2 = [("gloves", 3, 1), ("earring", 22, 10), ("page2", 6, 2), ("death", 15, 11), ("knife", 29, 11), ("mirror", 19, 12), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
+default objects = []
 default myInventory = []
 
 image photoFound:
@@ -49,8 +55,9 @@ screen exploreBase(dim = False):
                     auto "images/minigame/" + o + "_%s.png"
                     action NullAction()
 
-    add "images/minigame/elly_idle.png":
-        pos getMapPosition(19, 12) anchor (.5, .5)
+    if explorePhase == 1:
+        add "images/minigame/elly_idle.png":
+            pos getMapPosition(19, 12) anchor (.5, .5)
 
 screen exploreMap():
     tag explore
@@ -59,11 +66,12 @@ screen exploreMap():
 
     use exploreBase
 
-    imagebutton:
-        auto "images/minigame/elly_%s.png"
-        pos getMapPosition(19, 12) anchor (.5, .5)
-        action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
-        sensitive "camera" in myInventory
+    if explorePhase == 1:
+        imagebutton:
+            auto "images/minigame/elly_%s.png"
+            pos getMapPosition(19, 12) anchor (.5, .5)
+            action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
+            sensitive "camera" in myInventory
 
     key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
     key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
@@ -101,7 +109,21 @@ screen explorePhotoFound():
 
     use exploreBase(True)
 
-    add "photo_dark" at foundTransform
+    add "photoFound" at foundTransform
+
+    timer 3.5 action Return()
+    key "mouseup_1" action Return()
+
+screen mirrorFragmentFound(object):
+    tag explore
+
+    default confirmed = False
+    modal True
+
+    use exploreBase(False)
+
+    add "images/minigame/" + object + "_large_idle.png":
+        at foundTransform
 
     timer 3.5 action Return()
     key "mouseup_1" action Return()
@@ -179,3 +201,89 @@ screen cameraMinigame:
     key "repeat_K_UP"      action NullAction()
     key "repeat_K_DOWN"    action NullAction()
 
+init python:
+    def fragmentDropped(drags, drop):
+        global mirrorFragMatchs
+        global isMirrorComplete
+
+        if drop:
+            n1 = drags[0].drag_name
+            n2 = drop.drag_name
+
+            if n1 == n2:
+                mirrorFragMatches[n1] = True
+                renpy.restart_interaction()
+
+                if False in mirrorFragMatches:
+                    return
+                else:
+                    isMirrorComplete = True
+                    return "Complete!"
+
+define mirrorFragDropPoses = [
+    (670+131, 564),
+    (670+131, 429),
+    (670+227, 429),
+    (670+312, 463),
+    (670+131, 570)]
+
+default mirrorFragMatches = [False, False, False, False, False]
+
+# 거울 미니게임
+screen mirrorMiniGame():
+    modal True
+
+    add Solid("#000")
+
+    frame:
+        xysize (1., 1.)
+        align (.5, .5)
+        padding (0, 0)
+        background None
+
+        has draggroup
+
+        drag:
+            idle_child "images/minigame/mirror/mirror_empty.png"
+            align (.5, .5)
+            draggable False
+            droppable False
+
+        for (n, t) in enumerate(fragmentsFound):
+            if t and (mirrorFragMatches[n] is False):
+                drag:
+                    drag_name n
+                    align (renpy.random.random(), renpy.random.random())
+
+                    draggable True
+                    droppable False
+                    dragged fragmentDropped
+
+                    has imagebutton
+                    idle "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    hover "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    selected_idle "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    selected_hover "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    sensitive False
+                    action NullAction()
+                    mouse "drag"
+
+        for (n, p) in enumerate(mirrorFragDropPoses):
+            drag:
+                drag_name n
+                if (mirrorFragMatches[n] is False):
+                    idle_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
+                else:
+                    idle_child "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+
+                hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
+                selected_child "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                selected_hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
+                pos p
+
+                draggable False
+                droppable (mirrorFragMatches[n] is False)
+
+    textbutton "더 탐색해 본다":
+        align (1., 1.)
+        action Return()

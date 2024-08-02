@@ -2,25 +2,12 @@
 ##
 ## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
 
-default persistent.showQuickMenu = True
+default persistent.showQuickMenu = 2
 default persistent.showTooltip = True
 default quick_menu = True
 
 ## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
 ## 출력되게 합니다.
-
-init python:
-    class quickTooltip:
-        def __init__(self, titleText, descText, p, a):
-            self.titleText = titleText
-            self.descText = descText
-            self.p = p
-            self.a = a
-
-    def isQuickVisible():
-        global quick_menu
-
-        return quick_menu and persistent.showQuickMenu and (renpy.get_screen("exploreMap") is None) and (renpy.get_screen("exploreFound") is None) and (renpy.get_screen("cameraMinigame") is None)
 
 screen quick_menu():
 

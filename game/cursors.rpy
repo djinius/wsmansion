@@ -18,6 +18,8 @@ image pressed_button_cursor:
 define config.mouse_displayable = MouseDisplayable(
     "gui/cursors/default.png", 1, 63).add(
     "pressed_default", "pressed_say", 1, 63).add(
+    "pressed_say", "pressed_say", 1, 63).add(
     "button", "button_cursor", 1, 63).add(
-    "pressed_button", "pressed_button_cursor", 1, 63)
+    "pressed_button", "pressed_button_cursor", 1, 63).add(
+    "drag", "gui/cursors/drag.png", 1, 63)
 

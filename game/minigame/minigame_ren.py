@@ -48,6 +48,8 @@ def movePos(xp = 0, yp = 0):
     global positionY
     global moveDirection
     global spriteDirection
+    global explorePhase
+    global mirrorFound
 
     print(moveDirection)
 
@@ -70,7 +72,11 @@ def movePos(xp = 0, yp = 0):
     if (newx < 0) or (newx > 37) or (newy < 0) or (newy > 12) or (newx < 0):
         pass
     elif (newx == 19) and (newy == 11 or newy == 12):
-        pass
+        if explorePhase == 2:
+            positionX = newx
+            positionY = newy
+        else:
+            pass
     else:
         positionX = newx
         positionY = newy
@@ -88,11 +94,14 @@ def getMapPosition(x, y):
     return (x * 50 + 20, y * 50 + 300)
 
 def objectFound(object):
+    objectRemove(object)
+    myInventory.append(object)
+
+def objectRemove(object):
     for k in objects:
         (s, x, y) = k
         if s == object:
             objects.remove(k)
-            myInventory.append(object)
 
 
 ## Rotate dials

@@ -33,10 +33,12 @@ screen pageContents(textContent):
  
 
 label glovesFound:
+    $ addFoundHistory("장갑", "gloves")
     나 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
     return
 
 label page1Found:
+    $ addFoundHistory("찢어진 책장", "page1")
     나 "오래된 책의 일부 같다."
     나 "영어라 읽기도 힘들뿐더러 한 장만으로는 의미가 없어 보인다."
     call screen pageContents(page1Text)
@@ -44,11 +46,13 @@ label page1Found:
     return
 
 label tarotbookFound:
+    $ addFoundHistory("타로 책", "tarotbook")
     나 "형형색색의 타로 카드들이 그려져 있다."
     나 "기이하지만, 어딘가 쓸모가 있어 보인다."
     return
 
 label tornbookFound:
+    $ addFoundHistory("페이지가 뜯겨나간 책", "tornbook")
     나 "오래된 책이다. 페이지가 두 장 뜯겨나간 것 같다."
     나 "영어라 읽을 수는 없지만 이렇게 미완성으로 놔두기에도 어딘가 불편하다."
 
@@ -118,6 +122,7 @@ label tornbookFound:
     return
 
 label sketchbookFound:
+    $ addFoundHistory("색칠놀이", "sketchbook")
     나 "타로 모양의 색칠놀이다. 참고자료만 있으면 쉽게 완성할 수 있을 것 같다."
     hide screen exploreBase
 
@@ -176,6 +181,7 @@ label sketchbookFound:
     return
 
 label cameraFound:
+    $ addFoundHistory("카메라", "camera")
     나 "옛날 방식 카메라인가?"
     나 "바닥에 뭔가 흐릿한 그림이 있네."
     나 "선명하게 볼 방법이 없을까?"

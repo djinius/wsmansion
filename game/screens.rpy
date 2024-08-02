@@ -667,8 +667,9 @@ screen preferences():
                 vbox:
                     style_prefix "check"
                     label _("퀵메뉴")
-                    textbutton _("보이기") action SetField(persistent, "showQuickMenu", True)
-                    textbutton _("숨기기") action SetField(persistent, "showQuickMenu", False)
+                    textbutton _("보이기") action SetField(persistent, "showQuickMenu", 2)
+                    textbutton _("자동 숨기기") action SetField(persistent, "showQuickMenu", 1)
+                    textbutton _("숨기기") action SetField(persistent, "showQuickMenu", 0)
 
                     null height(10)
 

@@ -21,15 +21,29 @@ screen history():
                 action Confirm("이 지점으로 되돌아가시겠습니까?", RollbackToIdentifier(h.rollback_identifier))
                 sensitive (not _in_replay) and (renpy.get_identifier_checkpoints(h.rollback_identifier))
                 has frame
-                yfill True
+                xysize (1., 1.)
+                # xfill True yfill True
                 idle_background None
                 hover_background Solid("#004")
+                insensitive_background None
 
                 ## history_height 이 None일 경우 레이아웃이 틀어지지 않게 합니다.
                 has fixed:
                     yfit True
 
-                if h.kind == 'menu':
+                if h.kind == 'part':
+                    text h.partText:
+                        align (.5, .5) size 40
+                        min_width 1.
+
+                elif h.kind == 'found':
+                    add "images/minigame/" + h.foundImage + "_hover.png":
+                        xpos gui.history_name_xpos
+                        xanchor gui.history_name_xalign
+                        ypos gui.history_name_ypos
+                    text h.foundText yalign 1. yoffset -40
+
+                elif h.kind == 'menu':
                     vbox:
                         for mi in h.menuItems.keys():
                             text mi:
@@ -91,7 +105,7 @@ style history_name:
 style history_name_text:
     min_width gui.history_name_width
     textalign gui.history_name_xalign
-    font "fonts/Danjo-bold-Regular.otf"
+    font FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 style history_text:
     xpos gui.history_text_xpos
@@ -101,7 +115,7 @@ style history_text:
     min_width gui.history_text_width
     textalign gui.history_text_xalign
     layout ("subtitle" if gui.history_text_xalign else "tex")
-    font "fonts/Danjo-bold-Regular.otf"
+    font FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 style history_label:
     xfill True
