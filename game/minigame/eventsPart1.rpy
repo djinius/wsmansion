@@ -122,6 +122,8 @@ label tornbookFound:
     return
 
 label sketchbookFound:
+    # 퍼즐 추가 요망 - 색칠 퍼즐
+    
     $ addFoundHistory("색칠놀이", "sketchbook")
     나 "타로 모양의 색칠놀이다. 참고자료만 있으면 쉽게 완성할 수 있을 것 같다."
     hide screen exploreBase

@@ -239,7 +239,7 @@ label mirrorPuzzle:
 
 label mirrorComplete:
     hide screen explore
-    
+
     나 "유리처럼 선명해지는 기억에 가슴팍이 욱신거린다."
 
     # 배경: 검은 화면

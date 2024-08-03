@@ -93,8 +93,8 @@ label part1:
     show text "응접실":
         align (.0, .0)
     show 아비게일처음 입벌림:
-        pos (.5, .0) anchor (.5, .0)
-        zoom 1.
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
     with dissolve
 
     # 소녀? (음영 off, 놀람, 실눈 웃음, 큰 웃음, 눈물 x)

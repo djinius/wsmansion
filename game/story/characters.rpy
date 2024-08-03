@@ -8,11 +8,11 @@ image ctc icon:
 
 
 # 게임에서 사용할 캐릭터를 정의합니다.
-define 나 = Character(None, ctc = "ctc icon", ctc_position = 'nestled')
-define 난설 = Character('난설', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled', what_prefix="“", what_suffix="”")
-define 엘리 = Character('엘리', color="#FFDF01", image="엘리", ctc = "ctc icon", ctc_position = 'nestled')
-define 아비게일 = Character('아비게일 F. 엘리엇', color="#FFDF01", image="아비게일", ctc = "ctc icon", ctc_position = 'nestled')
-define 아비게일처음 = Character('???', color="#FFDF01", image="아비게일처음", ctc = "ctc icon", ctc_position = 'nestled')
+define 나 = Character(None, ctc = "ctc icon", ctc_position = 'nestled-close')
+define 난설 = Character('나', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
+define 엘리 = Character('엘리', color="#FFDF01", image="엘리", ctc = "ctc icon", ctc_position = 'nestled-close')
+define 아비게일 = Character('아비게일 F. 엘리엇', color="#FFDF01", image="아비게일", ctc = "ctc icon", ctc_position = 'nestled-close')
+define 아비게일처음 = Character('???', color="#FFDF01", image="아비게일처음", ctc = "ctc icon", ctc_position = 'nestled-close')
 
 layeredimage 엘리:
     group body:
@@ -45,14 +45,14 @@ layeredimage 엘리:
         attribute 장난스러움:
             Text("{size=150}장난스러움{/size}")
 
-image side 엘리 = LayeredImageProxy("엘리", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
-image side 엘리 투명 = Null()
+#image side 엘리 = LayeredImageProxy("엘리", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
+#image side 엘리 투명 = Null()
 
 image 아비게일 = LayeredImageProxy("엘리")
-image side 아비게일 = LayeredImageProxy("엘리", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
-image side 아비게일 투명 = Null()
+#image side 아비게일 = LayeredImageProxy("엘리", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
+#image side 아비게일 투명 = Null()
 
 image 아비게일처음 = LayeredImageProxy("아비게일")
-image side 아비게일처음 = LayeredImageProxy("아비게일", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
-image side 아비게일처음 투명 = Null()
+#image side 아비게일처음 = LayeredImageProxy("아비게일", Transform(crop=(0, 0, 2000, 2000), zoom=.2))
+#image side 아비게일처음 투명 = Null()
 
