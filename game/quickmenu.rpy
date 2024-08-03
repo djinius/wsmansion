@@ -6,6 +6,22 @@ default persistent.showQuickMenu = 2
 default persistent.showTooltip = True
 default quick_menu = True
 
+## 자동 숨기기/보이기 트랜스폼
+transform quickMenuHidden():
+    yoffset 60
+
+transform quickMenuAppear():
+    yoffset 60
+    easein 1. yoffset 0
+
+transform quickMenuFix():
+    easein .5 yoffset 0
+
+transform quickMenuHide():
+    yoffset 0
+    pause 1.5
+    easein 1. yoffset 60
+
 ## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
 ## 출력되게 합니다.
 
@@ -13,6 +29,7 @@ screen quick_menu():
 
     ## 다른 화면 위에 표시되는지 확인합니다.
     zorder 100
+    default autoHide = 0
 
     if isQuickVisible():
 
@@ -59,6 +76,21 @@ screen quick_menu():
             hotspot (480, 0, 60, 60):
                 action HideInterface()
                 tooltip ["숨기기(H)", "게임 인터페이스를 숨깁니다.", (1920, 1000), (1., 1.)]
+
+            # 자동 숨기기
+            if persistent.showQuickMenu == 1:
+                add quickShowHelper() xysize(0, 0) pos (1.,1.)
+
+                if autoHide == 0:
+                    at quickMenuHidden
+                elif autoHide == 1:
+                    at quickMenuAppear
+                    timer 1. action SetScreenVariable("autoHide", 2)
+                elif autoHide == 2:
+                    at quickMenuFix
+                elif autoHide == 3:
+                    at quickMenuHide
+                    timer 2.5 action SetScreenVariable("autoHide", 0)
 
         key "mousedown_4" action ShowMenu("history")
         key "mousedown_5" action ShowMenu("history")
