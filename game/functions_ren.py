@@ -44,7 +44,6 @@ def addMenuHistory(items):
     return
 
 def addPartHistory(partText):
-    print(partText)
     # 선택지를 히스토리 항목에 추가
     history = renpy.store._history_list # type: ignore
 
@@ -115,7 +114,6 @@ class quickShowHelper(renpy.Displayable):
 
             # 마우스가 퀵메뉴 위치에 올라와 있음
             if (xp >= 1380) and (yp >= 1020):
-                print("Show!", xp, yp)
                 if aval == 0:
                     cs.scope["autoHide"] = 1
                     renpy.restart_interaction()
@@ -124,7 +122,6 @@ class quickShowHelper(renpy.Displayable):
                     renpy.restart_interaction()
             # 마우스가 퀵메뉴 위치에서 떨어져 있음
             else:
-                print("Hide!", xp, yp)
                 if aval == 2:
                     cs.scope["autoHide"] = 3
                     renpy.restart_interaction()

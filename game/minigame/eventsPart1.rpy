@@ -15,6 +15,8 @@ define page1Text = """
 오, 주여! 우린 추락하고 있다.
 """
 
+default cameraTried = False
+
 screen pageContents(textContent):
     modal True
 
@@ -123,7 +125,7 @@ label tornbookFound:
 
 label sketchbookFound:
     # 퍼즐 추가 요망 - 색칠 퍼즐
-    
+
     $ addFoundHistory("색칠놀이", "sketchbook")
     나 "타로 모양의 색칠놀이다. 참고자료만 있으면 쉽게 완성할 수 있을 것 같다."
     hide screen exploreBase
@@ -183,12 +185,20 @@ label sketchbookFound:
     return
 
 label cameraFound:
-    $ addFoundHistory("카메라", "camera")
-    나 "옛날 방식 카메라인가?"
-    나 "바닥에 뭔가 흐릿한 그림이 있네."
-    나 "선명하게 볼 방법이 없을까?"
+
+    if cameraTried is False:
+        $ cameraTried = True
+        $ addFoundHistory("카메라", "camera")
+        나 "옛날 방식 카메라인가?"
+        나 "바닥에 뭔가 흐릿한 그림이 있네."
+        나 "선명하게 볼 방법이 없을까?"
 
     call screen cameraMinigame
+
+    if _return != 'complete':
+        return
+
+    $ objectFound('camera')
     $ myInventory.append("photo")
     call screen explorePhotoFound
     hide screen exploreBase

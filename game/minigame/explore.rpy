@@ -8,7 +8,7 @@ default fragmentsFound = [False, False, False, False, False]
 default mirrorFound = False
 
 default objectsPart1 = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
-default objectsPart2 = [("gloves", 3, 1), ("earring", 22, 10), ("page2", 6, 2), ("death", 15, 11), ("knife", 29, 11), ("mirror", 19, 12), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
+default objectsPart2 = [("earring", 22, 10), ("page2", 6, 2), ("death", 15, 11), ("knife", 29, 11), ("mirror", 19, 12), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
 default objects = []
 default myInventory = []
 
@@ -16,12 +16,12 @@ image photoFound:
     "images/minigame/photo_large.png"
     "images/minigame/photo_dark.png" with Dissolve(1.)
 
-transform fromRightAppear:
-    xoffset 106
-    easein .5 xoffset 6
+transform fromRightAppear(count):
+    xoffset (100 * count + 6)
+    easein (.5*count) xoffset 6
 
-transform foundTransform:
-    pos (.5, .5) anchor (.5, .5)
+transform foundTransform(xp=.5):
+    pos (xp, .5) anchor (.5, .5)
     pause 2.75
     parallel:
         linear .75 xpos 1. xanchor 1. xoffset -6
@@ -30,7 +30,7 @@ transform foundTransform:
     parallel:
         easeout .75 zoom .2 alpha .0
 
-screen exploreBase(dim = False):
+screen exploreBase(dim = 0):
     tag explore
     default direction = None
 
@@ -46,10 +46,8 @@ screen exploreBase(dim = False):
 
         hbox:
             align (1., .0)
-            if dim:
-                at fromRightAppear
-            else:
-                xoffset 6
+            at fromRightAppear(dim)
+
             for (n, o) in enumerate(myInventory):
                 imagebutton:
                     auto "images/minigame/" + o + "_%s.png"
@@ -94,7 +92,7 @@ screen exploreFound(object):
     default confirmed = False
     modal True
 
-    use exploreBase(True)
+    use exploreBase(1)
 
     add "images/minigame/" + object + "_large_idle.png":
         at foundTransform
@@ -107,9 +105,10 @@ screen explorePhotoFound():
 
     modal True
 
-    use exploreBase(True)
+    use exploreBase(2)
 
-    add "photoFound" at foundTransform
+    add "images/minigame/camera_large_idle.png" at foundTransform(.35)
+    add "photoFound" at foundTransform(.65)
 
     timer 3.5 action Return()
     key "mouseup_1" action Return()
@@ -145,7 +144,7 @@ screen cameraMinigame:
 
     modal True
 
-    use exploreBase(True)
+    use exploreBase()
     add Solid("#0004")
 
     frame:
@@ -187,7 +186,7 @@ screen cameraMinigame:
         imagebutton:
             idle "images/minigame/photo_large.png"
             align (.1, .5)
-            action Return()
+            action Return('complete')
 
     elif blurry == 0.:
         add im.MatrixColor("images/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.1, .5)
@@ -195,6 +194,9 @@ screen cameraMinigame:
         add im.MatrixColor(im.Blur("images/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.1, .5)
 
     add rotateHelper() xysize (0, 0) pos(0, 0)
+    textbutton "다른 곳을 탐색한다":
+        align (1., 1.)
+        action Return()
 
     key "repeat_K_LEFT"    action NullAction()
     key "repeat_K_RIGHT"   action NullAction()
@@ -218,7 +220,7 @@ init python:
                     return
                 else:
                     isMirrorComplete = True
-                    return "Complete!"
+                    return "complete"
 
 define mirrorFragDropPoses = [
     (670+131, 564),

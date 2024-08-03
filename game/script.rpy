@@ -28,8 +28,9 @@ label explorePart1:
         jump storyPart2
 
     $ foundObject = _return
-    $ objectFound(foundObject)
-    call screen exploreFound(foundObject)
+    if foundObject != 'camera':
+        $ objectFound(foundObject)
+        call screen exploreFound(foundObject)
 
     show screen exploreBase
     call expression foundObject + "Found"
@@ -46,9 +47,7 @@ label storyPart2:
 label explorePart2Prepare:
     # 탐색 1에서 찾아야 할 물품들을 리스트에 복사
     $ addPartHistory("탐색 2.")
-    $ objects = copy.deepcopy(objectsPart2)
-    if "gloves" in myInventory:
-        $ objects.pop(0)
+    $ objects.extend(objectsPart2)
     $ explorePhase = 2
 
 label explorePart2:
