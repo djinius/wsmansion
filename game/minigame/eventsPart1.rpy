@@ -77,6 +77,7 @@ label tornbookFound:
         zoom .5
     with dissolve
 
+label tornbookStory:
     # ‘나’ 
     난설 "……가슴을 쥐어뜯는 왕자님을 본 공주님이 걱정스러운 표정으로 물었습니다."
 
@@ -134,6 +135,7 @@ label sketchbookFound:
     show text "마당 + 콜라 엘리":
         align (.0, .0)
 
+label sketchookStory:
     나 "한가롭게 저택 테라스에서 마당을 바라본다."
     나 "석양이 진 하늘이 운치 있다. 노을빛이 조각상들을 하나하나 감싼다."
     # 엘리 (60년대식 선글라스를 끼고 접이식 의자에서 콜라를 마시는 scg)
@@ -203,6 +205,7 @@ label cameraFound:
     call screen explorePhotoFound
     hide screen exploreBase
 
+label cameraStory:
     # 배경: 길거리 사진, 흑백에 블러 처리
     scene black
     show text "길거리":

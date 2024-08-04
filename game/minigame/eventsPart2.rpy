@@ -39,6 +39,7 @@ label page2Found:
         나 "원본을 찾아보면 어떨까."
         return
 
+label page2Story:
     # 배경: 어두운 청색 배경
     scene darkblue with dissolve
 
@@ -103,6 +104,7 @@ label earringFound:
 
     나 "특이하게 똬리를 튼 뱀 모양의 귀걸이다. 엘리가 빠트렸나 보다."
 
+label earringStory:
     # 배경: 검은 화면
     # 효과음: 심장 소리 한 번
 

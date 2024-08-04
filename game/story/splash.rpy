@@ -1,9 +1,10 @@
 image apricot = Solid("#FBCEB1")
 
 label splashscreen:
+label splashReplay:
     scene black with dissolve
 
-    if persistent.replayPrologue is False:
+    if (not _in_replay) and (persistent.replayPrologue is False):
         return
 
     pause 1.5

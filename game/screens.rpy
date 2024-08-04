@@ -225,11 +225,15 @@ screen navigation():
 
         textbutton _("불러오기") action ShowMenu("load")
 
+        if not _in_replay:
+
+            textbutton _("다시보기") action ShowMenu("replay")
+
         textbutton _("환경설정") action ShowMenu("preferences")
 
         if _in_replay:
 
-            textbutton _("리플레이 끝내기") action EndReplay(confirm=True)
+            textbutton _("다시보기 끝") action EndReplay(confirm=True)
 
         elif not main_menu:
 

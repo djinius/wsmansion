@@ -503,7 +503,7 @@ translate None strings:
 
     # renpy/common/00gui.rpy:455
     old "Are you sure you want to end the replay?"
-    new "리플레이를 종료하겠습니까?"
+    new "다시보기를 종료하겠습니까?"
 
     # renpy/common/00gui.rpy:456
     old "Are you sure you want to begin skipping?"

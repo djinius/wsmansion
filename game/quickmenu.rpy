@@ -49,14 +49,19 @@ screen quick_menu():
 
         imagemap:
             align (1., 1.)
-            auto ("gui/quickmenu/%s.png")
+            if not _in_replay:
+                auto ("gui/quickmenu/%s.png")
+            else:
+                auto ("gui/quickmenu/replay_%s.png")
             hotspot (  0, 0, 60, 60):
                 action ShowMenu('history')
                 tooltip ["대사록(L)", "대사록을 엽니다.", (1920 - 60 * 8 - 30, 1000), (.5, 1.)]
-            hotspot ( 60, 0, 60, 60):
-                action Show('inventory')
-                sensitive myInventory
-                tooltip ["보관함(I)", "보관함을 엽니다.", (1920 - 60 * 7 - 30, 1000), (.5, 1.)]
+
+            if not _in_replay:
+                hotspot ( 60, 0, 60, 60):
+                    action Show('inventory')
+                    sensitive myInventory
+                    tooltip ["보관함(I)", "보관함을 엽니다.", (1920 - 60 * 7 - 30, 1000), (.5, 1.)]
 
             hotspot (180, 0, 60, 60):
                 action Preference("auto-forward", "toggle")
@@ -67,9 +72,14 @@ screen quick_menu():
             hotspot (300, 0, 60, 60):
                 action Skip(fast=True, confirm=False)
                 tooltip ["건너뛰기", "다음 선택지, 혹은 다음 장면까지 건너뜁니다.", (1920 - 60 * 3 - 30, 1000), (.5, 1.)]
-            hotspot (360, 0, 60, 60):
-                action ShowMenu('save')
-                tooltip ["저장(S)", "현재 게임을 저장합니다.", (1920 - 60 * 2 - 30, 1000), (.5, 1.)]
+            if not _in_replay:
+                hotspot (360, 0, 60, 60):
+                    action ShowMenu('save')
+                    tooltip ["저장(S)", "현재 게임을 저장합니다.", (1920 - 60 * 2 - 30, 1000), (.5, 1.)]
+            else:
+                hotspot (360, 0, 60, 60):
+                    action EndReplay(confirm=False)
+                    tooltip ["다시보기 끝", "다시보기를 끝내고 돌아갑니다.", (1920 - 60 * 2 - 30, 1000), (.5, 1.)]
             hotspot (420, 0, 60, 60):
                 action ShowMenu('preferences')
                 tooltip ["설정(P)", "게임 설정을 엽니다.", (1920, 1000), (1., 1.)]
