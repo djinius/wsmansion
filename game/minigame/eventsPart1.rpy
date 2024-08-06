@@ -36,11 +36,16 @@ screen pageContents(textContent):
 
 label glovesFound:
     $ addFoundHistory("장갑", "gloves")
+    $ objectFound("gloves")
+    call screen exploreFound("gloves")
+
     나 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
     return
 
 label page1Found:
     $ addFoundHistory("찢어진 책장", "page1")
+    $ objectFound("page1")
+    call screen exploreFound("page1")
     나 "오래된 책의 일부 같다."
     나 "영어라 읽기도 힘들뿐더러 한 장만으로는 의미가 없어 보인다."
     call screen pageContents(page1Text)
@@ -55,6 +60,8 @@ label tarotbookFound:
 
 label tornbookFound:
     $ addFoundHistory("페이지가 뜯겨나간 책", "tornbook")
+    $ objectFound("tornbook")
+    call screen exploreFound("tornbook")
     나 "오래된 책이다. 페이지가 두 장 뜯겨나간 것 같다."
     나 "영어라 읽을 수는 없지만 이렇게 미완성으로 놔두기에도 어딘가 불편하다."
 

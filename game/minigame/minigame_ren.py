@@ -49,7 +49,8 @@ def movePos(xp = 0, yp = 0):
     global moveDirection
     global spriteDirection
     global explorePhase
-    global mirrorFound
+    global isMirrorFound
+    global isBedroomUnlocked
 
     if (xp == 0) and (yp == 0):
         if moveDirection == "up":
@@ -67,7 +68,10 @@ def movePos(xp = 0, yp = 0):
     newx = positionX + xp
     newy = positionY + yp
 
-    if (newx < 0) or (newx > 37) or (newy < 0) or (newy > 12) or (newx < 0):
+    if (newx < 0) or (newx >= 34) or (newy < 0) or (newy >= 22):
+        pass
+    elif (isBedroomUnlocked is False) and (((newx >= 10) and (newx <= 13) and (newy >= 10) and (newy <= 15)) or ((newx == 9) and (newy >= 13) and (newy <= 15))):
+        # 침실이 잠겨 있음
         pass
     elif (newx == 19) and (newy == 11 or newy == 12):
         if explorePhase == 2:
@@ -89,7 +93,43 @@ def explorePosition(xp, yp):
             return s
 
 def getMapPosition(x, y):
-    return (x * 50 + 20, y * 50 + 300)
+    return (x * 72 + 36, y * 72 + 18)
+
+def getMapOffset():
+    global positionX
+    global positionY
+    
+    xo = (1920 - 2448) / 2
+    yo = (1080 - 1584) / 2
+
+    x = positionX
+    y = positionY
+
+    xd = 960 / 72
+    yd = 540 / 72
+
+    xol = x * 72
+    xor = 2448 - (x * 72)
+    yol = y * 72
+    yor = 1584 - (y * 72)
+
+    if xol < 960:
+        xo = 0
+    elif xor < 960:
+        xo = -(2448 - 1920)
+    else:
+        ## 주인공을 중앙에 배치함
+        xo = -(xol - 960)
+
+    if yol < 540:
+        yo = 0
+    elif yor < 540:
+        yo = -(1584 - 1080)
+    else:
+        ## 주인공을 중앙에 배치함
+        yo = -(yol - 540)
+
+    return (xo, yo)
 
 def objectFound(object):
     objectRemove(object)

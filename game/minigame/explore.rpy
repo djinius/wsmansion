@@ -5,12 +5,15 @@ default positionY = 6
 default explorePhase = 0
 default mirrorBegin = False
 default fragmentsFound = [False, False, False, False, False]
-default mirrorFound = False
+default isMirrorFound = False
 
-default objectsPart1 = [("gloves", 3, 1), ("tarotbook", 28, 2), ("tornbook", 5, 11), ("page1", 15, 0), ("sketchbook", 21, 7), ("camera", 29, 6)]
-default objectsPart2 = [("earring", 22, 10), ("page2", 6, 2), ("death", 15, 11), ("knife", 29, 11), ("mirror", 19, 12), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
+# 탐색 오브젝트
+# 파트 2 귀걸이 => 시계, 칼 => 자물쇠
+default objectsPart1 = [("gloves", 27, 9), ("tornbook", 28, 5), ("page1", 25, 7), ("camera", 13, 6)]
+default objectsPart2 = [("clock", 18, 5), ("page2", 10, 11), ("death", 15, 11), ("lock", 14, 14), ("mirror", 12, 9), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
 default objects = []
 default myInventory = []
+
 
 image photoFound:
     "images/minigame/photo_large.png"
@@ -35,41 +38,45 @@ screen exploreBase(dim = 0):
     default direction = None
 
     frame:
-        xysize (1., 1.)
+        xysize (2448, 1584)
+        offset getMapOffset()
         background "images/minigame/map01.jpg"
 
         for (s, x, y) in objects:
             add "images/minigame/" + s + "_idle.png":
-                pos getMapPosition(x, y) anchor (.5, .5)
+                pos getMapPosition(x, y) anchor (.5, .0) zoom .5
 
         add getProSprite() pos getMapPosition(positionX, positionY) anchor (.5, .5)
 
-        hbox:
-            align (1., .0)
-            at fromRightAppear(dim)
+        if explorePhase == 1:
+            add "images/minigame/elly_idle.png":
+                pos getMapPosition(14, 8) anchor (.5, .5)
 
-            for (n, o) in enumerate(myInventory):
-                imagebutton:
-                    auto "images/minigame/" + o + "_%s.png"
-                    action NullAction()
+        transclude
 
-    if explorePhase == 1:
-        add "images/minigame/elly_idle.png":
-            pos getMapPosition(19, 12) anchor (.5, .5)
+    hbox:
+        align (1., .0)
+        at fromRightAppear(dim)
 
+        for (n, o) in enumerate(myInventory):
+            imagebutton:
+                auto "images/minigame/" + o + "_%s.png"
+                action NullAction()
+
+
+## TODO: 이동에 따라 맵 위치 같이 옮겨주기
 screen exploreMap():
     tag explore
 
     modal True
 
-    use exploreBase
-
-    if explorePhase == 1:
-        imagebutton:
-            auto "images/minigame/elly_%s.png"
-            pos getMapPosition(19, 12) anchor (.5, .5)
-            action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
-            sensitive "camera" in myInventory
+    use exploreBase():
+        if explorePhase == 1:
+            imagebutton:
+                auto "images/minigame/elly_%s.png"
+                pos getMapPosition(14, 8) anchor (.5, .5)
+                action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
+                sensitive "camera" in myInventory
 
     key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
     key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
@@ -133,7 +140,7 @@ transform disappearExplain():
     easeout 1.5 alpha .0
 
 screen cameraMinigame:
-    tag explore
+    tag puzzle
 
     default blurry = 5.
     default saturation = 0.
@@ -144,7 +151,6 @@ screen cameraMinigame:
 
     modal True
 
-    use exploreBase()
     add Solid("#0004")
 
     frame:
@@ -233,6 +239,7 @@ default mirrorFragMatches = [False, False, False, False, False]
 
 # 거울 미니게임
 screen mirrorMiniGame():
+    tag puzzle
     modal True
 
     add Solid("#000")
@@ -287,5 +294,80 @@ screen mirrorMiniGame():
                 droppable (mirrorFragMatches[n] is False)
 
     textbutton "더 탐색해 본다":
+        align (1., 1.)
+        action Return()
+
+# 시계 메모
+screen clockPuzzle():
+    tag puzzle
+
+    frame:
+        align (.5, .5)
+        xysize (987, 1080)
+        background "images/minigame/clock_bg.png"
+
+        if isMemoFound:
+            frame:
+                align (.5, .5)
+                background "images/minigame/memo.png"
+                xysize (711, 910)
+
+                has vbox
+                align (.5, .5)
+
+                text "수수께끼" size 40 color "#000"
+                null height(15)
+                text clockMemoText size 25 color "#000"
+        else:
+            textbutton "메모지롱":
+                align (.25, .75)
+                action SetVariable("isMemoFound", True)
+
+    textbutton "다른 곳을 탐색한다":
+        align (1., 1.)
+        action Return()
+
+# 자물쇠 풀기
+screen lockPuzzle():
+    tag puzzle
+
+    default lockNumber0 = 0
+    default lockNumber1 = 0
+    default lockNumber2 = 0
+    default lockNumber3 = 0
+
+    add Solid("#000C")
+
+    hbox:
+        align (.5, .5)
+        grid 4 4:
+            yalign .5
+
+            text "O" xalign .5
+            text "U" xalign .5
+            text "O" xalign .5
+            text "X" xalign .5
+
+            textbutton "▲" action SetScreenVariable("lockNumber0", (lockNumber0 + 1) % 10) xalign .5
+            textbutton "▲" action SetScreenVariable("lockNumber1", (lockNumber1 + 1) % 10) xalign .5
+            textbutton "▲" action SetScreenVariable("lockNumber2", (lockNumber2 + 1) % 10) xalign .5
+            textbutton "▲" action SetScreenVariable("lockNumber3", (lockNumber3 + 1) % 10) xalign .5
+
+            text "%d"%lockNumber0 xalign .5
+            text "%d"%lockNumber1 xalign .5
+            text "%d"%lockNumber2 xalign .5
+            text "%d"%lockNumber3 xalign .5
+
+            textbutton "▼" action SetScreenVariable("lockNumber0", (lockNumber0 - 1) % 10) xalign .5
+            textbutton "▼" action SetScreenVariable("lockNumber1", (lockNumber1 - 1) % 10) xalign .5
+            textbutton "▼" action SetScreenVariable("lockNumber2", (lockNumber2 - 1) % 10) xalign .5
+            textbutton "▼" action SetScreenVariable("lockNumber3", (lockNumber3 - 1) % 10) xalign .5
+
+        textbutton "열기":
+            yalign .5
+            action [SetVariable("isBedroomUnlocked", True), Return()]
+            sensitive (lockNumber0 == 1) and (lockNumber1 == 3) and (lockNumber2 == 1) and (lockNumber3 == 2)
+
+    textbutton "다른 곳을 탐색한다":
         align (1., 1.)
         action Return()

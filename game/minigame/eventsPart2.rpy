@@ -11,7 +11,21 @@ define page2Text = """
 이제 피곤은 사라지고 아름다움만 남았다.
 """
 
+define clockMemoText = """
+난쟁이와 꺽다리가 서로 만나기로 했다.
+난쟁이가 말했다.
+"우리 OO시부터 OX시 사이에 만나는 건 어때?"
+그러자 꺽다리가 핀잔을 주며 말했다.
+"이 바보야, 우린 그 사이에 못 만나는 거 몰라? 
+난쟁이가 다시 말했다.
+"그럼 OX시부터 OU시에 만나던가. 식사도 할 겸."
+"그때도 못 만나잖아, 에휴, 그냥 오후 U시에 만나."
+꺽다리가 말했다.
+"""
+
 default fragmentFoundCount = 0
+default isMemoFound = False
+default isBedroomUnlocked = False
 default isMirrorComplete = False
 
 image darkblue = Solid("#006")
@@ -96,13 +110,19 @@ label page2Story:
 
     return
 
-label earringFound:
-    $ addFoundHistory("귀걸이", "earring")
-    $ objectFound("earring")
-    call screen exploreFound("earring")
-    show screen exploreBase
+label lockFound:
+    $ addFoundHistory("자물쇠", "lock")
+    # $ objectFound("earring")
+    # call screen exploreFound("earring")
+    # show screen exploreBase
 
-    나 "특이하게 똬리를 튼 뱀 모양의 귀걸이다. 엘리가 빠트렸나 보다."
+    나 "자물쇠다. 이걸 열어야 이 방 안으로 들어갈 수 있다."
+    call screen lockPuzzle
+
+    if isBedroomUnlocked:
+        $ objectRemove("lock")
+
+    return
 
 label earringStory:
     # 배경: 검은 화면
@@ -163,13 +183,15 @@ label deathFound:
 
     return
 
-label knifeFound:
-    $ addFoundHistory("녹슨 칼", "knife")
-    $ objectFound("knife")
-    call screen exploreFound("knife")
-    show screen exploreBase
+label clockFound:
+    $ addFoundHistory("시계", "clock")
+    # $ objectFound("knife")
+    # call screen exploreFound("knife")
+    # show screen exploreBase
 
-    나 "섬뜩하다. 왜 이런 데 칼이 있을까."
+    나 "뻐꾹."
+    call screen clockPuzzle
+
     return
 
 label fragFound(no):
@@ -210,8 +232,8 @@ label frag4Found:
     return
 
 label mirrorFound:
-    if mirrorFound is False:
-        $ mirrorFound = True
+    if isMirrorFound is False:
+        $ isMirrorFound = True
         $ addFoundHistory("거울", "mirror")
 
         나 "유리가 깨진 거울이다. 맞춰야만 할 것 같은 강한 위화감이 든다."

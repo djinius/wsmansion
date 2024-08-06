@@ -28,10 +28,6 @@ label explorePart1:
         jump storyPart2
 
     $ foundObject = _return
-    if foundObject != 'camera':
-        $ objectFound(foundObject)
-        call screen exploreFound(foundObject)
-
     show screen exploreBase
     call expression foundObject + "Found"
 
@@ -57,10 +53,6 @@ label explorePart2:
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
     $ foundObject = _return
-    if foundObject == "gloves":
-        $ objectFound(foundObject)
-        call screen exploreFound(foundObject)
-
     show screen exploreBase
     call expression foundObject + "Found"
 
