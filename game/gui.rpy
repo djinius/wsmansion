@@ -62,7 +62,7 @@ define gui.interface_text_color = '#ffffff'
 define gui.text_font = FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 ## 캐릭터의 이름에 사용됩니다.
-define gui.name_text_font = "Danjo-bold-Regular.otf"
+define gui.name_text_font = FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 ## 인터페이스에 사용됩니다.
 define gui.interface_text_font = "NEXON Lv2 Gothic Medium.ttf"

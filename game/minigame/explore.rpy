@@ -10,7 +10,7 @@ default isMirrorFound = False
 # 탐색 오브젝트
 # 파트 2 귀걸이 => 시계, 칼 => 자물쇠
 default objectsPart1 = [("gloves", 27, 9), ("tornbook", 28, 5), ("page1", 25, 7), ("camera", 13, 6)]
-default objectsPart2 = [("clock", 18, 5), ("page2", 10, 11), ("death", 15, 11), ("lock", 14, 14), ("mirror", 12, 9), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
+default objectsPart2 = [("clock", 18, 5), ("page2", 10, 11), ("lock", 14, 14), ("mirror", 12, 9), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
 default objects = []
 default myInventory = []
 
@@ -190,7 +190,7 @@ screen cameraMinigame:
 
     if blurry == 0. and saturation == 1.:
         imagebutton:
-            idle "images/minigame/photo_large.png"
+            auto "images/minigame/photo_large_%s.png"
             align (.1, .5)
             action Return('complete')
 
@@ -339,6 +339,7 @@ screen lockPuzzle():
     add Solid("#000C")
 
     hbox:
+        style_prefix "lockPuzzle"
         align (.5, .5)
         grid 4 4:
             yalign .5
@@ -363,6 +364,7 @@ screen lockPuzzle():
             textbutton "▼" action SetScreenVariable("lockNumber2", (lockNumber2 - 1) % 10) xalign .5
             textbutton "▼" action SetScreenVariable("lockNumber3", (lockNumber3 - 1) % 10) xalign .5
 
+        null width(50)
         textbutton "열기":
             yalign .5
             action [SetVariable("isBedroomUnlocked", True), Return()]
@@ -371,3 +373,9 @@ screen lockPuzzle():
     textbutton "다른 곳을 탐색한다":
         align (1., 1.)
         action Return()
+
+style lockPuzzle_text:
+    size 100
+
+style lockPuzzle_button_text is button_text:
+    size 100

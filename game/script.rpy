@@ -19,9 +19,11 @@ label explorePart1Prepare:
 
 label explorePart1:
 
+    $ renpy.choice_for_skipping()
     $ moveDirection = None
     $ config.mouse_displayable.add("pressed_default", "gui/cursors/default.png", 1, 63)
     call screen exploreMap
+    $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
     if _return == "Finished!!":
@@ -47,9 +49,12 @@ label explorePart2Prepare:
     $ explorePhase = 2
 
 label explorePart2:
+
+    $ renpy.choice_for_skipping()
     $ moveDirection = None
     $ config.mouse_displayable.add("pressed_default", "gui/cursors/default.png", 1, 63)
     call screen exploreMap
+    $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
     $ foundObject = _return

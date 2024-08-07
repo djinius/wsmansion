@@ -1,5 +1,12 @@
 image apricot = Solid("#FBCEB1")
 
+default persistent.splashPlayed = False
+
+screen splashSkipper():
+    textbutton "건너뛰기":
+        align (1., 1.)
+        action Jump("splashFinished")
+
 label splashscreen:
 label splashReplay:
     scene black with dissolve
@@ -13,9 +20,14 @@ label splashReplay:
         align (.85, .85)
     with dissolve
     pause .2
+
     scene black with dissolve
     pause 1.5
 
+    if persistent.splashPlayed:
+        show screen splashSkipper
+
+    $ persistent.splashPlayed = True
     scene apricot with dissolve
     나 "감은 눈 사이로 빛이 녹아든다."
     나 "따사로운 햇살을 받으며 한껏 나른해진 몸을 일으켰다."
@@ -101,6 +113,9 @@ label splashReplay:
     나 "신비한 저택에서, 홀로 살고 있는 소녀가."
 
     # 타이틀 화면으로 완전 전환 후 게임 시작
+
+label splashFinished:
+    hide screen splashSkipper
 
     return
 
