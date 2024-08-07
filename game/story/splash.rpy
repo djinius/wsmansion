@@ -1,7 +1,7 @@
 image apricot = Solid("#FBCEB1")
 
 default persistent.splashPlayed = False
-default splashPhase = True
+default splashPhase = False
 
 screen splashSkipper():
     textbutton "건너뛰기":
@@ -10,6 +10,7 @@ screen splashSkipper():
 
 label splashscreen:
 label splashReplay:
+    $ splashPhase = True
     scene black with dissolve
 
     if (not _in_replay) and (persistent.replayPrologue is False):
