@@ -2,7 +2,7 @@
 ##
 ## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
 
-default persistent.showQuickMenu = 2
+default persistent.showQuickMenu = 1
 default persistent.showTooltip = True
 default quick_menu = True
 
@@ -15,6 +15,9 @@ transform quickMenuAppear():
     easein 1. yoffset 0
 
 transform quickMenuFix():
+    yoffset 0
+
+transform quickMenuReappear():
     easein .5 yoffset 0
 
 transform quickMenuHide():
@@ -25,11 +28,12 @@ transform quickMenuHide():
 ## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
 ## 출력되게 합니다.
 
+default quickMenuAutoHide = 0
+
 screen quick_menu():
 
     ## 다른 화면 위에 표시되는지 확인합니다.
     zorder 100
-    default autoHide = 0
 
     if isQuickVisible():
 
@@ -91,16 +95,19 @@ screen quick_menu():
             if persistent.showQuickMenu == 1:
                 add quickShowHelper() xysize(0, 0) pos (1.,1.)
 
-                if autoHide == 0:
+                if quickMenuAutoHide == 0:
                     at quickMenuHidden
-                elif autoHide == 1:
+                elif quickMenuAutoHide == 1:
                     at quickMenuAppear
-                    timer 1. action SetScreenVariable("autoHide", 2)
-                elif autoHide == 2:
+                    timer 1. action SetVariable("quickMenuAutoHide", 2)
+                elif quickMenuAutoHide == 2:
                     at quickMenuFix
-                elif autoHide == 3:
+                elif quickMenuAutoHide == 3:
                     at quickMenuHide
-                    timer 2.5 action SetScreenVariable("autoHide", 0)
+                    timer 2.5 action SetVariable("quickMenuAutoHide", 0)
+                elif quickMenuAutoHide == 4:
+                    at quickMenuReappear
+                    timer .5 action SetVariable("quickMenuAutoHide", 2)
 
         key "mousedown_4" action ShowMenu("history")
         key "mousedown_5" action ShowMenu("history")

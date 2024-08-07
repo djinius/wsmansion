@@ -1,10 +1,11 @@
 image apricot = Solid("#FBCEB1")
 
 default persistent.splashPlayed = False
+default splashPhase = True
 
 screen splashSkipper():
     textbutton "건너뛰기":
-        align (1., 1.)
+        align (1., 0.)
         action Jump("splashFinished")
 
 label splashscreen:

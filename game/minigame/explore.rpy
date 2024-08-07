@@ -235,6 +235,8 @@ define mirrorFragDropPoses = [
     (670+312, 463),
     (670+131, 570)]
 
+define mirrorDragPoses = [getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition()]
+
 default mirrorFragMatches = [False, False, False, False, False]
 
 # 거울 미니게임
@@ -262,7 +264,7 @@ screen mirrorMiniGame():
             if t and (mirrorFragMatches[n] is False):
                 drag:
                     drag_name n
-                    align (renpy.random.random(), renpy.random.random())
+                    align mirrorDragPoses[n]
 
                     draggable True
                     droppable False

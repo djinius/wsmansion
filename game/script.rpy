@@ -6,6 +6,7 @@ default persistent.replayPrologue = True
 
 # 여기에서부터 게임이 시작합니다.
 label start:
+    $ splashPhase = False
 
     $ addPartHistory("파트 1.")
     call part1

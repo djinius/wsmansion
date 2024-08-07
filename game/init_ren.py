@@ -2,6 +2,8 @@
 init python:
 """
 
+import datetime
+
 # 매 게임마다 초기화하는 코드를 여기에 넣기
 renpy.music.register_channel("sound2", "sfx")
 renpy.music.register_channel("sound3", "sfx")
@@ -19,3 +21,5 @@ custom_keymap = renpy.Keymap(save = ShowMenu("save"))
 config.underlay.append(custom_keymap)
 
 config.overlay_screens.append("quick_menu")
+
+renpy.random.seed(datetime.datetime.now())

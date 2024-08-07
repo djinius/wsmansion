@@ -103,25 +103,47 @@ class quickShowHelper(renpy.Displayable):
         return render
 
     def event(self, ev, x, y, st):
-        cs = renpy.get_screen("quick_menu")
+        global quickMenuAutoHide
 
-        if cs is None:
-            return
-
-        aval = cs.scope["autoHide"]
         if ev.type == pygame.MOUSEMOTION:
             (xp, yp) = pygame.mouse.get_pos()
 
             # 마우스가 퀵메뉴 위치에 올라와 있음
             if (xp >= 1380) and (yp >= 1020):
-                if aval == 0:
-                    cs.scope["autoHide"] = 1
+                if quickMenuAutoHide == 0:
+                    quickMenuAutoHide = 1
                     renpy.restart_interaction()
-                elif aval==3:
-                    cs.scope["autoHide"] = 2
+                elif quickMenuAutoHide == 3:
+                    quickMenuAutoHide = 4
                     renpy.restart_interaction()
             # 마우스가 퀵메뉴 위치에서 떨어져 있음
             else:
-                if aval == 2:
-                    cs.scope["autoHide"] = 3
+                # 마우스가 다시 돌아옴
+                if quickMenuAutoHide == 2:
+                    quickMenuAutoHide = 3
                     renpy.restart_interaction()
+
+
+# 책과 1쪽, 2쪽 찾은 개수
+def bookPartCount():
+    global myInventory
+
+    bookPart = -1
+    if "tornbook" in myInventory:
+        bookPart += 1
+    if "page1" in myInventory:
+        bookPart += 1
+    if "page2" in myInventory:
+        bookPart += 1
+
+    return bookPart
+
+# 거울 미니게임 파편 위치
+def getMirrorFragmentPosition():
+    xp = renpy.random.random()
+    if xp < .5:
+        xp *= .6
+    else:
+        xp = xp * .6 + .7
+
+    return (xp, renpy.random.random())
