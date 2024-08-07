@@ -65,7 +65,7 @@ screen quick_menu():
                 hotspot ( 60, 0, 60, 60):
                     action Show('inventory')
                     sensitive myInventory
-                    tooltip ["보관함(I)", "보관함을 엽니다.", (1920 - 60 * 7 - 30, 1000), (.5, 1.)]
+                    tooltip ["소지품(I)", "소지품을 확인합니다.", (1920 - 60 * 7 - 30, 1000), (.5, 1.)]
 
             hotspot (180, 0, 60, 60):
                 action Preference("auto-forward", "toggle")

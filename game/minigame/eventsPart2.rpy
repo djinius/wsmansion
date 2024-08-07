@@ -151,7 +151,7 @@ label clockFound:
 label fragFound(no):
 
     if "gloves" in myInventory:
-        $ objectRemove("frag" + str(no))
+        $ objectFound("frag" + str(no))
         call screen mirrorFragmentFound("frag" + str(no))
         show screen exploreBase
 
