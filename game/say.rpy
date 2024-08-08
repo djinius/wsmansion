@@ -140,9 +140,16 @@ screen ctc:
     if persistent.showCTC:
         if splashPhase:
             hbox:
-                align (1., 1.) offset (-20, -10)
+                align (1., 1.) offset (-20, -10) spacing 15
                 add "mouseLeftClick"
                 text "진행"
+
+                if persistent.splashPlayed:
+                    textbutton "건너뛰기":
+                        idle_foreground "gui/quickmenu/skip_idle.png"
+                        hover_foreground "gui/quickmenu/skip_hover.png"
+                        padding (42, 26, 0, 0)
+                        action Jump("splashFinished")
 
         else:
             hbox:
@@ -181,5 +188,10 @@ style ctc_hbox:
 style ctc_text:
     size 20
     color "#FFF"
+    font "fonts/NEXON Lv2 Gothic Medium.ttf"
+    yalign 1.
+
+style ctc_button_text is button_text:
+    size 20
     font "fonts/NEXON Lv2 Gothic Medium.ttf"
     yalign 1.

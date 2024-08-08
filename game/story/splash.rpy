@@ -3,11 +3,6 @@ image apricot = Solid("#FBCEB1")
 default persistent.splashPlayed = False
 default splashPhase = False
 
-screen splashSkipper():
-    textbutton "건너뛰기":
-        align (1., 0.)
-        action Jump("splashFinished")
-
 label splashscreen:
 label splashReplay:
     $ splashPhase = True
@@ -25,9 +20,6 @@ label splashReplay:
 
     scene black with dissolve
     pause 1.5
-
-    if persistent.splashPlayed:
-        show screen splashSkipper
 
     $ persistent.splashPlayed = True
     scene apricot with dissolve
