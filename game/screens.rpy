@@ -115,7 +115,7 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("다시보기") action ShowMenu("replay")
+            textbutton _("추억") action ShowMenu("replay")
 
         elif _in_replay:
 
@@ -128,12 +128,12 @@ screen navigation():
 
             textbutton _("메인 메뉴") action MainMenu()
 
-        textbutton _("버전정보") action ShowMenu("about")
-
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## 도움말 메뉴는 모바일 디바이스와 맞지 않아 불필요합니다.
-            textbutton _("조작방법") action ShowMenu("help")
+            textbutton _("도움말") action ShowMenu("help")
+
+        textbutton _("버전정보") action ShowMenu("about")
 
         if renpy.variant("pc"):
 
@@ -159,20 +159,46 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+transform mainMenuAppear():
+    alpha .0
+    pause .5
+    linear 1. alpha 1.
+
 screen main_menu():
 
     ## 이렇게 하면 다른 메뉴 화면이 모두 교체됩니다.
     tag menu
+    style_prefix "main_menu"
 
     add gui.main_menu_background
 
     ## 이 빈 프레임은 기본 메뉴를 어둡게 만듭니다.
-    frame:
-        style "main_menu_frame"
+    # frame:
+    #    style "main_menu_frame"
 
     ## use 명령어로 스크린 내에 다른 스크린을 불러옵니다. 메인 메뉴 스크린의 내
     ## 용물은 navigation 스크린에 있습니다.
-    use navigation
+    # use navigation
+
+    grid 3 1:
+        align (.5, .9)
+        spacing 50
+        textbutton _("시작하기") action Start()
+        textbutton _("불러오기") action ShowMenu("load")
+        textbutton _("추억") action ShowMenu("recollections")
+        # textbutton _("종료하기") action Quit()
+        at mainMenuAppear
+
+    imagemap:
+        align (1., 1.)
+        auto "gui/mainmenu/%s.png"
+
+        hotspot (  0, 0, 60, 60) action ShowMenu("preferences")
+        hotspot ( 60, 0, 60, 60) action ShowMenu("help")
+        hotspot (120, 0, 60, 60) action ShowMenu("about")
+        hotspot (190, 0, 60, 60) action Quit()
+
+        at mainMenuAppear
 
     if gui.show_name:
 
@@ -184,6 +210,8 @@ screen main_menu():
 
             text "[config.version]":
                 style "main_menu_version"
+            
+            at mainMenuAppear
 
 
 style main_menu_frame is empty
@@ -202,8 +230,8 @@ style main_menu_vbox:
     xalign 1.0
     xoffset -30
     xmaximum 1200
-    yalign 1.0
-    yoffset -30
+    yalign .0
+    yoffset 30
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
@@ -214,6 +242,14 @@ style main_menu_title:
 style main_menu_version:
     properties gui.text_properties("version")
 
+style main_menu_button:
+    xalign .5
+
+style main_menu_button_text is button_text:
+    xalign .5
+    size 75
+    idle_color "#FFF"
+    hover_color "#FFDF01"
 
 ## Game Menu 스크린 ###############################################################
 ##

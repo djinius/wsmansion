@@ -98,11 +98,9 @@ label splashReplay:
     # 배경: 저택 응접실 -> 검은 화면 (빠르게)
     아비게일처음 "정말, 그렇게 함부로 돌아다니면 못 쓴다니까요."
     독백 "그 순간, 누군가 가냘픈 손으로 나를 잡아당겼다."
+
     # 배경: 검은 화면 -> 타이틀 화면 CG
-    scene black
-    show text "대충 타이틀화면":
-        align (.0, .0)
-    with dissolve
+    scene title with dissolve
 
     독백 "신비한 저택에서, 홀로 살고 있는 소녀가."
 

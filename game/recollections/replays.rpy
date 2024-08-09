@@ -1,31 +1,47 @@
-screen replay():
+screen recollections():
 
     tag menu
 
-    use game_menu(_("다시보기")):
-        hbox:
+    use game_menu(_("추억")):
+        vbox:
+            style_prefix "recollections"
+            grid 3 1:
+                vbox:
+                    label "도입부"
+                    textbutton "도입부" action Replay("splashReplay", locked=False)
+
+                vbox:
+                    label "지금의 이야기"
+                    grid 2 2:
+                        textbutton "1장" action Replay("part1", locked=False)
+                        textbutton "2장" action Replay("part2", locked=False)
+                        textbutton "트루엔딩" action Replay("trueEnding", locked=False)
+                        textbutton "굿 엔딩" action Replay("goodEnding", locked=False)
+
+                vbox:
+                    label "과거 이야기"
+                    grid 2 3:
+                        textbutton "카메라" action Replay("cameraStory", locked=False)
+                        textbutton "이야기 짓기" action Replay("makeUpStory", locked=False)
+                        textbutton "양복 입기" action Replay("suitFitStory", locked=False)
+                        textbutton "모이주기" action Replay("birdFeedStory", locked=False)
+                        textbutton "거울" action Replay("mirrorComplete", locked=False)
+
             vbox:
-                label "도입부"
-                textbutton "도입부" action Replay("splashReplay", locked=False)
-                null height(10)
+                label "갤러리"
+                text "언젠간 넣겠지."
 
-                label "1부"
-                textbutton "1장" action Replay("part1", locked=False)
+style recollections_vbox:
+    spacing 20
 
-                null height(10)
+style recollections_hbox:
+    spacing 10
 
-                label "2부"
-                textbutton "2장" action Replay("part2", locked=False)
+style recollections_grid:
+    spacing 5
 
-                label "과거 이야기"
-                textbutton "카메라" action Replay("cameraStory", locked=False)
-                textbutton "이야기 짓기" action Replay("makeUpStory", locked=False)
-                textbutton "양복 입기" action Replay("suitFitStory", locked=False)
-                textbutton "모이주기" action Replay("birdFeedStory", locked=False)
-                textbutton "거울" action Replay("mirrorComplete", locked=False)
+style recollections_button:
+    xalign .5
 
-                null height(10)
-
-                label "엔딩"
-                textbutton "트루엔딩" action Replay("trueEnding", locked=False)
-                textbutton "굿 엔딩" action Replay("goodEnding", locked=False)
+style recollections_label:
+    xalign .1
