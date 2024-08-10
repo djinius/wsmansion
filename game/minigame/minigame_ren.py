@@ -162,25 +162,24 @@ class rotateHelper(renpy.Displayable):
         if ev.type == pygame.MOUSEMOTION:
             (xp, yp) = pygame.mouse.get_pos()
             (xs, ys) = renpy.get_physical_size()
-            xr = xp / xs
-            yr = yp / ys
-            print (xp, yp, xr, yr)
+            xr = xp / xs * 1920
+            yr = yp / ys * 1080
 
             if cs.scope["rotating"] is None:
-                distanceLeft = math.sqrt((xr - 768/1920) * (xr - 768/1920) + (yr - 578/1080) * (yr - 578/1080))
-                distanceRight = math.sqrt((xr - 1022/1920) * (xr - 1022/1920) + (yr - 582/1080) * (yr - 582/1080))
-                print( distanceLeft, distanceRight )
-                if (distanceLeft > (10 / 1920)) and (distanceLeft < (27 / 1920)):
+                distanceLeft = math.sqrt((xr - 768) * (xr - 768) + (yr - 580) * (yr - 580))
+                distanceRight = math.sqrt((xr - 1022) * (xr - 1022) + (yr - 584) * (yr - 584))
+                print (xp, yp, xr, yr, distanceLeft, distanceRight )
+                if (distanceLeft > (10)) and (distanceLeft < (30)):
                     cs.scope["toRotate"] = "Left"
                     renpy.restart_interaction()
-                elif (distanceRight > (10 / 1920)) and (distanceRight < (27 / 1920)):
+                elif (distanceRight > (10)) and (distanceRight < (30)):
                     cs.scope["toRotate"] = "Right"
                     renpy.restart_interaction()
                 else:
                     cs.scope["toRotate"] = None
                     renpy.restart_interaction()
             elif cs.scope["rotating"] == "Left":
-                newAngle = math.atan2(xr - 768/1920, yr - 578/1080)
+                newAngle = math.atan2(xr - 768, yr - 580)
                 rotatedAngle = self.beginAngle - newAngle
                 rotatedAngle = rotatedAngle / math.pi * 180
                 newAngle = (self.firstAngle + rotatedAngle) % 360
@@ -201,7 +200,7 @@ class rotateHelper(renpy.Displayable):
                 renpy.restart_interaction()
 
             elif cs.scope["rotating"] == "Right":
-                newAngle = math.atan2(xr - 1022/1920, yr - 582/1080)
+                newAngle = math.atan2(xr - 1022, yr - 584)
                 rotatedAngle = self.beginAngle - newAngle
                 rotatedAngle = rotatedAngle / math.pi * 180
                 newAngle = (self.firstAngle + rotatedAngle) % 360

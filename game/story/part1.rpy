@@ -148,10 +148,6 @@ label part1:
         "찬장을 조사한다":
             call investigateCupboard
 
-    show text "마우스 스크롤 버튼으로 대사록을 열어 선택지 이전으로 돌아갈 수 있습니다." at truecenter with dissolve
-    pause
-    hide text with dissolve
-
     독백 "엘리와 별 시덥잖은 이야기만 나눈 것 같았지만, 소득이 아예 없는 것도 아니었다."
     독백 "저택 이곳저곳을 지날 때마다 어렴풋이 무언가 떠오르는 것 같은 느낌을 받았다."
     독백 "그 장소들을 조사하다 보면 내 기억을 되찾으리라는 강한 확신이 들었다."

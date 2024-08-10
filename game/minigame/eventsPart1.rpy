@@ -29,7 +29,8 @@ screen pageContents(textContent):
             align (.5, .5)
             text_align .5
             color "#000"
-            font "GowunBatang-Regular.ttf"
+            font "OGRenaissanceSecret.ttf"
+            size 45
 
     key "mouseup_1" action Return()
  

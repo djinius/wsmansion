@@ -4,8 +4,9 @@ default persistent.splashPlayed = False
 default splashPhase = False
 
 label splashscreen:
-label splashReplay:
     $ splashPhase = True
+
+label splashReplay:
     scene black with dissolve
 
     if (not _in_replay) and (persistent.replayPrologue is False):

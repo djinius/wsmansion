@@ -193,10 +193,10 @@ screen main_menu():
         align (1., 1.)
         auto "gui/mainmenu/%s.png"
 
-        hotspot (  0, 0, 60, 60) action ShowMenu("preferences")
-        hotspot ( 60, 0, 60, 60) action ShowMenu("help")
-        hotspot (120, 0, 60, 60) action ShowMenu("about")
-        hotspot (190, 0, 60, 60) action Quit()
+        hotspot (  0, 0, 60, 60) action ShowMenu("preferences") tooltip ["환경설정", "화면 모드 및 음량, 기타 게임을 진행하기 위한\n편의사항을 설정합니다.", (1920, 1020), (1., 1.)]
+        hotspot ( 60, 0, 60, 60) action ShowMenu("help") tooltip ["도움말", "도움말을 봅니다.", (1920, 1020), (1., 1.)]
+        hotspot (120, 0, 60, 60) action ShowMenu("about") tooltip ["버전정보", "게임의 정보를 확인합니다.", (1920, 1020), (1., 1.)]
+        hotspot (190, 0, 60, 60) action Quit() tooltip ["종료", "게임을 끝냅니다.", (1920, 1020), (1., 1.)]
 
         if quickMenuAutoHide == 0:
             at quickMenuHidden
@@ -211,6 +211,11 @@ screen main_menu():
         elif quickMenuAutoHide == 4:
             at quickMenuReappear
             timer .5 action SetVariable("quickMenuAutoHide", 2)
+
+    $ tooltip = GetTooltip('main_menu')
+
+    if persistent.showTooltip and (tooltip is not None):
+        use tooltip(tooltip)
 
     if gui.show_name:
 
@@ -267,6 +272,26 @@ style main_menu_button_text is button_text:
     font "Danjo-bold-Regular.otf"
     idle_color "#000044"
     hover_color "#000000"
+
+screen tooltip(tt):
+    $ [t, d, p, a] = tt
+
+    frame:
+        style_prefix "tooltip"
+        pos p anchor a xminimum 300
+        background Frame("gui/tooltipframe.png", 50, 46, 77, 37)
+        padding (40, 40)
+        has vbox
+        xalign .5
+
+        text t size 35 xalign .5
+        null height(5)
+        text d size 22 xalign .5
+
+style tooltip_text:
+    font "NEXON Lv2 Gothic Medium.ttf"
+    color "#001040"
+    text_align .5
 
 ## Game Menu 스크린 ###############################################################
 ##
