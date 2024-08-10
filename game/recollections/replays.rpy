@@ -2,7 +2,7 @@ screen recollections():
 
     tag menu
 
-    use game_menu(_("추억")):
+    use game_menu(_("추억하기")):
         vbox:
             style_prefix "recollections"
             grid 3 1:

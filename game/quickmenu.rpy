@@ -28,7 +28,7 @@ transform quickMenuHide():
 ## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
 ## 출력되게 합니다.
 
-default quickMenuAutoHide = 0
+default quickMenuAutoHide = 3
 
 screen quick_menu():
 

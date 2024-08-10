@@ -115,7 +115,7 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("추억") action ShowMenu("recollections")
+            textbutton _("추억하기") action ShowMenu("recollections")
 
         elif _in_replay:
 
@@ -185,7 +185,8 @@ screen main_menu():
         spacing 50
         textbutton _("시작하기") action Start()
         textbutton _("불러오기") action ShowMenu("load")
-        textbutton _("추억") action ShowMenu("recollections")
+        textbutton _("추억하기") action ShowMenu("recollections")
+        # textbutton _("환경설정") action ShowMenu("preferences")
         # textbutton _("종료하기") action Quit()
 
     imagemap:
@@ -197,7 +198,19 @@ screen main_menu():
         hotspot (120, 0, 60, 60) action ShowMenu("about")
         hotspot (190, 0, 60, 60) action Quit()
 
-        at mainMenuAppear
+        if quickMenuAutoHide == 0:
+            at quickMenuHidden
+        elif quickMenuAutoHide == 1:
+            at quickMenuAppear
+            timer 1. action SetVariable("quickMenuAutoHide", 2)
+        elif quickMenuAutoHide == 2:
+            at quickMenuFix
+        elif quickMenuAutoHide == 3:
+            at quickMenuHide
+            timer 2.5 action SetVariable("quickMenuAutoHide", 0)
+        elif quickMenuAutoHide == 4:
+            at quickMenuReappear
+            timer .5 action SetVariable("quickMenuAutoHide", 2)
 
     if gui.show_name:
 
@@ -212,6 +225,7 @@ screen main_menu():
             
             at mainMenuAppear
 
+    add quickShowHelper(250, 60) xysize(0, 0) pos (1.,1.)
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -327,7 +341,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
         action Return()
 
-    label title
+    label title:
+        text_font "EF_Rebecca.ttf"
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
@@ -403,20 +418,34 @@ screen about():
         style_prefix "about"
 
         vbox:
+            spacing 20
+            vbox:
 
-            label "[config.name!t]"
-            text _("버전 [config.version!t]\n")
+                label "[config.name!t]"
+                text _("버전 [config.version!t]\n")
 
-            ## gui.about 의 내용은 보통 options.rpy에 있습니다.
-            if gui.about:
-                text "[gui.about!t]\n"
+                ## gui.about 의 내용은 보통 options.rpy에 있습니다.
+                if gui.about:
+                    text "[gui.about!t]\n"
 
-            text _("{a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only] 으로 만들어진 게임.\n\n[renpy.license!t]")
+                text _("{a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only] 으로 만들어진 게임.\n\n[renpy.license!t]")
 
+            vbox:
+                label "제작진"
+                grid 2 4:
+                    text "시나리오:" xalign 1.
+                    text "소네트99" xpos 20
+                    text "스탠딩CG:" xalign 1.
+                    text "命" xpos 20
+                    text "이벤트CG:" xalign 1.
+                    text "기차" xpos 20
+                    text "프로그래밍:" xalign 1.
+                    text "달납줄개" xpos 20
 
 style about_label is gui_label
 style about_label_text is gui_label_text
-style about_text is gui_text
+style about_text is gui_text:
+    font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)# FontGroup().add("NEXON Lv2 Gothic Medium.ttf", 0x0000, 0x00FF).add("NEXON Lv2 Gothic Medium.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
 
 style about_label_text:
     size gui.label_text_size

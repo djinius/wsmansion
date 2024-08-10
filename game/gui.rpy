@@ -29,19 +29,19 @@ define gui.accent_color = '#99ccff'
 
 ## 텍스트 버튼(text button)이 선택(selected)됐거나 커서를 올리지(hovered) 않았을
 ## 때 사용됩니다.
-define gui.idle_color = '#888888'
+define gui.idle_color = '#FFFFFF'
 
 ## 작은(small) 색상은 같은 효과를 내기 위해 더 밝거나 어두워야 하는 작은 글자에
 ## 사용됩니다.
 define gui.idle_small_color = '#aaaaaa'
 
 ## 버튼(button)과 막대(bar)에 커서를 올렸을 때(hovered) 사용됩니다.
-define gui.hover_color = '#c1e0ff'
+define gui.hover_color = '#FFDF01'
 
 ## 텍스트 버튼(text button)에 선택됐지만(selected) 포커스되지(focused) 않았을 때
 ## 사용됩니다. 버튼(button)은 현재 화면이거나 설정값인 경우 선택됨(selected)이
 ## 됩니다.
-define gui.selected_color = '#ffffff'
+define gui.selected_color = '#FFF021'
 
 ## 텍스트 버튼(text button)이 선택되지(selected) 않았을 때 사용됩니다.
 define gui.insensitive_color = '#8888887f'
@@ -59,13 +59,13 @@ define gui.interface_text_color = '#ffffff'
 ## 글자와 글자 크기 ###################################################################
 
 ## 인-게임 글자에 사용됩니다.
-define gui.text_font = FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
+define gui.text_font = "GowunBatang-Bold.ttf" # FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 ## 캐릭터의 이름에 사용됩니다.
-define gui.name_text_font = FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
+define gui.name_text_font = "GowunBatang-Bold.ttf" #FontGroup().add("Danjo-bold-Regular.otf", 0, 127).add("NEXON Lv2 Gothic Medium.ttf", 128, 0xABFF).add("Danjo-bold-Regular.otf", 0xAC00, 0xD7A3).add("NEXON Lv2 Gothic Medium.ttf", 0xD7A4, 0xFFFF)
 
 ## 인터페이스에 사용됩니다.
-define gui.interface_text_font = "NEXON Lv2 Gothic Medium.ttf"
+define gui.interface_text_font = "GowunBatang-Bold.ttf" #"NEXON Lv2 Gothic Medium.ttf"
 
 ## 일반 대사의 글자 크기입니다.
 define gui.text_size = 33
@@ -210,8 +210,8 @@ define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#888888'
-define gui.choice_button_text_hover_color = "#ffffff"
+define gui.choice_button_text_idle_color = '#FFFFFF'
+define gui.choice_button_text_hover_color = "#FFDF01"
 define gui.choice_button_text_insensitive_color = '#8888887f'
 
 

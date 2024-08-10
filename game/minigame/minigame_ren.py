@@ -52,6 +52,8 @@ def movePos(xp = 0, yp = 0):
     global isMirrorFound
     global isBedroomUnlocked
 
+    print (positionX, positionY)
+
     if (xp == 0) and (yp == 0):
         if moveDirection == "up":
             yp = -1
@@ -73,12 +75,6 @@ def movePos(xp = 0, yp = 0):
     elif (isBedroomUnlocked is False) and (((newx >= 10) and (newx <= 13) and (newy >= 10) and (newy <= 15)) or ((newx == 9) and (newy >= 13) and (newy <= 15))):
         # 침실이 잠겨 있음
         pass
-    elif (newx == 19) and (newy == 11 or newy == 12):
-        if explorePhase == 2:
-            positionX = newx
-            positionY = newy
-        else:
-            pass
     else:
         positionX = newx
         positionY = newy

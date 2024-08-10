@@ -91,8 +91,10 @@ def isQuickVisible():
     return quick_menu and (persistent.showQuickMenu > 0) and (renpy.get_screen("exploreMap") is None) and (renpy.get_screen("exploreFound") is None) and (renpy.get_screen("cameraMinigame") is None) and (renpy.get_screen("puzzle") is None)
 
 class quickShowHelper(renpy.Displayable):
-    def __init__(self, **kwargs):
+    def __init__(self, w = 540, h = 60, **kwargs):
         super(quickShowHelper, self).__init__(**kwargs)
+        self.w = 1920 - w
+        self.h = 1080 - h
 
     def render(self, width, height, st, at):
         # Get the size of the child.
@@ -107,9 +109,12 @@ class quickShowHelper(renpy.Displayable):
 
         if ev.type == pygame.MOUSEMOTION:
             (xp, yp) = pygame.mouse.get_pos()
+            (xs, ys) = renpy.get_physical_size()
+            xr = xp / xs
+            yr = yp / ys
 
             # 마우스가 퀵메뉴 위치에 올라와 있음
-            if (xp >= 1380) and (yp >= 1020):
+            if (xr >= (self.w / 1920)) and (yr >= (self.h / 1080)):
                 if quickMenuAutoHide == 0:
                     quickMenuAutoHide = 1
                     renpy.restart_interaction()
