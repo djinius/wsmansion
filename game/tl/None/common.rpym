@@ -847,7 +847,7 @@ translate None strings:
 
     # renpy/common/00sync.rpy:547
     old "No"
-    new "아니오"
+    new "아니요"
 
     # renpy/common/00sync.rpy:569
     old "Enter Sync ID"

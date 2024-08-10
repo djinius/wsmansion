@@ -209,25 +209,6 @@ screen cameraMinigame:
     key "repeat_K_UP"      action NullAction()
     key "repeat_K_DOWN"    action NullAction()
 
-init python:
-    def fragmentDropped(drags, drop):
-        global mirrorFragMatchs
-        global isMirrorComplete
-
-        if drop:
-            n1 = drags[0].drag_name
-            n2 = drop.drag_name
-
-            if n1 == n2:
-                mirrorFragMatches[n1] = True
-                renpy.restart_interaction()
-
-                if False in mirrorFragMatches:
-                    return
-                else:
-                    isMirrorComplete = True
-                    return "complete"
-
 define mirrorFragDropPoses = [
     (670+131, 564),
     (670+131, 429),

@@ -137,6 +137,23 @@ def objectRemove(object):
         if s == object:
             objects.remove(k)
 
+def fragmentDropped(drags, drop):
+    global mirrorFragMatchs
+    global isMirrorComplete
+
+    if drop:
+        n1 = drags[0].drag_name
+        n2 = drop.drag_name
+
+        if n1 == n2:
+            mirrorFragMatches[n1] = True
+            renpy.restart_interaction()
+
+            if False in mirrorFragMatches:
+                return
+            else:
+                isMirrorComplete = True
+                return "complete"
 
 ## Rotate dials
 class rotateHelper(renpy.Displayable):

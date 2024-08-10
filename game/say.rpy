@@ -151,7 +151,7 @@ screen ctc:
                         padding (42, 26, 0, 0)
                         action Jump("splashFinished")
 
-        else:
+        elif renpy.get_screen('nvl') is None:
             hbox:
                 align (1., 1.)
                 spacing 20

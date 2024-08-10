@@ -880,11 +880,6 @@ screen keyboard_help():
         label "F12"
         text _("스크린샷 저장.")
 
-    hbox:
-        label "Shift+A"
-        text _("접근성 메뉴를 엽니다.")
-
-
 screen mouse_help():
 
     hbox:
@@ -999,7 +994,7 @@ screen confirm(message, yes_action, no_action):
                 spacing 150
 
                 textbutton _("네") action yes_action
-                textbutton _("아니오") action no_action
+                textbutton _("아니요") action no_action
 
     ## 우클릭과 esc는 '아니오'를 입력하는 것과 같습니다.
     key "game_menu" action no_action
@@ -1012,7 +1007,7 @@ style confirm_button is gui_medium_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
+    background Frame("gui/confirm_frame.png", gui.confirm_frame_borders, tile=gui.frame_tile)
     padding gui.confirm_frame_borders.padding
     xalign .5
     yalign .5
@@ -1020,12 +1015,16 @@ style confirm_frame:
 style confirm_prompt_text:
     textalign 0.5
     layout "subtitle"
+    size 40
+    color "#001040"
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
 
 style confirm_button_text:
     properties gui.text_properties("confirm_button")
+    idle_color "#001040"
+    hover_color "#004080"
 
 
 ## Skip indicator 스크린 ##########################################################
@@ -1157,7 +1156,7 @@ screen nvl(dialogue, items=None):
                 action i.action
                 style "nvl_button"
 
-    add SideImage() xalign 0.0 yalign 1.0
+    # add SideImage() xalign 0.0 yalign 1.0
 
 
 screen nvl_dialogue(dialogue):
@@ -1195,7 +1194,7 @@ style nvl_window:
     xfill True
     yfill True
 
-    background "gui/nvl.png"
+    background None # "gui/nvl.png"
     padding gui.nvl_borders.padding
 
 style nvl_entry:
