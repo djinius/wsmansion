@@ -308,7 +308,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     if main_menu:
         add gui.main_menu_background
     else:
-        add gui.game_menu_background
+        # add gui.game_menu_background
+        pass
 
     frame:
         style "game_menu_outer_frame"
@@ -630,11 +631,10 @@ screen preferences():
 
     use game_menu(_("환경설정"), scroll="viewport"):
 
-        vbox:
+        hbox:
+            box_wrap True
 
-            hbox:
-                box_wrap True
-
+            vbox:
                 vbox:
                     style_prefix "radio"
                     label _("화면 모드")
@@ -649,6 +649,14 @@ screen preferences():
                     textbutton _("선택지 이후") action Preference("after choices", "toggle")
                     textbutton _("화면 전환 효과") action InvertSelected(Preference("transitions", "toggle"))
 
+                vbox:
+                    style_prefix "check"
+
+                    label _("도입부")
+                    textbutton _("항상 보기") action SetField(persistent, "replayPrologue", True)
+                    textbutton _("건너뛰기") action SetField(persistent, "replayPrologue", False)
+
+            vbox:
                 vbox:
                     style_prefix "radio"
 
@@ -670,16 +678,12 @@ screen preferences():
                     textbutton _("보이기") action SetField(persistent, "showCTC", True)
                     textbutton _("숨기기") action SetField(persistent, "showCTC", False)
 
-                    label _("도입부")
-                    textbutton _("항상 보기") action SetField(persistent, "replayPrologue", True)
-                    textbutton _("건너뛰기") action SetField(persistent, "replayPrologue", False)
-
                 ## "radio_pref" 나 "check_pref" 를 추가하여 그 외에도 환경설정
                 ## 항목을 추가할 수 있습니다.
 
-            null height (4 * gui.pref_spacing)
+            # null height (4 * gui.pref_spacing)
 
-            hbox:
+            vbox:
                 style_prefix "slider"
                 box_wrap True
 

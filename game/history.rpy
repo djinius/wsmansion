@@ -24,7 +24,7 @@ screen history():
                 xysize (1., 1.)
                 # xfill True yfill True
                 idle_background None
-                hover_background Solid("#004")
+                hover_background Solid("#0048")
                 insensitive_background None
 
                 ## history_height 이 None일 경우 레이아웃이 틀어지지 않게 합니다.
