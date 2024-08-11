@@ -635,23 +635,23 @@ screen preferences():
             hbox:
                 box_wrap True
 
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("화면 모드")
-                        textbutton _("창 화면") action Preference("display", "window")
-                        textbutton _("전체 화면") action Preference("display", "fullscreen")
+                vbox:
+                    style_prefix "radio"
+                    label _("화면 모드")
+                    textbutton _("창 화면") action Preference("display", "window")
+                    textbutton _("전체 화면") action Preference("display", "fullscreen")
 
                 vbox:
                     style_prefix "check"
+
                     label _("넘기기")
                     textbutton _("읽지 않은 지문") action Preference("skip", "toggle")
                     textbutton _("선택지 이후") action Preference("after choices", "toggle")
                     textbutton _("화면 전환 효과") action InvertSelected(Preference("transitions", "toggle"))
 
                 vbox:
-                    style_prefix "check"
+                    style_prefix "radio"
+
                     label _("퀵메뉴")
                     textbutton _("보이기") action SetField(persistent, "showQuickMenu", 2)
                     textbutton _("자동 숨기기") action SetField(persistent, "showQuickMenu", 1)
@@ -664,7 +664,7 @@ screen preferences():
                     textbutton _("숨기기") action SetField(persistent, "showTooltip", False)
 
                 vbox:
-                    style_prefix "check"
+                    style_prefix "radio"
 
                     label _("UI 설명")
                     textbutton _("보이기") action SetField(persistent, "showCTC", True)
@@ -761,6 +761,7 @@ style pref_label:
 
 style pref_label_text:
     yalign 1.0
+    size 30
 
 style pref_vbox:
     xsize 338
@@ -774,6 +775,7 @@ style radio_button:
 
 style radio_button_text:
     properties gui.text_properties("radio_button")
+    size 25
 
 style check_vbox:
     spacing gui.pref_button_spacing
@@ -784,6 +786,7 @@ style check_button:
 
 style check_button_text:
     properties gui.text_properties("check_button")
+    size 25
 
 style slider_slider:
     xsize 525
@@ -795,6 +798,7 @@ style slider_button:
 
 style slider_button_text:
     properties gui.text_properties("slider_button")
+    size 25
 
 style slider_vbox:
     xsize 675
@@ -811,7 +815,7 @@ screen help():
 
     default device = "keyboard"
 
-    use game_menu(_("조작방법"), scroll="viewport"):
+    use game_menu(_("도움말"), scroll="viewport"):
 
         style_prefix "help"
 
@@ -936,7 +940,8 @@ style help_button is gui_button
 style help_button_text is gui_button_text
 style help_label is gui_label
 style help_label_text is gui_label_text
-style help_text is gui_text
+style help_text is gui_text:
+    size 30
 
 style help_button:
     properties gui.button_properties("help_button")
@@ -950,7 +955,7 @@ style help_label:
     right_padding 30
 
 style help_label_text:
-    size gui.text_size
+    size 30
     xalign 1.0
     textalign 1.0
 

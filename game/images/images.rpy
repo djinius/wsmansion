@@ -4,3 +4,5 @@
 # 잉크가 퍼지는 동영상
 image inkExpandIdle = Movie(play="images/transitions/expand400_sephia.webm", mask="images/transitions/expand400a.webm", loop=False, keep_last_frame=True)
 image inkExpandHover = Movie(play="images/transitions/expand400_border.webm", mask="images/transitions/expand400a.webm", loop=False, keep_last_frame=True)
+
+image firstEvent = "images/events/1.png"

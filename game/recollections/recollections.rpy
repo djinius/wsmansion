@@ -13,27 +13,27 @@ screen recollections():
                     label "다시보기"
 
                     grid 2 6:
-                        textbutton "도입부" action Replay("splashReplay", locked=False)
+                        textbutton "도입부" action Replay("splashReplay")
                         null
 
-                        textbutton "1장" action Replay("part1", locked=False)
-                        textbutton "2장" action Replay("part2", locked=False)
+                        textbutton "1장" action Replay("part1")
+                        textbutton "2장" action Replay("part2")
 
-                        textbutton "카메라" action Replay("cameraStory", locked=False)
-                        textbutton "이야기 짓기" action Replay("makeUpStory", locked=False)
-                        textbutton "양복 입기" action Replay("suitFitStory", locked=False)
-                        textbutton "모이주기" action Replay("birdFeedStory", locked=False)
-                        textbutton "거울" action Replay("mirrorComplete", locked=False)
+                        textbutton "카메라" action Replay("cameraStory")
+                        textbutton "이야기 짓기" action Replay("makeUpStory")
+                        textbutton "양복 입기" action Replay("suitFitStory")
+                        textbutton "모이주기" action Replay("birdFeedStory")
+                        textbutton "거울" action Replay("mirrorComplete")
                         null
 
-                        textbutton "트루엔딩" action Replay("trueEnding", locked=False)
-                        textbutton "굿 엔딩" action Replay("goodEnding", locked=False)
+                        textbutton "트루엔딩" action Replay("trueEnding")
+                        textbutton "굿 엔딩" action Replay("goodEnding")
 
             vbox:
                 label "화랑"
                 grid 1 4:
                     for (n, il) in enumerate(galleryNames):
-                        add g.make_button(il[0], unlocked=il[1], idle_border="gui/gallery/g" + str(n) + "_idle.png", hover_border="gui/gallery/g" + str(n) + "_hover.png", xalign=.5, yalign=.5)
+                        add g.make_button(il[0], unlocked=il[1], idle_border="gui/recollections/g" + str(n) + "_idle.png", hover_border="gui/recollections/g" + str(n) + "_hover.png", xalign=.5, yalign=.5)
 
             vbox:
                 label "음악실"
@@ -51,7 +51,18 @@ style recollections_grid:
     spacing 5
 
 style recollections_button:
+    xysize (180, 71)
     xalign .5
+    idle_background "gui/recollections/replay_idle.png"
+    hover_background "gui/recollections/replay_hover.png"
+    insensitive_background "gui/recollections/replay_insensitive.png"
+
+style recollections_button_text is button_text:
+    size 25
+    align (.5, .5)
+    idle_color "#001040"
+    hover_color "#2040FF"
+    insensitive_color "#0000"
 
 style recollections_label:
     xalign .5

@@ -22,7 +22,6 @@ label splashReplay:
     scene black with dissolve
     pause 1.5
 
-    $ persistent.splashPlayed = True
     scene apricot with dissolve
     독백 "감은 눈 사이로 빛이 녹아든다."
     독백 "따사로운 햇살을 받으며 한껏 나른해진 몸을 일으켰다."
@@ -108,7 +107,7 @@ label splashReplay:
     # 타이틀 화면으로 완전 전환 후 게임 시작
 
 label splashFinished:
-    hide screen splashSkipper
+    $ persistent.splashPlayed = True
 
     return
 

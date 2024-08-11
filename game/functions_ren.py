@@ -88,7 +88,10 @@ def addFoundHistory(foundText, foundImage):
 def isQuickVisible():
     global quick_menu
 
-    return quick_menu and (persistent.showQuickMenu > 0) and (renpy.get_screen("exploreMap") is None) and (renpy.get_screen("exploreFound") is None) and (renpy.get_screen("cameraMinigame") is None) and (renpy.get_screen("puzzle") is None)
+    return quick_menu and (persistent.showQuickMenu > 0) and (renpy.get_screen("puzzle") is None)
+
+def isQuickExploring():
+    return (renpy.get_screen("exploreMap") is not None) or (renpy.get_screen("exploreFound") is not None) 
 
 class quickShowHelper(renpy.Displayable):
     def __init__(self, w = 540, h = 60, **kwargs):
