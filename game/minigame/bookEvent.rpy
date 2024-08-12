@@ -1,4 +1,4 @@
-define bookStoryLabels = ["makeUpStory", "suitFitStory", "birdFeedStory"]
+define bookStoryLabels = [None, "makeUpStory", "suitFitStory", "birdFeedStory"]
 
 label bookStory:
 

@@ -83,7 +83,7 @@ label cameraFound:
     $ objectFound('camera')
     $ myInventory.append("photo")
     call screen explorePhotoFound
-    hide screen exploreBase
+    hide screen explore
 
 label cameraStory:
     # 배경: street1
@@ -136,3 +136,38 @@ label cameraStory:
     scene black with dissolve
 
     return
+
+label ellyPart1:
+    $ toReturn = None
+    hide screen explore
+
+    if "camera" in myInventory:
+        scene black
+        show 엘리 눈썹보통 눈웃음 입미소:
+            pos (.5, .05) anchor (.5, .0)
+            zoom .5
+        with dissolve
+
+        menu:
+            "엘리를 부르기 전, 조금 더 살펴볼까?"
+
+            "그러자":
+                pass
+
+            "이만하면 충분한 것 같다.":
+                $ toReturn = "Finished!!"
+
+    else:
+        scene black
+        show 엘리 눈썹보통 눈웃음 입미소:
+            pos (.5, .05) anchor (.5, .0)
+            zoom .5
+        with dissolve
+
+        엘리 "무슨 일이시죠? 제가 도와드릴 일이 있나요?"
+        독백 "엘리는 아직 미덥지 못하다. 조금만, 조금만 더 혼자서 살펴보자."
+        엘리 눈실눈웃음1 "무언가 필요하시다면 언제든 부르세요!"
+
+    scene black with dissolve
+
+    return toReturn

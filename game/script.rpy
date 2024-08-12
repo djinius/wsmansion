@@ -28,12 +28,17 @@ label explorePart1:
     $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
-    if _return == "Finished!!":
-        jump storyPart2
+    # 엘리 클릭
+    if _return == "elly!!":
+        call ellyPart1
 
-    $ foundObject = _return
-    show screen exploreBase
-    call expression foundObject + "Found"
+        if _return == "Finished!!":
+            jump storyPart2
+
+    else:
+        $ foundObject = _return
+        show screen exploreBase
+        call expression foundObject + "Found"
 
     if objects:
         jump explorePart1
@@ -59,9 +64,13 @@ label explorePart2:
     $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
-    $ foundObject = _return
-    show screen exploreBase
-    call expression foundObject + "Found"
+    if _return == "elly!!":
+        call ellyPart2
+
+    else:
+        $ foundObject = _return
+        show screen exploreBase
+        call expression foundObject + "Found"
 
     if isMirrorComplete:
         jump storyEnding
@@ -70,11 +79,10 @@ label explorePart2:
         jump explorePart2
 
 label storyEnding:
-    menu:
-        "엔딩을 갈리는 부분이 명확하게 합의되지 않았기 때문에 일단 선택지로 넣습니다."
-        "트루엔딩":
-            call trueEnding
-        "굿엔딩":
-            call goodEnding
+
+    if bookPartCount() < 3:
+        call trueEnding
+    else:
+        call goodEnding
 
     return

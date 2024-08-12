@@ -174,6 +174,11 @@ class rotateHelper(renpy.Displayable):
         return render
 
     def event(self, ev, x, y, st):
+        leftCenterX = 1102
+        leftCenterY = 580
+        rightCenterX = 1357
+        rightCenterY = 584
+
         cs = renpy.current_screen()
 
         if ev.type == pygame.MOUSEMOTION:
@@ -183,8 +188,8 @@ class rotateHelper(renpy.Displayable):
             yr = yp / ys * 1080
 
             if cs.scope["rotating"] is None:
-                distanceLeft = math.sqrt((xr - 768) * (xr - 768) + (yr - 580) * (yr - 580))
-                distanceRight = math.sqrt((xr - 1022) * (xr - 1022) + (yr - 584) * (yr - 584))
+                distanceLeft = math.sqrt((xr - leftCenterX) * (xr - leftCenterX) + (yr - leftCenterY) * (yr - leftCenterY))
+                distanceRight = math.sqrt((xr - rightCenterX) * (xr - rightCenterX) + (yr - rightCenterY) * (yr - rightCenterY))
                 print (xp, yp, xr, yr, distanceLeft, distanceRight )
                 if (distanceLeft > (10)) and (distanceLeft < (30)):
                     cs.scope["toRotate"] = "Left"
@@ -196,7 +201,7 @@ class rotateHelper(renpy.Displayable):
                     cs.scope["toRotate"] = None
                     renpy.restart_interaction()
             elif cs.scope["rotating"] == "Left":
-                newAngle = math.atan2(xr - 768, yr - 580)
+                newAngle = math.atan2(xr - leftCenterX, yr - leftCenterY)
                 rotatedAngle = self.beginAngle - newAngle
                 rotatedAngle = rotatedAngle / math.pi * 180
                 newAngle = (self.firstAngle + rotatedAngle) % 360
@@ -217,7 +222,7 @@ class rotateHelper(renpy.Displayable):
                 renpy.restart_interaction()
 
             elif cs.scope["rotating"] == "Right":
-                newAngle = math.atan2(xr - 1022, yr - 584)
+                newAngle = math.atan2(xr - rightCenterX, yr - rightCenterY)
                 rotatedAngle = self.beginAngle - newAngle
                 rotatedAngle = rotatedAngle / math.pi * 180
                 newAngle = (self.firstAngle + rotatedAngle) % 360
@@ -247,12 +252,12 @@ class rotateHelper(renpy.Displayable):
                 self.beginx = xp
                 self.beginy = yp
                 self.firstAngle = cs.scope["rotateLeft"]
-                self.beginAngle = math.atan2(self.beginx - 768, self.beginy - 578)
+                self.beginAngle = math.atan2(self.beginx - leftCenterX, self.beginy - leftCenterY)
             elif cs.scope["rotating"] == "Right":
                 self.beginx = xp
                 self.beginy = yp
                 self.firstAngle = cs.scope["rotateRight"]
-                self.beginAngle = math.atan2(self.beginx - 1022, self.beginy - 582)
+                self.beginAngle = math.atan2(self.beginx - rightCenterX, self.beginy - rightCenterY)
 
             renpy.restart_interaction()
             

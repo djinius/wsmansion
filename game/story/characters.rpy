@@ -67,7 +67,7 @@ layeredimage 엘리:
             "images/standings/elly/mouth_wooden.png"
         attribute 입미소:
             "images/standings/elly/mouth_smile.png"
-        attribute 입웃음:
+        attribute 입큰웃음:
             "images/standings/elly/mouth_laugh.png"
         attribute 입놀람:
             "images/standings/elly/mouth_surprised.png"

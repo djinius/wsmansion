@@ -464,15 +464,16 @@ screen about():
 
             vbox:
                 label "제작진"
-                grid 2 4:
+                grid 2 3:
                     text "시나리오:" xalign 1.
-                    text "소네트99" xpos 20
-                    text "스탠딩CG:" xalign 1.
-                    text "命" xpos 20
-                    text "이벤트CG:" xalign 1.
+                    text "소네트29" xpos 20
+                    text "일러스트:" xalign 1.
                     text "기차" xpos 20
                     text "프로그래밍:" xalign 1.
                     text "달납줄개" xpos 20
+
+                null height(10)
+                text "Special thanks to 命" xpos 10
 
             vbox:
                 label "인용문헌"

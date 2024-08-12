@@ -1,15 +1,14 @@
 label trueEnding:
 
-    scene garden
-    show 엘리 눈썹놀람 눈웃음 입미소 눈물 음영있음:
-        pos (.5, .05) anchor (.5, .0)
-        zoom .5
-    with dissolve
-
+    scene garden with dissolve
     독백 "{i}내가 네 멱살을 쥐려고 들 때,{/i} 나는 대답했다."
 
     # 엘리 등장
     # 엘리 (음영 on, 놀람, 웃음, 미소)
+    show 엘리 눈썹놀람 눈웃음 입미소 눈물 음영있음:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with dissolve
     엘리 "아아, 그렇군요."
 
     # 엘리 (음영 on, 보통, 실눈 웃음, 미소, 눈물)

@@ -16,7 +16,7 @@ default myInventory = []
 
 
 image photoFound:
-    "images/minigame/photo_large.png"
+    "images/minigame/photo_large_idle.png"
     "images/minigame/photo_dark.png" with Dissolve(1.)
 
 transform fromRightAppear(count):
@@ -48,9 +48,8 @@ screen exploreBase(dim = 0):
 
         add getProSprite() pos getMapPosition(positionX, positionY) anchor (.5, .5)
 
-        if explorePhase == 1:
-            add "images/minigame/elly_idle.png":
-                pos getMapPosition(14, 8) anchor (.5, .5)
+        add "images/minigame/elly_idle.png":
+            pos getMapPosition(14, 8) anchor (.5, .5)
 
         transclude
 
@@ -71,12 +70,10 @@ screen exploreMap():
     modal True
 
     use exploreBase():
-        if explorePhase == 1:
-            imagebutton:
-                auto "images/minigame/elly_%s.png"
-                pos getMapPosition(14, 8) anchor (.5, .5)
-                action Confirm("탐색을 끝낼까요?", Return("Finished!!"))
-                sensitive "camera" in myInventory
+        imagebutton:
+            auto "images/minigame/elly_%s.png"
+            pos getMapPosition(14, 8) anchor (.5, .5)
+            action Return("elly!!")
 
     key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
     key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
@@ -114,7 +111,7 @@ screen explorePhotoFound():
     use exploreBase(2)
 
     add "images/minigame/camera_large_idle.png" at foundTransform(.35)
-    add "photoFound" at foundTransform(.65)
+    add "photoFound" zoom .6 at foundTransform(.65)
 
     timer 3.5 action Return()
     key "mouseup_1" action Return()
@@ -153,7 +150,7 @@ screen cameraMinigame:
     add Solid("#0004")
 
     frame:
-        xysize (588, 800) align (.5, .5)
+        xysize (588, 800) align (.75, .5)
         padding (0, 0)
         background "images/minigame/camera_minigame.png"
 

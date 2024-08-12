@@ -136,7 +136,7 @@ class quickShowHelper(renpy.Displayable):
 def bookPartCount():
     global myInventory
 
-    bookPart = -1
+    bookPart = 0
     if "tornbook" in myInventory:
         bookPart += 1
     if "page1" in myInventory:

@@ -454,3 +454,16 @@ label mirrorComplete:
 
     return
 
+label ellyPart2:
+    scene black
+    show 엘리 눈썹난처 눈웃음 입미소:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with dissolve
+
+    독백 "탐정이라도 된 듯 저택 안을 샅샅이 뒤지고 있는 엘리."
+    독백 "보고 있자니 흐뭇하지만, 나도 내 일을 해야겠지."
+
+    scene black with dissolve
+
+    return
