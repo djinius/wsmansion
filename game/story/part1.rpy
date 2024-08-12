@@ -156,7 +156,7 @@ label part1:
     return
 
 label investigateTable:
-    # 배경: 응접실
+    # 배경: living
 
     scene black
     show text "응접실":
@@ -185,7 +185,7 @@ label investigateTable:
     return
 
 label investigateRefrigerator:
-    # 배경: 주방
+    # 배경: living
     scene black
     show text "주방":
         align (.0, .0)
@@ -209,7 +209,7 @@ label investigateRefrigerator:
 label investigateCupboard:
 
     독백 "무턱대고 발걸음을 옮기긴 했으나, 어디로 가야 할지 갈피가 안 잡힌다."
-    독백 "어느새 주방의 찬장 앞에 도달하긴 했는데, 들어있는 건, 풍선껌?"
+    독백 "어느새 찬장 앞에 도달하긴 했는데, 들어있는 건, 풍선껌?"
     독백 "엘리의 눈치가 보이긴 했지만, 껌 하나를 입에 넣고 부드러워질 때까지 질겅질겅 씹었다."
     독백 "그리고 풍선을 불려고 했는데… 생각보다 잘 되지 않는다."
     # 엘리 (보통, 웃음, 무표정)

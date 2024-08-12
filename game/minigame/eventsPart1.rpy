@@ -86,7 +86,7 @@ label cameraFound:
     hide screen exploreBase
 
 label cameraStory:
-    # 배경: 길거리 사진, 흑백에 블러 처리
+    # 배경: street1
     scene black
     show text "길거리":
         align (.0, .0)
@@ -98,6 +98,8 @@ label cameraStory:
     독백 "사람들은 컵에 물이 절반밖에 없다고 슬퍼하면 안 된다고."
     독백 "그 시간에, 컵에 물이 절반이나 남았다고 기뻐해야 한다고 한다."
     독백 "나는 기뻐하지도, 슬퍼하지도 않는다."
+
+    # 배경: street2
     독백 "세상은 아무것도 들어있지 않은 컵이고"
     독백 "텅 빈 도화지이며"
     독백 "아무 의미도 없는, 단체 사진 속 배경일 뿐이다."
@@ -113,7 +115,7 @@ label cameraStory:
     독백 "무채색의 흐릿한 배경 따위가 아니라?"
 
     # 효과음: 인공적인 백색 소음에서 빗소리로 전환
-    # 배경: 저택 (흑백 필터, 블러 약간)
+    # 배경: home_bnw
     scene black
     show text "저택":
         align (.0, .0)

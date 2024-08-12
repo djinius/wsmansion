@@ -74,7 +74,7 @@ label lockFound:
         return
 
     $ objectRemove("lock")
-    # 배경: 어두운 청색 배경
+    # 배경: street2
     scene darkblue with dissolve
 
     독백 "나에게 있어 세상은 빈 도화지이다."
@@ -228,7 +228,7 @@ label mirrorComplete:
     # ‘나’ 
     나 "닥쳐."
 
-    # 배경: 마당
+    # 배경: garden
     scene black
     show text "마당":
         align (.0, .0)
@@ -265,7 +265,7 @@ label mirrorComplete:
 
     독백 "대한민국에, 이런 곳에 있을 리 없는 괴담 속 대저택까지."
 
-    # 배경: 마당
+    # 배경: garden
     scene black
     show text "마당":
         align (.0, .0)
@@ -404,8 +404,6 @@ label mirrorComplete:
     나 "마지막으로 이거 하나만 확실히 하자. 이 저택도, 너와의 추억도, 모두 소중해."
     나 "하지만 난 너만을 위한 장난감도, 오래된 가족사진 속 배경도 아니라고."
     나 "그러니까 제발 날 이 망할 저택에서 나가게 해 달란 말이야!"
-
-    # 배경에 블러 이펙트
 
     독백 "나는 악을 쓰며 소리쳤다."
     독백 "이제는 빨리 나가고 싶다기보단 엘리와의 마지막 작별에서도 후회를 남기고 싶지 않다는 마음이었다."

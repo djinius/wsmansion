@@ -1,8 +1,8 @@
 label part2:
 
-    # 배경: 응접실 (블러)
+    # 배경: living
     scene black
-    show text "응접실 블러":
+    show text "응접실":
         align (.0, .0)
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
@@ -15,7 +15,7 @@ label part2:
     독백 "거듭되는 환상에 속이 울렁거렸다. 빛바랜 미로 속에서 길을 잃은 느낌이었다."
     독백 "날 둘러싼 모든 것들 사이에서, 무엇이 진실이고 또 허상이란 말인가."
 
-    # 배경: 응접실 (블러 처리 사라짐)
+    # 배경: living
     scene black
     show text "응접실":
         align (.0, .0)
@@ -52,7 +52,7 @@ label part2:
         zoom .5
     엘리 "절 따라오세요. 보여드리고 싶은 게 있거든요."
 
-    # 배경: 응접실 -> 마당 
+    # 배경: living -> garden
     scene black
     show text "마당":
         align (.0, .0)
@@ -109,7 +109,7 @@ label part2:
 
     독백 "그럴듯한 해석이다. 그런데 왜 지금?"
 
-    # 배경: 마당
+    # 배경: garden
     scene black
     show text "마당":
         align (.0, .0)
@@ -139,7 +139,7 @@ label part2:
     독백 "그렇게 순수하던 엘리가 한순간에 마녀로 돌변해, 나 자신을 돌로 만들어진 상처 사이에 가둬버릴 것 같았다."
     독백 "모든 비밀이 매몰되어 있을 자신의 상처 속에."
 
-    # 배경: 마당
+    # 배경: garden
     scene black
     show text "마당":
         align (.0, .0)
