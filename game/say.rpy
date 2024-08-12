@@ -190,8 +190,10 @@ style ctc_text:
     color "#FFF"
     font "fonts/NEXON Lv2 Gothic Medium.ttf"
     yalign 1.
+    outlines [(1, "#000000", 0, 0)]
 
 style ctc_button_text is button_text:
     size 20
     font "fonts/NEXON Lv2 Gothic Medium.ttf"
     yalign 1.
+    outlines [(1, "#000000", 0, 0)]

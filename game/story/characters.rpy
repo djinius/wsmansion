@@ -9,6 +9,7 @@ image ctc icon:
 
 # 게임에서 사용할 캐릭터를 정의합니다.
 define 독백 = Character(None, ctc = "ctc icon", ctc_position = 'nestled-close')
+define 독백NVL = Character(None, ctc = "ctc icon", ctc_position = 'nestled-close', kind=nvl)
 define 나 = Character('나', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', who_prefix="‘", who_suffix="’", what_prefix="“", what_suffix="”")
 define 엘리 = Character('엘리', color="#FFDF01", image="엘리", ctc = "ctc icon", ctc_position = 'nestled-close')
 define 아비게일 = Character('아비게일 F. 엘리엇', color="#FFDF01", image="아비게일", ctc = "ctc icon", ctc_position = 'nestled-close')

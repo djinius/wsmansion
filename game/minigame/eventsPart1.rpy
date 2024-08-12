@@ -87,10 +87,7 @@ label cameraFound:
 
 label cameraStory:
     # 배경: street1
-    scene black
-    show text "길거리":
-        align (.0, .0)
-    with dissolve
+    scene street1 with dissolve
 
     # 효과음: 인공적인 백색 소음
 
@@ -116,10 +113,7 @@ label cameraStory:
 
     # 효과음: 인공적인 백색 소음에서 빗소리로 전환
     # 배경: home_bnw
-    scene black
-    show text "저택":
-        align (.0, .0)
-    with dissolve
+    scene home_bnw with dissolve
 
     독백 "빗줄기를 맞아가며 숲속을 헤매다 보니, 괴담만 무성했던 저택이 드러났다."
     독백 "아마 여기서 영원히 돌아가지 못할 수도 있겠지. {i}그럴 생각이었다.{/i}"
@@ -138,5 +132,7 @@ label cameraStory:
     엘리 눈썹난처 "이만 돌아가세요. 당신 같은 사람이 있을 곳이 아니에요."
     독백 "빗소리가 깔린 긴 침묵 속, 서로를 마주한 채 제 자리를 오도카니 지키던 두 사람."
     독백 "소녀의 작은 한숨 소리를 신호로, 나는 내 마지막을 함께할 저택에 발을 디뎠다."
+
+    scene black with dissolve
 
     return

@@ -75,7 +75,8 @@ label lockFound:
 
     $ objectRemove("lock")
     # 배경: street2
-    scene darkblue with dissolve
+    hide screen explore with dissolve
+    scene street2 with dissolve
 
     독백 "나에게 있어 세상은 빈 도화지이다."
     독백 "텅 비어 있기에 무엇이든 채울 수 있는 도화지는, 이미 전부 남들의 어둡고 질척한 물감으로 물들어 있었다."
@@ -126,15 +127,8 @@ label lockFound:
     독백 "도망칠까."
     독백 "{i}영원히.{/i}"
 
+    scene black with dissolve
     # 효과음: 빗소리 페이드 아웃
-
-    return
-
-# 타로 관련 퍼즐 삭제 및 수정 요망
-label deathFound:
-    $ addFoundHistory("죽음 카드", "death")
-    $ objectFound("death")
-    call screen exploreFound("death")
 
     return
 
@@ -222,6 +216,7 @@ label mirrorComplete:
 
     # 배경: 검은 화면
 
+    scene black
     # 엘리 (scg x)
     엘리 "함부로 나가면 안 돼요. 큰일 난다구요."
 
@@ -229,9 +224,7 @@ label mirrorComplete:
     나 "닥쳐."
 
     # 배경: garden
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden with dissolve
 
     독백 "나는 내 손에 들린 조각상들을 엘리에게 보여주었다."
     독백 "날개를 편 채 돌처럼 굳어버린 작은 새 모양 조각상들."
@@ -240,8 +233,6 @@ label mirrorComplete:
 
     # 배경: 검은 화면 + 엘리 (보통, 웃음, 무표정, 반투명)
     scene black
-    show text "마당":
-        align (.0, .0)
     show 엘리 눈썹보통 눈웃음 입무표정:
         pos (.5, .05) anchor (.5, .0)
         alpha .75
@@ -258,17 +249,12 @@ label mirrorComplete:
 
     독백 "하나같이 우리를 등진 채 도망치려는 듯한 조각상들."
 
-    scene black
-    show text "저택 외관":
-        align (.0, .0)
-    with dissolve
+    scene home with dissolve
 
     독백 "대한민국에, 이런 곳에 있을 리 없는 괴담 속 대저택까지."
 
     # 배경: garden
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden
     show 엘리 눈썹보통 눈실눈웃음1 입무표정:
         pos (.5, .05) anchor (.5, .0)
         zoom .5

@@ -1,9 +1,7 @@
 label part2:
 
     # 배경: living
-    scene black
-    show text "응접실":
-        align (.0, .0)
+    scene living
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -16,14 +14,13 @@ label part2:
     독백 "날 둘러싼 모든 것들 사이에서, 무엇이 진실이고 또 허상이란 말인가."
 
     # 배경: living
-    scene black
-    show text "응접실":
-        align (.0, .0)
+    scene living
 
     # 엘리 (행복, 웃음, 미소, 눈물 x)
     show 엘리 눈썹행복 눈웃음 입미소:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
+    with dissolve
 
     엘리 "그러게요, 무엇이 그리 중요하셨길래 한마디 말도 없이 여기저기 헤집고 다니셨나 싶었죠."
     독백 "그리고 엘리가 소파에 앉아 고심하던 나를 가만히 지켜보고 있었다."
@@ -53,12 +50,11 @@ label part2:
     엘리 "절 따라오세요. 보여드리고 싶은 게 있거든요."
 
     # 배경: living -> garden
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
+    with dissolve
 
     독백 "엘리를 따라 들판과 정원, 그리고 조각상들이 있는 안뜰로 나왔다."
     독백 "석양은 채 지지 않은 채 그대로였다. 꽤 시간이 흐른 줄 알았는데, 한꺼번에 너무 많은 정보들이 들어와서 그렇게 느꼈나 보다."
@@ -110,12 +106,11 @@ label part2:
     독백 "그럴듯한 해석이다. 그런데 왜 지금?"
 
     # 배경: garden
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
+    with dissolve
 
     # 엘리 (음영 off, 침울, 웃음, 미소, 눈물 x)
     엘리 눈썹침울 눈웃음 입미소 "실은 저도 이카로스를 이해할 수 있답니다."
@@ -140,12 +135,11 @@ label part2:
     독백 "모든 비밀이 매몰되어 있을 자신의 상처 속에."
 
     # 배경: garden
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
+    with dissolve
 
     # 엘리 (음영 off, 당혹, 실눈 웃음, 무표정, 눈물 x)
     엘리 눈썹난처 눈실눈웃음 입무표정 "정말… 숙녀를 그렇게 빤히 쳐다보는 건 예의가 아니라구요! 그래도…."

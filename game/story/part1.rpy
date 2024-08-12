@@ -1,8 +1,6 @@
 label part1:
 
-    scene black
-    show text "응접실":
-        align (.0, .0)
+    scene living
     show 아비게일처음:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -73,7 +71,7 @@ label part1:
     독백 "예로부터 모르는 사람의 이유 없는 환대에는 대부분 구린 이유가 있다."
     독백 "내가 기억을 잃었고, 그 이유조차 모르는 상황에서는 더더욱."
     독백 "지금 비상 연락망이 끊어진 건 그렇다 치자. 그럼 왜 먼저 그 이야기를 꺼냈을까? 전화기를 잃어버렸다는 걸 미리 알고 있었나?"
-    독백 "또 '말 못할 상황'인건 어떻게 알고 있었지?"
+    독백 "또 ‘말 못할 상황’인건 어떻게 알고 있었지?"
     # 소녀? (행복, 실눈 웃음, 미소)
     아비게일처음 눈썹행복 눈실눈웃음1 입미소 "……우후훗."
     # 소녀? (음영 on, 행복, 실눈 웃음, 미소)
@@ -87,9 +85,7 @@ label part1:
 
     # 소녀? 
     아비게일처음 "크왕!"
-    scene black
-    show text "응접실":
-        align (.0, .0)
+    scene living
     # 소녀? (놀람, 실눈 웃음, 큰 웃음)
     show 아비게일처음 눈썹놀람 눈실눈웃음1 입웃음:
         pos (.5, .05) anchor (.5, .0)
@@ -158,10 +154,7 @@ label part1:
 label investigateTable:
     # 배경: living
 
-    scene black
-    show text "응접실":
-        align (.0, .0)
-    with dissolve
+    scene living with dissolve
 
     독백 "처음부터 너무 앞서 나갈 필요는 없다. 가까운 곳부터 살펴보자."
 
@@ -171,6 +164,10 @@ label investigateTable:
     독백 "그런데 내가 펼친 곳에 무언가 껴 있다. 드라이 플라워인가?"
 
     # 엘리 (행복, 실눈 웃음, 미소)
+    show 엘리 눈썹행복 눈실눈웃음1 입미소:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with dissolve
     엘리 눈썹행복 눈실눈웃음1 입미소 "문빔으로 만들었어요! 정말 예쁘죠?"
     독백 "엘리에게 문빔이 무엇인지 물었다."
     # 엘리 (행복, 웃음, 미소)
@@ -186,10 +183,7 @@ label investigateTable:
 
 label investigateRefrigerator:
     # 배경: living
-    scene black
-    show text "주방":
-        align (.0, .0)
-    with dissolve
+    scene living with dissolve
 
     독백 "문득 엘리의 장난이 떠오른다. 흡혈귀, 흡혈귀라."
     독백 "영화 같은 데서도, 이런 식으로 자신의 정보를 은연중에 흘리지 않던가?"
@@ -198,8 +192,14 @@ label investigateRefrigerator:
     extend " 콜라 라벨이 붙은 유리병들이었다! 그것도 아주 많이."
     독백 "이놈의 흡혈귀는 피가 아니라 콜라를 먹고 사나, 싶을 정도로 콜라병들이 냉장고 안을 빽빽이 채우고 있었다."
     독백 "서늘한 기운이 감돌았다. 냉장고 탓인가."
+
     # 엘리 (음영 on, 난처, 실눈 웃음, 미소)
-    엘리 눈썹난처 눈실눈웃음1 입미소 음영있음 "……지금 뭘 하고 계실까요?"
+    show 엘리 눈썹난처 눈실눈웃음1 입미소 음영있음:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with dissolve
+
+    엘리 "……지금 뭘 하고 계실까요?"
     엘리 "남의 집 냉장고를 함부로 뒤지면 안 된다고, 배우지 않으셨을까요?"
 
     독백 "…아무래도 냉장고가 아니라, 화가 난 엘리 때문인 것 같았다."

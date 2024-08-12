@@ -94,7 +94,6 @@ screen exploreMap():
         timer .2 repeat True action Function(movePos)
 
 screen exploreFound(object):
-    tag explore
 
     default confirmed = False
     modal True

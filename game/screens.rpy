@@ -170,7 +170,10 @@ screen main_menu():
     tag menu
     style_prefix "main_menu"
 
-    add gui.main_menu_background
+    if persistent.skyBackground:
+        add "images/bgs/sky.jpg"
+    else:
+        add gui.main_menu_background
 
     ## 이 빈 프레임은 기본 메뉴를 어둡게 만듭니다.
     # frame:
@@ -306,7 +309,10 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     style_prefix "game_menu"
 
     if main_menu:
-        add gui.main_menu_background
+        if persistent.skyBackground:
+            add "images/bgs/sky.jpg"
+        else:
+            add gui.main_menu_background
     else:
         # add gui.game_menu_background
         pass
@@ -467,6 +473,11 @@ screen about():
                     text "기차" xpos 20
                     text "프로그래밍:" xalign 1.
                     text "달납줄개" xpos 20
+
+            vbox:
+                label "인용문헌"
+                text "Kundera, M.(2018). {i}참을 수 없는 존재의 가벼움{/i}.(이재룡, 역). 민음사. (원본 출판 1984년)"
+                text "Poe, E. A.(2013). {i}에드거 앨런 포 단편선{/i}.(전승희, 역). 민음사. (원본 출판 1833년)"
 
 style about_label is gui_label
 style about_label_text is gui_label_text

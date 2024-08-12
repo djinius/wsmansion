@@ -58,10 +58,7 @@ label splashReplay:
     독백 "그리고 지푸라기라도 잡는 심정으로 주위를 둘러보는 내게 보인, 장엄하고 거대한 무언가."
 
     # 배경: 조각상 (블러) -> home)
-    scene black
-    show text "저택 외부":
-        align (.0, .0)
-    with dissolve
+    scene home with dissolve
 
     독백 "허름하고 어딘가 음산한 기운까지 감도는 저택이다."
     독백 "내가 살던 집일 리가 없었다. 아무리 기억을 잃었다지만, 그렇다 해도 분명 어느 부잣집 소유의 여름 별장일 터."
@@ -69,10 +66,7 @@ label splashReplay:
     독백 "…안에 사람이 있다면 적어도 도움은 받을 수 있지 않을까."
 
     # 배경: door
-    scene black
-    show text "저택 문":
-        align (.0, .0)
-    with dissolve
+    scene door with dissolve
 
     독백 "초인종은 고장난 것 같고, 문은 아무리 두드려도 인기척이 없다."
     독백 "포기하려던 찰나 문틈 사이가 살짝 벌어져 있는 것을 발견했다. "
@@ -80,10 +74,7 @@ label splashReplay:
    
     # ( 끼이익- 하는 사운드 이펙트 )
     # 배경: door -> living
-    scene black
-    show text "응접실":
-        align (.0, .0)
-    with dissolve
+    scene living with dissolve
 
     독백 "아무것도 안 하는 것보단 낫기에 들어왔는데, 역시나 아무도 없었다."
     독백 "저택의 외관처럼 가구들도, 장식품들도 오래된 것들 뿐이었다."
@@ -108,6 +99,7 @@ label splashReplay:
 
 label splashFinished:
     $ persistent.splashPlayed = True
+    $ persistent.skyBackground = False
 
     return
 

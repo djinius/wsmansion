@@ -1,8 +1,6 @@
 label trueEnding:
 
-    scene black
-    show text "마당":
-        align (.0, .0)
+    scene garden
     show 엘리 눈썹놀람 눈웃음 입미소 눈물 음영있음:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -55,28 +53,25 @@ label trueEnding:
     독백 "엘리의 말대로 몸이 굳는 일은 일어나지 않았다."
 
     # 배경: forest1
-    scene black
-    show text "숲길입구":
-        align (.0, .0)
-    with dissolve
+    scene forest1 with dissolve
 
     독백 "저만치에 울창한 나무들이 겹쳐 만들어진 길이 나타났다."
     독백 "심히 불길했지만, 저곳 외에는 나가는 길이 보이지 않았다."
 
     # 배경: forest2_1
-
+    scene forest2_1 with dissolve
     독백 "갑자기 피로가 몰려오는 몸을 이끌고 어두운 숲 속으로 들어갔다."
 
     # 배경: forest2_2
-
+    scene forest2_2 with dissolve
     독백 "나뭇잎 밟히는 소리가 귀를 간질였다."
 
     # 배경: forest2_3
-
+    scene forest2_3 with dissolve
     독백 "몸이 너무나도 무거웠다, 같은 길을 빙빙 도는 느낌, 이 길이 맞기는 한 걸까."
 
     # 배경: forest2_4
-
+    scene forest2_4 with dissolve
     독백 "그럴 일은 절대 없겠지만, 다시 저택으로 돌아가기에도 너무나 멀리 와 버렸다."
     독백 "한치 앞도 보이지 않는 풀숲 위에 쓰러지며 나는 물었다."
 
@@ -102,6 +97,7 @@ label trueEnding:
 
     # 배경: rain
     nvl clear
+    scene rain with dissolve
     엘리NVL "60년 만에 처음으로 저택에 비가 내리던 그 날을 제외하고 말이에요."
     엘리NVL "제 앞에서 억지로 미소 짓는, 금방이라도 무너질 듯한 당신의 두 눈을 보았을 때."
     엘리NVL "모든 것이 흐려진 제 마음에 무언가 다시 피어나는 것을 느꼈어요."
@@ -109,6 +105,7 @@ label trueEnding:
 
     #배경: study1
     nvl clear
+    scene study1 with dissolve
     엘리NVL "제가 처음에 툴툴댔던 거, 기억나요?"
     엘리NVL "너무 오랜만에 어리광을 부리다 보니 익숙하지 않기도 했지만, 일부러 모질게 군 것도 없잖아 있었어요."
     엘리NVL "정원에 핀 꽃들이 아침 햇살을 향해 목을 뻗듯, 당신의 온화함에 몸과 마음을 모두 내어줄까 봐."
@@ -117,6 +114,7 @@ label trueEnding:
 
     #배경: flowers
     nvl clear
+    scene flowers with dissolve
     엘리NVL "그래요, 저는 진즉에 알고 있었는지도 몰라요."
     엘리NVL "언젠가 당신이 절 떠날 순간이 온다는 사실을 말이에요."
     엘리NVL "그렇게 되면 전 다시 홀로 남겨지고, 제 남은 기억과 존재 모두 잊히고 말겠죠."
@@ -125,9 +123,7 @@ label trueEnding:
 
     # 배경: living
     # 엘리 (음영 on, 사백안, 웃음, 미소)
-    scene black
-    show text "응접실":
-        align (.0, .0)
+    scene living
     show 엘리 눈썹놀람 눈웃음 입미소 눈물 음영있음:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -154,5 +150,6 @@ label trueEnding:
     엘리 "그러니 당신도 정말, {i}그렇게 함부로 돌아다니면 못 쓴다니까요?{/i}"
 
     # 타이틀 화면으로 복귀
+    $ persistent.skyBackground = False
 
     return

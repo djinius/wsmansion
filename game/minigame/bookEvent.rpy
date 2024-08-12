@@ -2,7 +2,6 @@ define bookStoryLabels = ["makeUpStory", "suitFitStory", "birdFeedStory"]
 
 label bookStory:
 
-    hide screen exploreBase
     $ label2Call = bookStoryLabels[bookPartCount()]
     call expression label2Call
     
@@ -10,11 +9,12 @@ label bookStory:
 
 label makeUpStory:
 
+    hide screen exploreBase
+    scene black with dissolve
+
     #배경: study1
 
-    scene black
-    show text "서재":
-        align (.0, .0)
+    scene study1
     show 엘리 눈썹보통 눈실눈웃음1 입무표정:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -64,10 +64,13 @@ label makeUpStory:
  
     독백 "본인은 대충 얼버무렸지만, 그 쓸쓸한 미소를 다신 잊지 못할 것 같았다."
 
+    scene black with dissolve
+
     return
 
 label suitFitStory:
 
+    hide screen exploreBase
     scene black with dissolve
     pause 1.25
     show text "To Whom; Who art thou?":
@@ -117,9 +120,7 @@ label suitFitStory:
 
     # 배경: bedroom
 
-    scene black
-    show text "침실":
-        align (.0, .0)
+    scene bedroom
     show 엘리 눈썹난처 눈보통 입무표정:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -130,14 +131,19 @@ label suitFitStory:
 
     # 엘리 (보통, 눈 감음, 무표정)
     엘리 "그리고 아비게일, 아비게일 F. 엘리엇이에요, 아비든 애비든, 맘대로 부르시죠."
+    hide 엘리 with dissolve
 
     독백 "소녀, 그러니까 아비게일은 내 외침도 무시한 채 다시 복도로 사라졌다."
     독백 "어울리지도 않는 양복을 반쯤 껴입은 채 방에 덩그러니 남겨진 나."
     독백 "…아무리 그래도 애비는 그러니까, 성씨를 따서 엘리라고 불러야겠다."
 
+    scene black with dissolve
+
     return
 
 label birdFeedStory:
+
+    hide screen exploreBase
 
     scene black
     show text "마당 + 콜라 엘리":
@@ -194,5 +200,7 @@ label birdFeedStory:
     독백 "나른해진 내가 감상에 도취된 사이 엘리는 새들에게 줄 과일을 가지러 일어섰다."
     독백 "단아하고 고급스러운 흰색 원단이 석양을 받아 발그레 물들었다."
     독백 "의자에 가만히 누워, 저택 안으로 사라지는 엘리의 뒷모습을 계속 바라보았다."
+
+    scene black with dissolve
 
     return
