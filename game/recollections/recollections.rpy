@@ -23,8 +23,8 @@ screen recollections():
                         textbutton "이야기 짓기" action Replay("makeUpStory")
                         textbutton "양복 입기" action Replay("suitFitStory")
                         textbutton "모이주기" action Replay("birdFeedStory")
+                        textbutton "자물쇠" action Replay("lockStory")
                         textbutton "거울" action Replay("mirrorComplete")
-                        null
 
                         textbutton "트루엔딩" action Replay("trueEnding")
                         textbutton "굿 엔딩" action Replay("goodEnding")

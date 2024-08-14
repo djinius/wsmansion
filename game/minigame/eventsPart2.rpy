@@ -74,6 +74,8 @@ label lockFound:
         return
 
     $ objectRemove("lock")
+
+label lockStory:
     # 배경: street2
     hide screen explore with dissolve
     scene street2 with dissolve
@@ -85,18 +87,23 @@ label lockFound:
     독백 "작지만 투명한 도화지 한 바닥에 나만의 색을 채워넣기 시작했다."
 
     # 배경: fairytale1
+    scene fairytale1 with dissolve
 
     독백 "이야기를 썼다."
     독백 "비련의 공주님과 멋진 왕자님이 나오는, 유치하고 뻔한 이야기."
     독백 "동시에 그곳은, 무엇과도 맞바꿀 수 없는 나만의 도피처였다."
 
     # 배경: fairytale1_2
+    scene fairytale1_2 with dissolve
+
     독백 "나는 이야기의 주인공처럼, 빛을 받는 무용수처럼 마음껏 춤을 추었다."
     독백 "두 다리 대신 펜과 키보드를 아무도 보지 않는 것처럼 놀려대었다."
     독백 "몇몇은 배경에 불과했던 나를 알아보기 시작했다. 가끔 어리숙한 부분을 지적받았지만, 풋풋한 로맨스 작가로서 미래가 기대된다는 칭찬도 종종 들었다."
     독백 "무엇보다 중요한 건, 나만을 위해 만들어진 세상에서 나는 완벽히 자유로울 수 있었다."
 
     # 배경: fairytale2
+    scene fairytale2 with dissolve
+
     독백 "그런데."
 
     # 배경: classroom
