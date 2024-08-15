@@ -35,23 +35,8 @@ transform foundTransform(xp=.5):
 
 screen exploreBase(dim = 0):
     tag explore
-    default direction = None
 
-    frame:
-        xysize (2448, 1584)
-        offset getMapOffset()
-        background "images/minigame/map01.jpg"
-
-        for (s, x, y) in objects:
-            add "images/minigame/" + s + "_idle.png":
-                pos getMapPosition(x, y) anchor (.5, .0) zoom .5
-
-        add getProSprite() pos getMapPosition(positionX, positionY) anchor (.5, .5)
-
-        add "images/minigame/elly_idle.png":
-            pos getMapPosition(14, 8) anchor (.5, .5)
-
-        transclude
+    transclude
 
     hbox:
         align (1., .0)
@@ -282,25 +267,17 @@ screen clockPuzzle():
 
     frame:
         align (.5, .5)
-        xysize (987, 1080)
-        background "images/minigame/clock_bg.png"
+        background "images/minigame/memo.png"
+        xysize (711, 910)
 
-        if isMemoFound:
-            frame:
-                align (.5, .5)
-                background "images/minigame/memo.png"
-                xysize (711, 910)
+        has vbox
+        align (.5, .5)
 
-                has vbox
-                align (.5, .5)
+        text "수수께끼" size 40 color "#000"
+        null height(15)
+        text clockMemoText size 25 color "#000"
 
-                text "수수께끼" size 40 color "#000"
-                null height(15)
-                text clockMemoText size 25 color "#000"
-        else:
-            textbutton "메모지롱":
-                align (.25, .75)
-                action SetVariable("isMemoFound", True)
+    key "mousedown_1" action Return()
 
     textbutton "다른 곳을 탐색한다":
         align (1., 1.)
@@ -358,3 +335,134 @@ style lockPuzzle_text:
 
 style lockPuzzle_button_text is button_text:
     size 100
+
+# 0: 침실
+# 1: 침실 -> 거실
+# 2: 거실 -> 침실
+# 3: 거실
+# 4: 거실 -> 서재
+# 5: 서재 -> 거실
+# 6: 서재
+default explorePosition = 3
+
+transform swipeRoom(frompos, topos):
+    xoffset frompos
+    easeout .5 xoffset (frompos + topos) / 2
+    easein .5 xoffset topos
+
+screen exploreRooms():
+    tag explore
+
+    hbox:
+        pos (0, 0) anchor(0, 0) spacing 0
+
+        # 침실
+        imagemap:
+            auto "images/minigame/bedroom_%s.png"
+            # 거울조각 4
+            hotspot (1606, 954, 156, 110):
+                action Return("frag3")
+                sensitive (explorePhase == 2) and ("frag3" not in myInventory)
+            # 거울조각 3
+            hotspot (499, 882, 112, 151):
+                action Return("frag2")
+                sensitive (explorePhase == 2) and ("frag2" not in myInventory)
+            # 페이지 2
+            hotspot (950, 687, 175, 175):
+                action Return("page2")
+                sensitive "page2" not in myInventory
+
+        # 거실
+        imagemap:
+            auto "images/minigame/living_%s.png"
+            # 거울조각 1
+            hotspot (1021, 956, 142, 265):
+                action Return("frag0")
+                sensitive (explorePhase == 2) and ("frag0" not in myInventory)
+            # 거울조각 2
+            hotspot (367, 918, 154, 151):
+                action Return("frag1")
+                sensitive (explorePhase == 2) and ("frag1" not in myInventory)
+            # 카메라
+            hotspot (1549, 423, 135, 177):
+                action Return("camera")
+                sensitive "camera" not in myInventory
+            # 시계
+            hotspot (966, 107, 144, 277):
+                action Return("clock")
+                sensitive explorePhase == 2
+            # 자물쇠
+            hotspot (0, 535, 108, 195):
+                action Return("lock")
+                sensitive (explorePhase == 2) and (isBedroomUnlocked is False)
+            # 엘리
+            hotspot (1190, 267, 323, 719):
+                action Return("elly!!")
+
+        # 서재
+        imagemap:
+            auto "images/minigame/study_%s.png"
+            # 찢어진 책
+            hotspot (549, 833, 156, 91):
+                action Return("tornbook")
+                sensitive "tornbook" not in myInventory
+            # 페이지 1
+            hotspot (795, 883, 175, 175):
+                action Return("page1")
+                sensitive "page1" not in myInventory
+            # 거울조각 5
+            hotspot (390, 719, 106, 125):
+                action Return("frag4")
+                sensitive (explorePhase == 2) and ("frag4" not in myInventory)
+            # 장갑
+            hotspot (914, 247, 140, 140):
+                action Return("gloves")
+                sensitive "gloves" not in myInventory
+
+        if explorePosition == 0:
+            xoffset 0
+        elif explorePosition == 1:
+            at swipeRoom(0, -1920)
+            timer 1. action SetVariable("explorePosition", 3)
+        elif explorePosition == 2:
+            at swipeRoom(-1920, 0)
+            timer 1. action SetVariable("explorePosition", 0)
+        elif explorePosition == 3:
+            xoffset -1920
+        elif explorePosition == 4:
+            at swipeRoom(-1920, -3840)
+            timer 1. action SetVariable("explorePosition", 6)
+        elif explorePosition == 5:
+            at swipeRoom(-3840, -1920)
+            timer 1. action SetVariable("explorePosition", 3)
+        elif explorePosition == 6:
+            xoffset -3840
+
+    if (explorePosition == 0) or (explorePosition == 3):
+        key "K_RIGHT" action SetVariable("explorePosition", explorePosition + 1)
+    else:
+        key "K_RIGHT" action NullAction()
+
+    if ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6):
+        key "K_LEFT" action SetVariable("explorePosition", explorePosition - 1)
+    else:
+        key "K_LEFT" action NullAction()
+
+    imagebutton:
+        auto "images/minigame/prev_%s.png"
+        align (.0, .5) xoffset 10
+        action SetVariable("explorePosition", explorePosition - 1)
+        sensitive ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6)
+
+    imagebutton:
+        auto "images/minigame/next_%s.png"
+        align (1., .5) xoffset -10
+        action SetVariable("explorePosition", explorePosition + 1)
+        sensitive (explorePosition == 0) or (explorePosition == 3)
+
+    key "K_UP" action NullAction()
+    key "K_DOWN" action NullAction()
+    key "repeat_K_LEFT"    action NullAction()
+    key "repeat_K_RIGHT"   action NullAction()
+    key "repeat_K_UP"      action NullAction()
+    key "repeat_K_DOWN"    action NullAction()

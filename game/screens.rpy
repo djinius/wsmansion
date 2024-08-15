@@ -480,6 +480,8 @@ screen about():
                 text "Kundera, M.(2018). {i}참을 수 없는 존재의 가벼움{/i}.(이재룡, 역). 민음사. (원본 출판 1984년)"
                 text "Poe, E. A.(2013). {i}에드거 앨런 포 단편선{/i}.(전승희, 역). 민음사. (원본 출판 1833년)"
 
+    add "gui/about.png" align (1., .5) alpha .15
+
 style about_label is gui_label
 style about_label_text is gui_label_text
 style about_text is gui_text:

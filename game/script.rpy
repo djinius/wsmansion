@@ -24,7 +24,7 @@ label explorePart1:
     $ renpy.choice_for_skipping()
     $ moveDirection = None
     $ config.mouse_displayable.add("pressed_default", "gui/cursors/default.png", 1, 63)
-    call screen exploreMap
+    call screen exploreRooms
     $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
@@ -37,7 +37,6 @@ label explorePart1:
 
     else:
         $ foundObject = _return
-        show screen exploreBase
         call expression foundObject + "Found"
 
     if objects:
@@ -60,7 +59,7 @@ label explorePart2:
     $ renpy.choice_for_skipping()
     $ moveDirection = None
     $ config.mouse_displayable.add("pressed_default", "gui/cursors/default.png", 1, 63)
-    call screen exploreMap
+    call screen exploreRooms
     $ renpy.choice_for_skipping()
     $ config.mouse_displayable.add("pressed_default", "pressed_say", 1, 63)
 
@@ -69,7 +68,6 @@ label explorePart2:
 
     else:
         $ foundObject = _return
-        show screen exploreBase
         call expression foundObject + "Found"
 
     if isMirrorComplete:

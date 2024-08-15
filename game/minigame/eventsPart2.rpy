@@ -41,7 +41,6 @@ label page2Found:
     $ addFoundHistory("찢어진 책장", "page2")
     $ objectFound("page2")
     call screen exploreFound("page2")
-    show screen exploreBase
 
     독백 "오래된 책의 일부처럼 보인다. 어딘가 낯이 익은데."
 
@@ -62,10 +61,10 @@ label page2Found:
     return
 
 label lockFound:
+
     $ addFoundHistory("자물쇠", "lock")
     # $ objectFound("earring")
     # call screen exploreFound("earring")
-    # show screen exploreBase
 
     독백 "자물쇠다. 이걸 열어야 이 방 안으로 들어갈 수 있다."
     call screen lockPuzzle
@@ -142,10 +141,14 @@ label lockStory:
     return
 
 label clockFound:
-    $ addFoundHistory("시계", "clock")
-    # $ objectFound("knife")
-    # call screen exploreFound("knife")
-    # show screen exploreBase
+
+    if isMemoFound is False:
+        $ isMemoFound = True
+        $ addFoundHistory("시계", "clock")
+        
+        독백 "시계 한구석에 메모지가 끼워져 있네."
+        # $ objectFound("knife")
+        # call screen exploreFound("knife")
 
     call screen clockPuzzle
 
@@ -156,7 +159,6 @@ label fragFound(no):
     if "gloves" in myInventory:
         $ objectFound("frag" + str(no))
         call screen mirrorFragmentFound("frag" + str(no))
-        show screen exploreBase
 
         if True not in fragmentsFound:
             $ addFoundHistory("유리 파편", "frag" + str(no))
