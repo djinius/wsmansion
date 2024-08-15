@@ -9,8 +9,8 @@ default isMirrorFound = False
 
 # 탐색 오브젝트
 # 파트 2 귀걸이 => 시계, 칼 => 자물쇠
-default objectsPart1 = [("gloves", 27, 9), ("tornbook", 28, 5), ("page1", 25, 7), ("camera", 13, 6)]
-default objectsPart2 = [("clock", 18, 5), ("page2", 10, 11), ("lock", 14, 14), ("mirror", 12, 9), ("frag0", 5, 5), ("frag1", 1, 1), ("frag2", 2, 2), ("frag3", 3, 3), ("frag4", 4, 4)]
+default objectsPart1 = ["gloves", "tornbook", "page1", "camera"]
+default objectsPart2 = ["clock", "page2", "lock", "mirror", "frag0", "frag1", "frag2", "frag3", "frag4"]
 default objects = []
 default myInventory = []
 

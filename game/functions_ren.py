@@ -91,7 +91,7 @@ def isQuickVisible():
     return quick_menu and (persistent.showQuickMenu > 0) and (renpy.get_screen("puzzle") is None)
 
 def isQuickExploring():
-    return (renpy.get_screen("exploreMap") is not None) or (renpy.get_screen("exploreFound") is not None) 
+    return (renpy.get_screen("exploreRooms") is not None) or (renpy.get_screen("exploreFound") is not None) 
 
 class quickShowHelper(renpy.Displayable):
     def __init__(self, w = 540, h = 60, **kwargs):

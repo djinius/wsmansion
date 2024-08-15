@@ -132,10 +132,7 @@ def objectFound(object):
     myInventory.append(object)
 
 def objectRemove(object):
-    for k in objects:
-        (s, x, y) = k
-        if s == object:
-            objects.remove(k)
+    objects.remove(object)
 
 def fragmentDropped(drags, drop):
     global mirrorFragMatchs
