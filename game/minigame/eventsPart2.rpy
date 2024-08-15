@@ -253,7 +253,7 @@ label mirrorComplete:
 
     독백 "무언가 수상한 엘리의 행동거지."
 
-    # 배경: 조각상
+    # 배경: sculpt_bnw
     scene black
     show text "조각상":
         align (.0, .0)

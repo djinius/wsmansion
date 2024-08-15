@@ -44,7 +44,7 @@ label trueEnding:
     독백 "동시에, 내게 이 기회가 두 번 다시 찾아오지 않으리라는 것도 잘 알고 있었다."
     
     # 엘리 퇴장
-    # 배경: 조각상
+    # 배경: sculpt
     scene black
     show text "조각상":
         align (.0, .0)

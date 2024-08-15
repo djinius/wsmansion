@@ -31,6 +31,8 @@ label splashReplay:
         align (.0, .0)
     with dissolve
 
+
+
     독백 "들판 이곳저곳에 서 있는 조각상들."
     독백 "그 조각상들의 표면을 타고 흐르는, 은은한 석양빛이 눈에 띄었다."
     독백 "벌써 시간이 이렇게 됐나 싶었다."
@@ -38,7 +40,7 @@ label splashReplay:
     독백 "잠깐."
     독백 "내 집이 어디였더라?"
 
-    # 배경: 조각상 -> 조각상 (블러)
+    # 배경: sculpt -> sculpt_blur
     scene black
     show text "조각상 이미지 블러":
         align (.0, .0)
@@ -47,7 +49,7 @@ label splashReplay:
     독백 "나는 {i}누구{/i}고?"
     독백 "정신없이 주머니를 뒤적였지만, 전화기는커녕 내 이름이 써진 물건조차 없었다."
 
-    # 배경: 조각상 -> 조각상 (블러)
+    # 배경: sculpt_blur -> sculpt_noise
     scene black
     show text "조각상 이미지 강한 블러":
         align (.0, .0)
@@ -57,7 +59,7 @@ label splashReplay:
     독백 "모든 기억을 잃어버렸다는 사실이 당황스러웠다. 숨이 막혔다."
     독백 "그러자 내게 보인 장엄하고 거대한 무언가."
 
-    # 배경: 조각상 (블러) -> home)
+    # 배경: sculpt_noise -> home)
     scene home with dissolve
 
     독백 "허름하고 어딘가 음산한 기운까지 감도는 저택이다."
