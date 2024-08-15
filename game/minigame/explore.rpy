@@ -23,14 +23,19 @@ transform fromRightAppear(count):
     xoffset (100 * count + 6)
     easein (.5*count) xoffset 6
 
-transform foundTransform(xp=.5):
-    pos (xp, .5) anchor (.5, .5)
-    pause 2.75
+transform foundTransform(beginpos, anchorpos=(.0, .0)):
+    pos beginpos anchor anchorpos
+
     parallel:
+        easein .5 zoom 1.2
+    parallel:
+        pause .25
         linear .75 xpos 1. xanchor 1. xoffset -6
     parallel:
+        pause .25
         easein .75 ypos .0 yanchor .0 yoffset 6
     parallel:
+        pause .25
         easeout .75 zoom .2 alpha .0
 
 screen exploreBase(dim = 0):
@@ -47,45 +52,18 @@ screen exploreBase(dim = 0):
                 auto "images/minigame/" + o + "_%s.png"
                 action NullAction()
 
-
-## TODO: 이동에 따라 맵 위치 같이 옮겨주기
-screen exploreMap():
+screen exploreFound(object, beginpos):
     tag explore
-
-    modal True
-
-    use exploreBase():
-        imagebutton:
-            auto "images/minigame/elly_%s.png"
-            pos getMapPosition(14, 8) anchor (.5, .5)
-            action Return("elly!!")
-
-    key "K_LEFT"    action Function(movePos, xp = -1, yp = 0)
-    key "K_RIGHT"   action Function(movePos, xp = 1, yp = 0)
-    key "K_UP"      action Function(movePos, xp = 0, yp = -1)
-    key "K_DOWN"    action Function(movePos, xp = 0, yp = 1)
-
-    key "repeat_K_LEFT"    action NullAction()
-    key "repeat_K_RIGHT"   action NullAction()
-    key "repeat_K_UP"      action NullAction()
-    key "repeat_K_DOWN"    action NullAction()
-
-    add moveHelper() xysize (0, 0) pos(0, 0)
-
-    if moveDirection is not None:
-        timer .2 repeat True action Function(movePos)
-
-screen exploreFound(object):
 
     default confirmed = False
     modal True
 
-    use exploreBase(1)
+    use exploreRooms(True, 1)
 
     add "images/minigame/" + object + "_large_idle.png":
-        at foundTransform
+        at foundTransform(beginpos)
 
-    timer 3.5 action Return()
+    timer 1.25 action Return()
     key "mouseup_1" action Return()
 
 screen explorePhotoFound():
@@ -93,26 +71,26 @@ screen explorePhotoFound():
 
     modal True
 
-    use exploreBase(2)
+    use exploreRooms(True, 2)
 
-    add "images/minigame/camera_large_idle.png" at foundTransform(.35)
-    add "photoFound" zoom .6 at foundTransform(.65)
+    add "images/minigame/camera_large_idle.png" at foundTransform((.35, .5), (.5, .5))
+    add "photoFound" zoom .6 at foundTransform((.65, .5), (.5, .5))
 
-    timer 3.5 action Return()
+    timer 1.25 action Return()
     key "mouseup_1" action Return()
 
-screen mirrorFragmentFound(object):
+screen mirrorFragmentFound(object, beginpos):
     tag explore
 
     default confirmed = False
     modal True
 
-    use exploreBase(False)
+    use exploreRooms(True, 1)
 
     add "images/minigame/" + object + "_large_idle.png":
-        at foundTransform
+        at foundTransform(beginpos)
 
-    timer 3.5 action Return()
+    timer 1.25 action Return()
     key "mouseup_1" action Return()
 
 transform disappearExplain():
@@ -191,11 +169,11 @@ screen cameraMinigame:
     key "repeat_K_DOWN"    action NullAction()
 
 define mirrorFragDropPoses = [
-    (670+131, 564),
-    (670+131, 429),
-    (670+227, 429),
-    (670+312, 463),
-    (670+131, 570)]
+    (662+ 53, 60+ 53),
+    (662+ 52, 60+ 53),
+    (662+ 54, 60+371),
+    (662+266, 60+351),
+    (662+266, 60+ 54)]
 
 define mirrorDragPoses = [getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition(), getMirrorFragmentPosition()]
 
@@ -250,7 +228,7 @@ screen mirrorMiniGame():
                     idle_child "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
 
                 hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
-                selected_child "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                selected_child "images/minigame/mirror/frag"+str(n)+"_drop_selected.png"
                 selected_hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
                 pos p
 
@@ -264,6 +242,10 @@ screen mirrorMiniGame():
 # 시계 메모
 screen clockPuzzle():
     tag puzzle
+
+    use exploreRooms(True)
+
+    add Solid("#000C")
 
     frame:
         align (.5, .5)
@@ -291,6 +273,8 @@ screen lockPuzzle():
     default lockNumber1 = 0
     default lockNumber2 = 0
     default lockNumber3 = 0
+
+    use exploreRooms(True)
 
     add Solid("#000C")
 
@@ -350,7 +334,7 @@ transform swipeRoom(frompos, topos):
     easeout .5 xoffset (frompos + topos) / 2
     easein .5 xoffset topos
 
-screen exploreRooms():
+screen exploreRooms(found = False, dim = 0):
     tag explore
 
     hbox:
@@ -361,7 +345,10 @@ screen exploreRooms():
             auto "images/minigame/bedroom_%s.png"
             # 거울조각 4
             hotspot (1606, 954, 156, 110):
-                action Return("frag3")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("frag3")
                 sensitive (explorePhase == 2) and ("frag3" not in myInventory)
             # 거울조각 3
             hotspot (499, 882, 112, 151):
@@ -377,47 +364,86 @@ screen exploreRooms():
             auto "images/minigame/living_%s.png"
             # 거울조각 1
             hotspot (1021, 956, 142, 265):
-                action Return("frag0")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("frag0")
                 sensitive (explorePhase == 2) and ("frag0" not in myInventory)
             # 거울조각 2
             hotspot (367, 918, 154, 151):
-                action Return("frag1")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("frag1")
                 sensitive (explorePhase == 2) and ("frag1" not in myInventory)
             # 카메라
             hotspot (1549, 423, 135, 177):
-                action Return("camera")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("camera")
                 sensitive "camera" not in myInventory
             # 시계
             hotspot (966, 107, 144, 277):
-                action Return("clock")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("clock")
                 sensitive explorePhase == 2
             # 자물쇠
             hotspot (0, 535, 108, 195):
-                action Return("lock")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("lock")
                 sensitive (explorePhase == 2) and (isBedroomUnlocked is False)
+            # 거울
+            hotspot (990, 490, 207, 269):
+                if found:
+                    action NullAction()
+                else:
+                    action Return("mirror")
+                sensitive (explorePhase == 2)
             # 엘리
             hotspot (1190, 267, 323, 719):
-                action Return("elly!!")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("elly!!")
 
         # 서재
         imagemap:
             auto "images/minigame/study_%s.png"
             # 찢어진 책
             hotspot (549, 833, 156, 91):
-                action Return("tornbook")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("tornbook")
                 sensitive "tornbook" not in myInventory
             # 페이지 1
             hotspot (795, 883, 175, 175):
-                action Return("page1")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("page1")
                 sensitive "page1" not in myInventory
             # 거울조각 5
             hotspot (390, 719, 106, 125):
-                action Return("frag4")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("frag4")
                 sensitive (explorePhase == 2) and ("frag4" not in myInventory)
             # 장갑
             hotspot (914, 247, 140, 140):
-                action Return("gloves")
+                if found:
+                    action NullAction()
+                else:
+                    action Return("gloves")
                 sensitive "gloves" not in myInventory
+
+        transclude
 
         if explorePosition == 0:
             xoffset 0
@@ -438,27 +464,34 @@ screen exploreRooms():
         elif explorePosition == 6:
             xoffset -3840
 
-    if (explorePosition == 0) or (explorePosition == 3):
-        key "K_RIGHT" action SetVariable("explorePosition", explorePosition + 1)
-    else:
-        key "K_RIGHT" action NullAction()
+    use exploreBase(dim)
 
-    if ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6):
-        key "K_LEFT" action SetVariable("explorePosition", explorePosition - 1)
+    if not found:
+        if (explorePosition == 0) or (explorePosition == 3):
+            key "K_RIGHT" action SetVariable("explorePosition", explorePosition + 1)
+        else:
+            key "K_RIGHT" action NullAction()
+
+        if ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6):
+            key "K_LEFT" action SetVariable("explorePosition", explorePosition - 1)
+        else:
+            key "K_LEFT" action NullAction()
+
+        imagebutton:
+            auto "images/minigame/prev_%s.png"
+            align (.0, .5) xoffset 10
+            action SetVariable("explorePosition", explorePosition - 1)
+            sensitive ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6)
+
+        imagebutton:
+            auto "images/minigame/next_%s.png"
+            align (1., .5) xoffset -10
+            action SetVariable("explorePosition", explorePosition + 1)
+            sensitive (explorePosition == 0) or (explorePosition == 3)
+
     else:
         key "K_LEFT" action NullAction()
-
-    imagebutton:
-        auto "images/minigame/prev_%s.png"
-        align (.0, .5) xoffset 10
-        action SetVariable("explorePosition", explorePosition - 1)
-        sensitive ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6)
-
-    imagebutton:
-        auto "images/minigame/next_%s.png"
-        align (1., .5) xoffset -10
-        action SetVariable("explorePosition", explorePosition + 1)
-        sensitive (explorePosition == 0) or (explorePosition == 3)
+        key "K_RIGHT" action NullAction()
 
     key "K_UP" action NullAction()
     key "K_DOWN" action NullAction()

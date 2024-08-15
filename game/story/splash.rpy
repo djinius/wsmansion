@@ -26,12 +26,7 @@ label splashReplay:
     독백 "감은 눈 사이로 빛이 녹아든다."
     독백 "따사로운 햇살을 받으며 한껏 나른해진 몸을 일으켰다."
 
-    scene black
-    show text "조각상 이미지":
-        align (.0, .0)
-    with dissolve
-
-
+    scene sculpt with dissolve
 
     독백 "들판 이곳저곳에 서 있는 조각상들."
     독백 "그 조각상들의 표면을 타고 흐르는, 은은한 석양빛이 눈에 띄었다."
@@ -41,19 +36,13 @@ label splashReplay:
     독백 "내 집이 어디였더라?"
 
     # 배경: sculpt -> sculpt_blur
-    scene black
-    show text "조각상 이미지 블러":
-        align (.0, .0)
-    with dissolve
+    scene sculpt_blur with dissolve
 
     독백 "나는 {i}누구{/i}고?"
     독백 "정신없이 주머니를 뒤적였지만, 전화기는커녕 내 이름이 써진 물건조차 없었다."
 
     # 배경: sculpt_blur -> sculpt_noise
-    scene black
-    show text "조각상 이미지 강한 블러":
-        align (.0, .0)
-    with dissolve
+    scene sculpt_noise
 
     독백 "조각상들이 흐드러진 들판 위, 나 자신을 증명해 줄 수 있는 건 아무것도 없었다."
     독백 "모든 기억을 잃어버렸다는 사실이 당황스러웠다. 숨이 막혔다."

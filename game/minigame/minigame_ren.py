@@ -144,6 +144,7 @@ def fragmentDropped(drags, drop):
 
         if n1 == n2:
             mirrorFragMatches[n1] = True
+            myInventory.remove("frag" + str(n1))
             renpy.restart_interaction()
 
             if False in mirrorFragMatches:

@@ -175,15 +175,22 @@ label investigateTable:
     # cg: 두꺼운 책
     독백 "책상 위에 두꺼운 영어책이 놓여있다. 아가씨답게 고상한 취미다."
     독백 "아무 페이지나 펼쳐 보았는데, 으극, 영어라 그런지 읽질 못하겠다."
+
+    show moonbeam:
+        align (.5, .5) zoom .25
+    with dissolve
     # object: moonbeam
     독백 "그런데 내가 펼친 곳에서 무언가 나풀거리며 떨어졌다. 드라이 플라워인가?"
 
     # 엘리 등장
     # 엘리 (행복, 실눈 웃음, 미소)
-    show 엘리 눈썹행복 눈실눈웃음1 입미소:
+    show moonbeam:
+        easein .75 align (.15, .75) zoom .1
+    show 엘리 눈썹행복 눈실눈웃음1 입미소 behind moonbeam:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
     with dissolve
+
     엘리 눈썹행복 눈실눈웃음1 입미소 "문빔으로 만들었어요! 정말 예쁘죠?"
     독백 "엘리에게 문빔이 무엇인지 물었다."
     # 엘리 (행복, 웃음, 미소)
@@ -210,11 +217,15 @@ label investigateRefrigerator:
     독백 "식은땀이 흐르는 손으로 오래된 냉장고 문을 열자 드러난 것은 {color=F00}새빨간{/color}{nw}{w=2.5}"
     extend " 콜라 라벨이 붙은 유리병들이었다! 그것도 아주 많이."
     # object: coke
+    show coke:
+        align (.5, .5) zoom .5
+    with dissolve
     독백 "이놈의 흡혈귀는 피가 아니라 콜라를 먹고 사나, 싶을 정도로 콜라병들이 냉장고 안을 빽빽이 채우고 있었다."
     독백 "서늘한 기운이 감돌았다. 냉장고 탓인가."
 
     # 엘리 등장
     # 엘리 (음영 on, 난처, 실눈 웃음, 미소)
+    scene living with dissolve
     show 엘리 눈썹난처 눈실눈웃음1 입미소 음영있음:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
@@ -230,16 +241,25 @@ label investigateRefrigerator:
 
 label investigateCupboard:
 
+    scene living with dissolve
+
     독백 "무턱대고 발걸음을 옮기긴 했으나, 어디로 가야 할지 갈피가 안 잡힌다."
     # object: gum
+    show gum:
+        align (.5, .65) zoom .3
+    with dissolve
     독백 "어느새 찬장 앞에 도달하긴 했는데, 들어있는 건, 풍선껌?"
     독백 "엘리의 눈치가 보이긴 했지만, 껌 하나를 입에 넣고 부드러워질 때까지 질겅질겅 씹었다."
     독백 "그리고 풍선을 불려고 했는데… 생각보다 잘 되지 않는다."
     # 엘리 등장
     # 엘리 (보통, 웃음, 무표정)
+
+    scene living with dissolve
     show 엘리 눈썹보통 눈웃음 입무표정:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
+    with dissolve
+
     독백 "언제 내 곁에 왔는지 모를, 풍선을 잘만 만드는 엘리와는 다르게 말이다."
     독백 "엘리가 내게 웃으며 풍선껌을 건넸다."
     # 엘리 (보통, 웃음, 미소)

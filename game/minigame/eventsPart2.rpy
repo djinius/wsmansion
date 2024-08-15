@@ -35,26 +35,25 @@ define 독자2 = Character('??!?', color="#C5CAB6", ctc = "ctc icon", ctc_positi
 define 독자3 = Character('？⑤＄', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
 define 독자4 = Character('ⓞ●◐', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
 define 독자5 = Character('＠', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
-
+define fragmentPositions = [(1021, 956), (367, 918), (499, 882), (1606, 954), (390, 719)]
 
 label page2Found:
     $ addFoundHistory("찢어진 책장", "page2")
     $ objectFound("page2")
-    call screen exploreFound("page2")
+    call screen exploreFound("page2", (950, 687))
 
-    독백 "오래된 책의 일부처럼 보인다. 어딘가 낯이 익은데."
+    독백 "오래된 책의 일부처럼 보인다."
 
     call screen pageContents(page2Text)
 
     if ("page1" in myInventory) and ("tornbook" in myInventory):
-        독백 "드디어 내용이 완성되었다."
+        독백 "드디어 내용이 완성되었다!"
     elif ("tornbook" in myInventory):
-        독백 "아직 한 페이지가 부족해 보인다."
+        독백 "아직 한 페이지가 부족해 보인다…."
     elif ("page1" in myInventory):
-        독백 "어디서 뜯겨져 나온 페이지일까, 원본이 있을까?"
+        독백 "이제 원본만 찾으면 된다."
     else:
-        독백 "이것만 가지고는 아무것도 떠오르지 않는다."
-        독백 "원본을 찾아보면 어떨까."
+        독백 "이것만 가지고서는 의미가 없어보인다. 더 찾아보자."
 
     call bookStory
     
@@ -63,8 +62,6 @@ label page2Found:
 label lockFound:
 
     $ addFoundHistory("자물쇠", "lock")
-    # $ objectFound("earring")
-    # call screen exploreFound("earring")
 
     독백 "자물쇠다. 이걸 열어야 이 방 안으로 들어갈 수 있다."
     call screen lockPuzzle
@@ -147,8 +144,6 @@ label clockFound:
         $ addFoundHistory("시계", "clock")
         
         독백 "시계 한구석에 메모지가 끼워져 있네."
-        # $ objectFound("knife")
-        # call screen exploreFound("knife")
 
     call screen clockPuzzle
 
@@ -158,7 +153,7 @@ label fragFound(no):
 
     if "gloves" in myInventory:
         $ objectFound("frag" + str(no))
-        call screen mirrorFragmentFound("frag" + str(no))
+        call screen mirrorFragmentFound("frag" + str(no), fragmentPositions[no])
 
         if True not in fragmentsFound:
             $ addFoundHistory("유리 파편", "frag" + str(no))
@@ -254,10 +249,7 @@ label mirrorComplete:
     독백 "무언가 수상한 엘리의 행동거지."
 
     # 배경: sculpt_bnw
-    scene black
-    show text "조각상":
-        align (.0, .0)
-    with dissolve
+    scene sculpt_bnw with dissolve
 
     독백 "하나같이 우리를 등진 채 도망치려는 듯한 조각상들."
 

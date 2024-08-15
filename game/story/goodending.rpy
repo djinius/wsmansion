@@ -37,7 +37,7 @@ label goodEnding:
     독백 "그리고 나 이외에, 이 저택에서 날 찌를 수 있는 존재는 하나뿐이다."
 
     # 배경: knife
-    scene black with dissolve
+    scene knife with dissolve
 
     독백 "나를 일종의 지박령으로 만들어 자신처럼 저택에 묶어둘 심산인 존재."
 

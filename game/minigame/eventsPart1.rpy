@@ -38,7 +38,7 @@ screen pageContents(textContent):
 label glovesFound:
     $ addFoundHistory("장갑", "gloves")
     $ objectFound("gloves")
-    call screen exploreFound("gloves")
+    call screen exploreFound("gloves", (914, 247))
 
     독백 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
     return
@@ -46,9 +46,17 @@ label glovesFound:
 label page1Found:
     $ addFoundHistory("찢어진 책장", "page1")
     $ objectFound("page1")
-    call screen exploreFound("page1")
+    call screen exploreFound("page1", (795, 883))
     독백 "오래된 책의 일부 같다."
-    독백 "영어라 읽기도 힘들뿐더러 한 장만으로는 의미가 없어 보인다."
+
+    if ("page2" in myInventory) and ("tornbook" in myInventory):
+        독백 "드디어 내용이 완성되었다!"
+    elif ("tornbook" in myInventory):
+        독백 "아직 한 페이지가 부족해 보인다…."
+    elif ("page2" in myInventory):
+        독백 "두 페이지 모두가 떨어져나온 원본이 있을 것이다."
+    else:
+        독백 "이것만 가지고서는 의미가 없어보인다. 더 찾아보자."
 
     call screen pageContents(page1Text)
     call bookStory
@@ -58,9 +66,17 @@ label page1Found:
 label tornbookFound:
     $ addFoundHistory("페이지가 뜯겨나간 책", "tornbook")
     $ objectFound("tornbook")
-    call screen exploreFound("tornbook")
+    call screen exploreFound("tornbook", (549, 833))
     독백 "오래된 책이다. 페이지가 두 장 뜯겨나간 것 같다."
-    독백 "영어라 읽을 수는 없지만 이렇게 미완성으로 놔두기에도 어딘가 불편하다."
+
+    if ("page1" in myInventory) and ("page2" in myInventory):
+        독백 "드디어 내용이 완성되었다."
+    elif ("page1" in myInventory):
+        독백 "아직 한 페이지가 부족해 보인다……."
+    elif ("page2" in myInventory):
+        독백 "아직 한 페이지가 부족해 보인다……."
+    else:
+        독백 "영어라 읽을 수는 없지만 이렇게 미완성으로 놔두기에도 어딘가 불편하다."
 
     call bookStory
 

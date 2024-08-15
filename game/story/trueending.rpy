@@ -45,10 +45,7 @@ label trueEnding:
     
     # 엘리 퇴장
     # 배경: sculpt
-    scene black
-    show text "조각상":
-        align (.0, .0)
-    with dissolve
+    scene sculpt with dissolve
 
     독백 "마지막으로 엘리와 악수를 나눈 뒤, 난 그대로 조각상들이 있는 곳을 향했다."
     독백 "엘리의 말대로 몸이 굳는 일은 일어나지 않았다."

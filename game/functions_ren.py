@@ -150,8 +150,8 @@ def bookPartCount():
 def getMirrorFragmentPosition():
     xp = renpy.random.random()
     if xp < .5:
-        xp = xp * .4 + .1
+        xp = xp * .3 + .15
     else:
-        xp = (xp - .5) * .4 + .7
+        xp = (xp - .5) * .3 + .75
 
     return (xp, renpy.random.random())
