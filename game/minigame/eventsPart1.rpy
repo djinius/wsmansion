@@ -43,6 +43,16 @@ label glovesFound:
     독백 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
     return
 
+label bookCompleted:
+    call screen bookCompletion
+    $ myInventory.remove("page1")
+    $ myInventory.remove("page2")
+    $ myInventory.remove("tornbook")
+    $ objectFound("completeBook")
+    call screen bookFound
+
+    return
+
 label page1Found:
     $ addFoundHistory("찢어진 책장", "page1")
     $ objectFound("page1")
@@ -50,6 +60,7 @@ label page1Found:
     독백 "오래된 책의 일부 같다."
 
     if ("page2" in myInventory) and ("tornbook" in myInventory):
+        call bookCompleted
         독백 "드디어 내용이 완성되었다!"
     elif ("tornbook" in myInventory):
         독백 "아직 한 페이지가 부족해 보인다…."
@@ -70,6 +81,7 @@ label tornbookFound:
     독백 "오래된 책이다. 페이지가 두 장 뜯겨나간 것 같다."
 
     if ("page1" in myInventory) and ("page2" in myInventory):
+        call bookCompleted
         독백 "드디어 내용이 완성되었다."
     elif ("page1" in myInventory):
         독백 "아직 한 페이지가 부족해 보인다……."
@@ -87,9 +99,7 @@ label cameraFound:
     if cameraTried is False:
         $ cameraTried = True
         $ addFoundHistory("카메라", "camera")
-        독백 "옛날 방식 카메라인가?"
-        독백 "바닥에 뭔가 흐릿한 그림이 있네."
-        독백 "선명하게 볼 방법이 없을까?"
+        독백 "오래된 카메라다. 무언가 보이는데 상이 흐릿하다……."
 
     call screen cameraMinigame
 

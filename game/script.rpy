@@ -78,9 +78,9 @@ label explorePart2:
 
 label storyEnding:
 
-    if bookPartCount() < 3:
-        call trueEnding
-    else:
+    if 'completeBook' in myInventory:
         call goodEnding
+    else:
+        call trueEnding
 
     return

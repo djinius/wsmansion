@@ -50,6 +50,9 @@ init -1 python:
 define whiteNoise = ImageDissolve("gui/transitions/whiteNoise.png", .5)
 define fadeoutin = Fade(.5, .0, .5, color="#000")
 
+transform bgblur(radius=1.5):
+    blur radius
+
 transform timedblur(radius1=1.5, radius2=1., duration=.5):
     blur radius1
     linear duration blur radius2

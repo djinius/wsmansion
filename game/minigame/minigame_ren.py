@@ -132,7 +132,8 @@ def objectFound(object):
     myInventory.append(object)
 
 def objectRemove(object):
-    objects.remove(object)
+    if object in objects:
+        objects.remove(object)
 
 def isFragmentSensitive(fragNo):
     global explorePhase

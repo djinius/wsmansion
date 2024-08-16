@@ -37,7 +37,7 @@ screen history():
                         min_width 1.
 
                 elif h.kind == 'found':
-                    add "images/minigame/" + h.foundImage + "_hover.png":
+                    add "gui/minigame/" + h.foundImage + "_hover.png":
                         xpos gui.history_name_xpos
                         xanchor gui.history_name_xalign
                         ypos gui.history_name_ypos

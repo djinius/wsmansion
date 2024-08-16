@@ -1,4 +1,46 @@
-define bookStoryLabels = [None, "makeUpStory", "suitFitStory", "birdFeedStory"]
+define bookStoryLabels = ["birdFeedStory", "makeUpStory", "suitFitStory", "birdFeedStory"]
+
+transform pageMerge(bp, lp, beginPos, endPos=(.5, .6)):
+    xysize (50, 50) pos (1920 - 50 * (lp - bp - 1), 0) anchor (1., .0) alpha .0
+    pause .5
+    block:
+        easein .5 alpha 1.
+        easeout .75 xysize (175, 175) pos beginPos anchor (.5, .5)
+    pause .5
+    easeout .75 pos endPos alpha .0
+
+transform bookMorphDisappear(bp, lp):
+    xysize (50, 50) pos (1920 - 50 * (lp - bp - 1), 0) anchor (1., .0) alpha .0
+    pause .75
+    block:
+        easein .5 alpha 1.
+        easeout .75 xysize (500, 500) pos (.5, .6) anchor (.5, .5)
+    pause .75
+    easeout .5 alpha .0
+
+transform bookMorphAppear(beginAlpha=.0, endAlpha=1., delay=2.25):
+    alpha beginAlpha
+    pause delay
+    easeout .5 alpha endAlpha
+
+screen bookCompletion():
+    use exploreBase
+
+    add "images/minigame/page1.png":
+        at pageMerge(myInventory.index("page1"), len(myInventory), (.25, .4))
+    add "images/minigame/page2.png":
+        at pageMerge(myInventory.index("page2"), len(myInventory), (.75, .4))
+
+    add "images/minigame/tornbook.png" at bookMorphDisappear(myInventory.index("tornbook"), len(myInventory))
+    add "images/minigame/completebook.png" pos (.5, .6) anchor (.5, .5) at bookMorphAppear()
+
+    timer 3.25 action Return()
+
+screen bookFound():
+    use exploreBase(1)
+    add "images/minigame/completebook.png" at foundTransform((.5, .6), (.5, .5))
+    timer 1.35 action Return()
+    key "mouseup_1" action Return()
 
 label bookStory:
 

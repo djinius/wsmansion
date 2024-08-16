@@ -47,6 +47,7 @@ label page2Found:
     call screen pageContents(page2Text)
 
     if ("page1" in myInventory) and ("tornbook" in myInventory):
+        call bookCompleted
         독백 "드디어 내용이 완성되었다!"
     elif ("tornbook" in myInventory):
         독백 "아직 한 페이지가 부족해 보인다…."
@@ -429,6 +430,7 @@ label mirrorComplete:
 
     # 배경: 살구색 화면, 블러 이펙트, scg x
     scene apricot
+    show layer master at bgblur(30.)
 
     독백 "엘리의 멱살을 잡으러 손을 뻗었다."
     독백 "바로 그 순간, 내 몸이 힘을 잃으며 뒤로 고꾸라졌고"
@@ -437,9 +439,11 @@ label mirrorComplete:
     독백 "……."
 
     # 배경: 살구색 화면
+    scene apricot
 
     # (화면 중앙 텍스트, 흰색)
-    show text "거짓말쟁이" at truecenter
+    show text "{size=+40}거짓말쟁이{/size}" at truecenter
+    with dissolve
 
     독백 "그것이 내가 어이없게 쓰러지기 전 기억하는 마지막 말이었다."
     독백 "단어는 기억나는데, 당최 누가 누구에게 말했던 건지 흐릿하다."
@@ -449,6 +453,7 @@ label mirrorComplete:
 
     # 엘리 등장
     # 엘리 (보통, 웃음, 무표정)
+    scene apricot
     show 엘리 눈썹보통 눈웃음 입무표정:
         pos (.5, .05) anchor (.5, .0)
         zoom .5

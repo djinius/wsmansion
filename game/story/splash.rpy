@@ -1,5 +1,3 @@
-image apricot = Solid("#FBCEB1")
-
 default persistent.splashPlayed = False
 default splashPhase = False
 

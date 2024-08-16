@@ -16,11 +16,12 @@ default myInventory = []
 
 
 image photoFound:
-    "images/minigame/photo_large_idle.png"
-    "images/minigame/photo_dark.png" with Dissolve(1.)
+    "images/minigame/photo.png"
+    "images/minigame/photo_dark.png" with Dissolve(.75)
 
 transform fromRightAppear(count):
-    xoffset (100 * count + 6)
+    xoffset (50 * count + 6)
+    pause .75
     easein (.5*count) xoffset 6
 
 transform foundTransform(beginpos, anchorpos=(.0, .0)):
@@ -30,10 +31,10 @@ transform foundTransform(beginpos, anchorpos=(.0, .0)):
         easein .5 zoom 1.2
     parallel:
         pause .25
-        linear .75 xpos 1. xanchor 1. xoffset -6
+        linear .75 xpos 1. xanchor 1.
     parallel:
         pause .25
-        easein .75 ypos .0 yanchor .0 yoffset 6
+        easein .75 ypos .0 yanchor .0
     parallel:
         pause .25
         easeout .75 zoom .2 alpha .0
@@ -48,9 +49,7 @@ screen exploreBase(dim = 0):
         at fromRightAppear(dim)
 
         for (n, o) in enumerate(myInventory):
-            imagebutton:
-                auto "images/minigame/" + o + "_%s.png"
-                action NullAction()
+            add "gui/minigame/" + o + "_idle.png" zoom .5
 
 screen exploreFound(object, beginpos):
     tag explore
@@ -60,10 +59,10 @@ screen exploreFound(object, beginpos):
 
     use exploreRooms(True, 1)
 
-    add "images/minigame/" + object + "_large_idle.png":
+    add "images/minigame/" + object + ".png":
         at foundTransform(beginpos)
 
-    timer 1.25 action Return()
+    timer 1.35 action Return()
     key "mouseup_1" action Return()
 
 screen explorePhotoFound():
@@ -73,10 +72,10 @@ screen explorePhotoFound():
 
     use exploreRooms(True, 2)
 
-    add "images/minigame/camera_large_idle.png" at foundTransform((.35, .5), (.5, .5))
+    add "images/minigame/camera.png" at foundTransform((.35, .5), (.5, .5))
     add "photoFound" zoom .6 at foundTransform((.65, .5), (.5, .5))
 
-    timer 1.25 action Return()
+    timer 1.35 action Return()
     key "mouseup_1" action Return()
 
 screen mirrorFragmentFound(object, beginpos):
@@ -87,10 +86,10 @@ screen mirrorFragmentFound(object, beginpos):
 
     use exploreRooms(True, 1)
 
-    add "images/minigame/" + object + "_large_idle.png":
+    add "images/minigame/" + object + ".png":
         at foundTransform(beginpos)
 
-    timer 1.25 action Return()
+    timer 1.35 action Return()
     key "mouseup_1" action Return()
 
 transform disappearExplain():
@@ -115,48 +114,48 @@ screen cameraMinigame:
     frame:
         xysize (588, 800) align (.75, .5)
         padding (0, 0)
-        background "images/minigame/camera_minigame.png"
+        background "gui/minigame/camera_minigame.png"
 
         frame:
             xysize (320, 197)
             padding (2, 2, 2, 50)
             pos (74, 400) anchor (.0, 1.)
-            background "images/minigame/biexplainballoon.png"
+            background "gui/minigame/biexplainballoon.png"
             text "다이얼을 돌려서\n사진을 선명하게 만들어 보세요." color "#000" size 22 align (.5, .5) text_align .5
             at disappearExplain
 
         imagebutton:
             pos (104, 439) anchor (.5, .5)
-            insensitive "images/minigame/camera_leftdial_idle.png"
-            idle Transform("images/minigame/camera_leftdial_idle.png", rotate=rotateLeft)
+            insensitive "gui/minigame/camera_leftdial_idle.png"
+            idle Transform("gui/minigame/camera_leftdial_idle.png", rotate=rotateLeft)
             if toRotate == "Left":
-                hover Transform("images/minigame/camera_leftdial_hover.png", rotate=rotateLeft)
-            selected_idle Transform("images/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
-            selected_hover Transform("images/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
+                hover Transform("gui/minigame/camera_leftdial_hover.png", rotate=rotateLeft)
+            selected_idle Transform("gui/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
+            selected_hover Transform("gui/minigame/camera_leftdial_selected.png", rotate=rotateLeft)
             selected (rotating == "Left")
             action NullAction()
 
         imagebutton:
             pos (358, 442) anchor (.5, .5)
-            insensitive "images/minigame/camera_rightdial_idle.png"
-            idle Transform("images/minigame/camera_rightdial_idle.png", rotate=rotateRight)
+            insensitive "gui/minigame/camera_rightdial_idle.png"
+            idle Transform("gui/minigame/camera_rightdial_idle.png", rotate=rotateRight)
             if toRotate == "Right":
-                hover Transform("images/minigame/camera_rightdial_hover.png", rotate=rotateRight)
-            selected_idle Transform("images/minigame/camera_rightdial_selected.png", rotate=rotateRight)
-            selected_hover Transform("images/minigame/camera_rightdial_selected.png", rotate=rotateRight)
+                hover Transform("gui/minigame/camera_rightdial_hover.png", rotate=rotateRight)
+            selected_idle Transform("gui/minigame/camera_rightdial_selected.png", rotate=rotateRight)
+            selected_hover Transform("gui/minigame/camera_rightdial_selected.png", rotate=rotateRight)
             selected (rotating == "Right")
             action NullAction()
 
     if blurry == 0. and saturation == 1.:
         imagebutton:
-            auto "images/minigame/photo_large_%s.png"
+            auto "gui/minigame/photo_large_%s.png"
             align (.1, .5)
             action Return('complete')
 
     elif blurry == 0.:
-        add im.MatrixColor("images/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.1, .5)
+        add im.MatrixColor("gui/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.1, .5)
     else:
-        add im.MatrixColor(im.Blur("images/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.1, .5)
+        add im.MatrixColor(im.Blur("gui/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.1, .5)
 
     add rotateHelper() xysize (0, 0) pos(0, 0)
     textbutton "다른 곳을 탐색한다":
@@ -195,10 +194,26 @@ screen mirrorMiniGame():
         has draggroup
 
         drag:
-            idle_child "images/minigame/mirror/mirror_empty.png"
+            idle_child "gui/minigame/mirror/mirror_empty.png"
             align (.5, .5)
             draggable False
             droppable False
+
+        for (n, p) in enumerate(mirrorFragDropPoses):
+            drag:
+                drag_name n
+                if (mirrorFragMatches[n] is False):
+                    idle_child "gui/minigame/mirror/frag"+str(n)+"_drop.png"
+                else:
+                    idle_child "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"
+
+                hover_child "gui/minigame/mirror/frag"+str(n)+"_drop.png"
+                selected_child "gui/minigame/mirror/frag"+str(n)+"_drop_selected.png"
+                selected_hover_child "gui/minigame/mirror/frag"+str(n)+"_drop.png"
+                pos p
+
+                draggable False
+                droppable (mirrorFragMatches[n] is False)
 
         for (n, t) in enumerate(fragmentsFound):
             if t and (mirrorFragMatches[n] is False):
@@ -211,29 +226,13 @@ screen mirrorMiniGame():
                     dragged fragmentDropped
 
                     has imagebutton
-                    idle "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
-                    hover "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
-                    selected_idle "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
-                    selected_hover "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    idle "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    hover "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    selected_idle "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"
+                    selected_hover "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"
                     sensitive False
                     action NullAction()
                     mouse "drag"
-
-        for (n, p) in enumerate(mirrorFragDropPoses):
-            drag:
-                drag_name n
-                if (mirrorFragMatches[n] is False):
-                    idle_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
-                else:
-                    idle_child "images/minigame/mirror/frag"+str(n)+"_large_idle.png"
-
-                hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
-                selected_child "images/minigame/mirror/frag"+str(n)+"_drop_selected.png"
-                selected_hover_child "images/minigame/mirror/frag"+str(n)+"_drop.png"
-                pos p
-
-                draggable False
-                droppable (mirrorFragMatches[n] is False)
 
     textbutton "더 탐색해 본다":
         align (1., 1.)
@@ -249,7 +248,7 @@ screen clockPuzzle():
 
     frame:
         align (.5, .5)
-        background "images/minigame/memo.png"
+        background "gui/minigame/memo.png"
         xysize (711, 910)
 
         has vbox
@@ -342,7 +341,7 @@ screen exploreRooms(found = False, dim = 0):
 
         # 침실
         imagemap:
-            auto "images/minigame/bedroom_%s.png"
+            auto "gui/minigame/bedroom_%s.png"
             # 거울조각 4
             hotspot (1606, 954, 156, 110):
                 if found:
@@ -357,77 +356,131 @@ screen exploreRooms(found = False, dim = 0):
             # 페이지 2
             hotspot (950, 687, 175, 175):
                 action Return("page2")
-                sensitive "page2" not in myInventory
+                sensitive ("page2" not in myInventory) and ("completeBook" not in myInventory)
 
-        # 거실
-        imagemap:
-            auto "images/minigame/living_%s.png"
-            # 거울조각 1
-            hotspot (1021, 956, 142, 265):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("frag0")
-                sensitive isFragmentSensitive(0)
-            # 거울조각 2
-            hotspot (367, 918, 154, 151):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("frag1")
-                sensitive isFragmentSensitive(1)
-            # 카메라
-            hotspot (1549, 423, 135, 177):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("camera")
-                sensitive "camera" not in myInventory
-            # 시계
-            hotspot (966, 107, 144, 277):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("clock")
-                sensitive explorePhase == 2
-            # 자물쇠
-            hotspot (0, 535, 108, 195):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("lock")
-                sensitive (explorePhase == 2) and (isBedroomUnlocked is False)
-            # 거울
-            hotspot (990, 490, 207, 269):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("mirror")
-                sensitive (explorePhase == 2)
-            # 엘리
-            hotspot (1190, 267, 323, 719):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("elly!!")
+        # 거실 - 잠김
+        if isBedroomUnlocked is False:
+            imagemap:
+                auto "gui/minigame/living_%s.png"
+                # 거울조각 1
+                hotspot (1021, 956, 142, 265):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag0")
+                    sensitive isFragmentSensitive(0)
+                # 거울조각 2
+                hotspot (367, 918, 154, 151):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag1")
+                    sensitive isFragmentSensitive(1)
+                # 카메라
+                hotspot (1549, 423, 135, 177):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("camera")
+                    sensitive "camera" not in myInventory
+                # 시계
+                hotspot (966, 107, 144, 277):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("clock")
+                    sensitive explorePhase == 2
+                # 자물쇠
+                hotspot (0, 535, 108, 195):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("lock")
+                    sensitive (explorePhase == 2) and (isBedroomUnlocked is False)
+                # 거울
+                hotspot (990, 490, 207, 269):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("mirror")
+                    sensitive (explorePhase == 2)
+                # 엘리
+                hotspot (1190, 267, 323, 719):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("elly!!")
+        # 거실 - 풀림
+        else:
+            imagemap:
+                auto "gui/minigame/living_unlocked_%s.png"
+                # 거울조각 1
+                hotspot (1021, 956, 142, 265):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag0")
+                    sensitive isFragmentSensitive(0)
+                # 거울조각 2
+                hotspot (367, 918, 154, 151):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag1")
+                    sensitive isFragmentSensitive(1)
+                # 카메라
+                hotspot (1549, 423, 135, 177):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("camera")
+                    sensitive "camera" not in myInventory
+                # 시계
+                hotspot (966, 107, 144, 277):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("clock")
+                    sensitive explorePhase == 2
+                # 자물쇠
+                hotspot (0, 505, 130, 210):
+                    if found:
+                        action NullAction()
+                    else:
+                        action SetVariable("explorePosition", explorePosition - 1)
+                    sensitive (explorePhase == 2) and (isBedroomUnlocked is True)
+                # 거울
+                hotspot (990, 490, 207, 269):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("mirror")
+                    sensitive (explorePhase == 2)
+                # 엘리
+                hotspot (1190, 267, 323, 719):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("elly!!")
+
 
         # 서재
         imagemap:
-            auto "images/minigame/study_%s.png"
+            auto "gui/minigame/study_%s.png"
             # 찢어진 책
             hotspot (549, 833, 156, 91):
                 if found:
                     action NullAction()
                 else:
                     action Return("tornbook")
-                sensitive "tornbook" not in myInventory
+                sensitive ("tornbook" not in myInventory) and ("completeBook" not in myInventory)
             # 페이지 1
             hotspot (795, 883, 175, 175):
                 if found:
                     action NullAction()
                 else:
                     action Return("page1")
-                sensitive "page1" not in myInventory
+                sensitive ("page1" not in myInventory) and ("completeBook" not in myInventory)
             # 거울조각 5
             hotspot (390, 719, 106, 125):
                 if found:
@@ -478,13 +531,13 @@ screen exploreRooms(found = False, dim = 0):
             key "K_LEFT" action NullAction()
 
         imagebutton:
-            auto "images/minigame/prev_%s.png"
+            auto "gui/minigame/prev_%s.png"
             align (.0, .5) xoffset 10
             action SetVariable("explorePosition", explorePosition - 1)
-            sensitive ((explorePosition == 3) and (isBedroomUnlocked is True)) or (explorePosition == 6)
+            sensitive (explorePosition == 6)
 
         imagebutton:
-            auto "images/minigame/next_%s.png"
+            auto "gui/minigame/next_%s.png"
             align (1., .5) xoffset -10
             action SetVariable("explorePosition", explorePosition + 1)
             sensitive (explorePosition == 0) or (explorePosition == 3)
