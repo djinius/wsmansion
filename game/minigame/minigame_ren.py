@@ -134,6 +134,13 @@ def objectFound(object):
 def objectRemove(object):
     objects.remove(object)
 
+def isFragmentSensitive(fragNo):
+    global explorePhase
+    global myInventory
+    global mirrorFragMatchs
+
+    return (explorePhase == 2) and ("frag" + str(fragNo) not in myInventory) and (mirrorFragMatches[fragNo] is False)
+
 def fragmentDropped(drags, drop):
     global mirrorFragMatchs
     global isMirrorComplete

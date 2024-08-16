@@ -349,11 +349,11 @@ screen exploreRooms(found = False, dim = 0):
                     action NullAction()
                 else:
                     action Return("frag3")
-                sensitive (explorePhase == 2) and ("frag3" not in myInventory)
+                sensitive isFragmentSensitive(3)
             # 거울조각 3
             hotspot (499, 882, 112, 151):
                 action Return("frag2")
-                sensitive (explorePhase == 2) and ("frag2" not in myInventory)
+                sensitive isFragmentSensitive(2)
             # 페이지 2
             hotspot (950, 687, 175, 175):
                 action Return("page2")
@@ -368,14 +368,14 @@ screen exploreRooms(found = False, dim = 0):
                     action NullAction()
                 else:
                     action Return("frag0")
-                sensitive (explorePhase == 2) and ("frag0" not in myInventory)
+                sensitive isFragmentSensitive(0)
             # 거울조각 2
             hotspot (367, 918, 154, 151):
                 if found:
                     action NullAction()
                 else:
                     action Return("frag1")
-                sensitive (explorePhase == 2) and ("frag1" not in myInventory)
+                sensitive isFragmentSensitive(1)
             # 카메라
             hotspot (1549, 423, 135, 177):
                 if found:
@@ -434,7 +434,7 @@ screen exploreRooms(found = False, dim = 0):
                     action NullAction()
                 else:
                     action Return("frag4")
-                sensitive (explorePhase == 2) and ("frag4" not in myInventory)
+                sensitive isFragmentSensitive(4)
             # 장갑
             hotspot (914, 247, 140, 140):
                 if found:

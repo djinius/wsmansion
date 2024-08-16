@@ -480,12 +480,28 @@ screen about():
                 text "Kundera, M.(2018). {i}참을 수 없는 존재의 가벼움{/i}.(이재룡, 역). 민음사. (원본 출판 1984년)"
                 text "Poe, E. A.(2013). {i}에드거 앨런 포 단편선{/i}.(전승희, 역). 민음사. (원본 출판 1833년)"
 
+            vbox:
+                label "글꼴"
+                text "OG 르네상스 비밀" font "fonts/OGRenaissanceSecret.ttf"
+                text "고운바탕 Bold" font "GowunBatang-Bold.ttf"
+                text "넥슨Lv2 고딕 Medium" font "fonts/NEXON Lv2 Gothic Medium.ttf"
+                text "단조" font "fonts/Danjo-bold-Regular.otf"
+                text "레베카체" font "fonts/EF_Rebecca.ttf"
+                text "cwTeX Q KaiLZ(中楷體)" font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
+
+            vbox:
+                label "그림"
+                text "{a=https://icons8.com}{u}icons8{/u}{/a}"
+                text "{a=https://pixabay.com}{u}pixabay{/u}{/a}"
+                text "{a=https://pngtree.com}{u}pngtree{/u}{/a}"
+
+
     add "gui/about.png" align (1., .5) alpha .15
 
 style about_label is gui_label
 style about_label_text is gui_label_text
 style about_text is gui_text:
-    font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)# FontGroup().add("NEXON Lv2 Gothic Medium.ttf", 0x0000, 0x00FF).add("NEXON Lv2 Gothic Medium.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
+    font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
 
 style about_label_text:
     size gui.label_text_size
