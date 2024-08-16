@@ -41,6 +41,8 @@ screen recollections():
                 textbutton "콜롬비아" action NullAction()
                 textbutton "호이호이" action NullAction()
 
+    textbutton "effectsExample" action Replay("effectsExample", locked=False) align (1., 1.)
+
 style recollections_vbox:
     spacing 20
 

@@ -6,3 +6,7 @@ image inkExpandIdle = Movie(play="images/transitions/expand400_sephia.webm", mas
 image inkExpandHover = Movie(play="images/transitions/expand400_border.webm", mask="images/transitions/expand400a.webm", loop=False, keep_last_frame=True)
 
 image firstEvent = "images/events/1.png"
+
+image gardenScatter:
+    "images/bgs/garden.png"
+    Solid("#000") with ImageDissolve("gui/transitions/whitenoise.png", 7.5)

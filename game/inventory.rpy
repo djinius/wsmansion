@@ -50,3 +50,13 @@ style inventory_vbox:
 
 style inventory_label:
     xalign .5
+
+style inventory_label_text:
+    color "#ff4400"
+
+style inventory_text:
+    color "#FFFFFF"
+
+style inventory_button_text is button_text:
+    idle_color "#FFFFFF"
+    hover_color "#ff4400"

@@ -1,11 +1,7 @@
 label part2:
 
     # 배경: living
-    scene living
-    show 엘리:
-        pos (.5, .05) anchor (.5, .0)
-        zoom .5
-    with dissolve
+    scene living with dissolve
 
     독백 "기억을 잃기 전의 내가 엘리와 만난 적 있었다는 건 확실히 알 수 있었다."
     독백 "그렇다고 아직 집으로 돌아가는 방법은커녕, 기억을 잃게 된 경위도."
@@ -13,8 +9,6 @@ label part2:
     독백 "거듭되는 환상에 속이 울렁거렸다. 빛 바랜 미로 속에서 길을 잃은 느낌이었다."
 
     # 배경: living
-    scene living
-
     # 엘리 등장
     # 엘리 (행복, 웃음, 미소, 눈물 x)
     show 엘리 눈썹행복 눈웃음 입미소:

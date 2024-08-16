@@ -126,7 +126,7 @@ screen navigation():
 
         if not main_menu:
 
-            textbutton _("메인 메뉴") action MainMenu()
+            textbutton _("시작 화면") action MainMenu()
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
@@ -202,18 +202,9 @@ screen main_menu():
         hotspot (190, 0, 60, 60) action Quit() tooltip ["종료", "게임을 끝냅니다.", (1920, 1020), (1., 1.)]
 
         if quickMenuAutoHide == 0:
-            at quickMenuHidden
+            at quickMenuHide
         elif quickMenuAutoHide == 1:
             at quickMenuAppear
-            timer 1. action SetVariable("quickMenuAutoHide", 2)
-        elif quickMenuAutoHide == 2:
-            at quickMenuFix
-        elif quickMenuAutoHide == 3:
-            at quickMenuHide
-            timer 2.5 action SetVariable("quickMenuAutoHide", 0)
-        elif quickMenuAutoHide == 4:
-            at quickMenuReappear
-            timer .5 action SetVariable("quickMenuAutoHide", 2)
 
     $ tooltip = GetTooltip('main_menu')
 
@@ -225,11 +216,16 @@ screen main_menu():
         vbox:
             style "main_menu_vbox"
 
-            text "[config.name!t]":
+            text "빛 바랜\n날개": # "[config.name!t]":
                 style "main_menu_title"
+                text_align 1.
+                xoffset -100
+                color "#000000"
 
             text "[config.version]":
                 style "main_menu_version"
+                xoffset -100
+                color "#000000"
             
             at mainMenuAppear
 
@@ -259,9 +255,11 @@ style main_menu_text:
 
 style main_menu_title:
     properties gui.text_properties("title")
+    font "MYHaemalgeunSangsang.ttf"
 
 style main_menu_version:
     properties gui.text_properties("version")
+    font "MYHaemalgeunSangsang.ttf"
 
 style main_menu_button:
     xysize (400, 100)
@@ -313,9 +311,9 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
             add "images/bgs/sky.jpg"
         else:
             add gui.main_menu_background
-    else:
-        # add gui.game_menu_background
-        pass
+
+    # add gui.game_menu_background
+    add Solid("#E8D4ACE0")
 
     frame:
         style "game_menu_outer_frame"
@@ -487,6 +485,7 @@ screen about():
                 text "넥슨Lv2 고딕 Medium" font "fonts/NEXON Lv2 Gothic Medium.ttf"
                 text "단조" font "fonts/Danjo-bold-Regular.otf"
                 text "레베카체" font "fonts/EF_Rebecca.ttf"
+                text "밀양 해맑은상상체" font "fonts/MYHaemalgeunSangsang.ttf"
                 text "cwTeX Q KaiLZ(中楷體)" font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
 
             vbox:
@@ -495,6 +494,11 @@ screen about():
                 text "{a=https://pixabay.com}{u}pixabay{/u}{/a}"
                 text "{a=https://pngtree.com}{u}pngtree{/u}{/a}"
 
+                null height(30)
+                add "images/ecg/icarus.png" zoom .2
+                text "De val van Icarus - Jacob Peter Gowy (1635 - 1637)"
+
+
 
     add "gui/about.png" align (1., .5) alpha .15
 
@@ -502,6 +506,7 @@ style about_label is gui_label
 style about_label_text is gui_label_text
 style about_text is gui_text:
     font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
+    color "#000000"
 
 style about_label_text:
     size gui.label_text_size
@@ -976,6 +981,7 @@ style help_label is gui_label
 style help_label_text is gui_label_text
 style help_text is gui_text:
     size 30
+    color "#000000"
 
 style help_button:
     properties gui.button_properties("help_button")
@@ -1208,10 +1214,10 @@ screen nvl_dialogue(dialogue):
             fixed:
                 yfit gui.nvl_height is None
 
-                if d.who is not None:
-
-                    text d.who:
-                        id d.who_id
+                # if d.who is not None:
+                #
+                #    text d.who:
+                #        id d.who_id
 
                 text d.what:
                     id d.what_id

@@ -100,7 +100,7 @@ screen input(prompt):
             ypos gui.dialogue_ypos
 
             text prompt style "input_prompt"
-            input id "input"
+            input id "input" color "#FFF"
 
 style input_prompt is default
 
@@ -134,6 +134,8 @@ transform ctcHide():
     pause 1.5
     easein 1. offset (-20, -10)
 
+default showCTC = False
+
 screen ctc:
     style_prefix "ctc"
 
@@ -152,6 +154,8 @@ screen ctc:
                         action Jump("splashFinished")
 
         elif renpy.get_screen('nvl') is None:
+            # on "show" action SetVariable("showCTC", True)
+            # on "hide" action SetVariable("showCTC", False)
             hbox:
                 align (1., 1.)
                 spacing 20
@@ -166,20 +170,12 @@ screen ctc:
 
                 if persistent.showQuickMenu == 0:
                     at ctcHidden
-
                 elif persistent.showQuickMenu == 1:
                     if quickMenuAutoHide == 0:
                         at ctcHidden
-                    elif quickMenuAutoHide == 1:
-                        at ctcAppear
-                    elif quickMenuAutoHide == 2:
+                    else:
                         at ctcFix
-                    elif quickMenuAutoHide == 3:
-                        at ctcHide
-                    elif quickMenuAutoHide == 4:
-                        at ctcReappear
-
-                elif persistent.showQuickMenu == 2:
+                else:
                     at ctcFix
 
 style ctc_hbox:
@@ -196,4 +192,6 @@ style ctc_button_text is button_text:
     size 20
     font "fonts/NEXON Lv2 Gothic Medium.ttf"
     yalign 1.
+    idle_color "#FFF"
+    hover_color "#F40"
     outlines [(1, "#000000", 0, 0)]

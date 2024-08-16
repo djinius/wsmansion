@@ -17,7 +17,6 @@ default myInventory = []
 
 image photoFound:
     "images/minigame/photo.png"
-    "images/minigame/photo_dark.png" with Dissolve(.75)
 
 transform fromRightAppear(count):
     xoffset (50 * count + 6)
@@ -72,8 +71,7 @@ screen explorePhotoFound():
 
     use exploreRooms(True, 2)
 
-    add "images/minigame/camera.png" at foundTransform((.35, .5), (.5, .5))
-    add "photoFound" zoom .6 at foundTransform((.65, .5), (.5, .5))
+    add "photoFound" zoom .6 at foundTransform((.5, .5), (.5, .5))
 
     timer 1.35 action Return()
     key "mouseup_1" action Return()
@@ -149,13 +147,13 @@ screen cameraMinigame:
     if blurry == 0. and saturation == 1.:
         imagebutton:
             auto "gui/minigame/photo_large_%s.png"
-            align (.1, .5)
+            align (.25, .5)
             action Return('complete')
 
     elif blurry == 0.:
-        add im.MatrixColor("gui/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.1, .5)
+        add im.MatrixColor("gui/minigame/photo_upside.png", im.matrix.saturation(saturation)) align (.25, .5)
     else:
-        add im.MatrixColor(im.Blur("gui/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.1, .5)
+        add im.MatrixColor(im.Blur("gui/minigame/photo_upside.png", blurry), im.matrix.saturation(saturation)) align (.25, .5)
 
     add rotateHelper() xysize (0, 0) pos(0, 0)
     textbutton "다른 곳을 탐색한다":
@@ -251,12 +249,7 @@ screen clockPuzzle():
         background "gui/minigame/memo.png"
         xysize (711, 910)
 
-        has vbox
-        align (.5, .5)
-
-        text "수수께끼" size 40 color "#000"
-        null height(15)
-        text clockMemoText size 25 color "#000"
+        text clockMemoText size 25 color "#000" align (.5, .5)
 
     key "mousedown_1" action Return()
 
@@ -315,9 +308,12 @@ screen lockPuzzle():
 
 style lockPuzzle_text:
     size 100
+    color "#FFF"
 
 style lockPuzzle_button_text is button_text:
     size 100
+    idle_color "#FFF"
+    hover_color "#ff4400"
 
 # 0: 침실
 # 1: 침실 -> 거실
@@ -382,7 +378,7 @@ screen exploreRooms(found = False, dim = 0):
                         action NullAction()
                     else:
                         action Return("camera")
-                    sensitive "camera" not in myInventory
+                    sensitive "photo" not in myInventory
                 # 시계
                 hotspot (966, 107, 144, 277):
                     if found:
@@ -434,7 +430,7 @@ screen exploreRooms(found = False, dim = 0):
                         action NullAction()
                     else:
                         action Return("camera")
-                    sensitive "camera" not in myInventory
+                    sensitive "photo" not in myInventory
                 # 시계
                 hotspot (966, 107, 144, 277):
                     if found:

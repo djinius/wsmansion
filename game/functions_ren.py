@@ -94,7 +94,7 @@ def isQuickExploring():
     return (renpy.get_screen("exploreRooms") is not None) or (renpy.get_screen("exploreFound") is not None) 
 
 class quickShowHelper(renpy.Displayable):
-    def __init__(self, w = 540, h = 60, **kwargs):
+    def __init__(self, w, h, **kwargs):
         super(quickShowHelper, self).__init__(**kwargs)
         self.w = 1920 - w
         self.h = 1080 - h
@@ -121,14 +121,11 @@ class quickShowHelper(renpy.Displayable):
                 if quickMenuAutoHide == 0:
                     quickMenuAutoHide = 1
                     renpy.restart_interaction()
-                elif quickMenuAutoHide == 3:
-                    quickMenuAutoHide = 4
-                    renpy.restart_interaction()
             # 마우스가 퀵메뉴 위치에서 떨어져 있음
             else:
                 # 마우스가 다시 돌아옴
-                if quickMenuAutoHide == 2:
-                    quickMenuAutoHide = 3
+                if quickMenuAutoHide == 1:
+                    quickMenuAutoHide = 0
                     renpy.restart_interaction()
 
 

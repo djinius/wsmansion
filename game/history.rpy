@@ -4,6 +4,12 @@
 ##
 ## https://www.renpy.org/doc/html/history.html
 
+define whoIdleColors = {
+    "‘나’": "#4a4f5a",
+    "엘리": "#666333",
+    "아비게일 F. 엘리엇": "#666333",
+    "???": "#666333"}
+
 screen history():
 
     tag menu
@@ -19,7 +25,7 @@ screen history():
 
             button:
                 action Confirm("이 지점으로 되돌아가시겠습니까?", RollbackToIdentifier(h.rollback_identifier))
-                sensitive (not _in_replay) and (renpy.get_identifier_checkpoints(h.rollback_identifier))
+                sensitive (not _in_replay) and (renpy.get_identifier_checkpoints(h.rollback_identifier)) and (h.kind not in ['part', 'found'])
                 has frame
                 xysize (1., 1.)
                 # xfill True yfill True
@@ -50,25 +56,39 @@ screen history():
                                 xalign .5
                                 text_align .5
                                 if h.menuItems[mi]:
-                                    color "#FFFF00"
+                                    idle_color "#FF4400"
+                                    hover_color "#FFCC00"
+                                    insensitive_color "#000000"
                                 else:
-                                    color "#FFFFFF"
-
+                                    idle_color "#000000"
+                                    hover_color "#FFEFEE"
+                                    insensitive_color "#000000"
 
                 else:
                     if h.who:
-                        label h.who:
+                        text h.who:
                             style "history_name"
                             substitute False
 
                             ## 화자 Character에 화자 색깔이 지정되어 있으면 불러옵니
                             ## 다.
-                            if "color" in h.who_args:
-                                text_color h.who_args["color"]
+                            # if "color" in h.who_args:
+                            if h.who in whoIdleColors:
+                                idle_color whoIdleColors[h.who] #"#666333" # h.who_args["color"]
+                                hover_color "#FFFCCC" # h.who_args["color"]
+                                insensitive_color whoIdleColors[h.who] #"#666333" # h.who_args["color"]
+                            else:
+                                idle_color "#88888888" #"#666333" # h.who_args["color"]
+                                hover_color "#88888888" # h.who_args["color"]
+                                insensitive_color "#88888888" #"#666333" # h.who_args["color"]
 
                     $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
                     text what:
                         substitute False
+                        idle_color "#000000"
+                        hover_color "#FFFFFF"
+                        insensitive_color "#000000"
+
 
         if not _history_list:
             label _("대사가 없습니다.")
@@ -83,7 +103,8 @@ style history_window is empty
 
 style history_name is gui_label
 style history_name_text is gui_label_text
-style history_text is gui_text
+style history_text is gui_text:
+    color "#000000"
 
 style history_label is gui_label
 style history_label_text is gui_label_text

@@ -9,12 +9,12 @@ image ctc icon:
 
 # 게임에서 사용할 캐릭터를 정의합니다.
 define 독백 = Character(None, ctc = "ctc icon", ctc_position = 'nestled-close')
-define 독백NVL = Character(None, ctc = "ctc icon", ctc_position = 'nestled-close', kind=nvl)
+define 독백NVL = Character(None, ctc_position = 'nestled-close', kind=nvl, what_color='#700')
 define 나 = Character('나', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', who_prefix="‘", who_suffix="’", what_prefix="“", what_suffix="”")
 define 엘리 = Character('엘리', color="#FFDF01", image="엘리", ctc = "ctc icon", ctc_position = 'nestled-close')
 define 아비게일 = Character('아비게일 F. 엘리엇', color="#FFDF01", image="아비게일", ctc = "ctc icon", ctc_position = 'nestled-close')
 define 아비게일처음 = Character('???', color="#FFDF01", image="아비게일처음", ctc = "ctc icon", ctc_position = 'nestled-close')
-define 엘리NVL = Character(None, color="#FFDF01", image="엘리", ctc = "ctc icon", ctc_position = 'nestled-close', kind=nvl, what_font="Danjo-bold-Regular.otf", what_outlines=[(1, "#000")])
+define 엘리NVL = Character(None, color="#FFDF01", image="엘리", ctc_position = 'nestled-close', kind=nvl, what_font="Danjo-bold-Regular.otf", what_outlines=[(1, "#000")])
 
 # 눈물, 음영 - 780, 183
 # 눈썹 - 830, 299

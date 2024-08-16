@@ -495,7 +495,7 @@ translate None strings:
 
     # renpy/common/00gui.rpy:453
     old "Are you sure you want to return to the main menu?\nThis will lose unsaved progress."
-    new "메인 메뉴로 돌아가겠습니까?\n저장하지 않은 데이터는 잃게 됩니다."
+    new "시작 화면으로 돌아가겠습니까?\n저장하지 않은 데이터는 잃게 됩니다."
 
     # renpy/common/00gui.rpy:454
     old "Are you sure you want to continue where you left off?"

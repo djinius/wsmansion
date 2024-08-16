@@ -25,23 +25,24 @@ define config.check_conflicting_properties = True
 ## 인터페이스에서 글자의 색상입니다.
 
 ## 강조 색상은 레이블(label)과 강조된 글자로 인터페이스 전체에서 사용됩니다.
-define gui.accent_color = '#99ccff'
+define gui.accent_color = '#37292b'
 
 ## 텍스트 버튼(text button)이 선택(selected)됐거나 커서를 올리지(hovered) 않았을
 ## 때 사용됩니다.
-define gui.idle_color = '#FFFFFF'
+# define gui.idle_color = '#FFFFFF'
+define gui.idle_color = '#000000'
 
 ## 작은(small) 색상은 같은 효과를 내기 위해 더 밝거나 어두워야 하는 작은 글자에
 ## 사용됩니다.
 define gui.idle_small_color = '#aaaaaa'
 
 ## 버튼(button)과 막대(bar)에 커서를 올렸을 때(hovered) 사용됩니다.
-define gui.hover_color = '#FFDF01'
+define gui.hover_color = '#372FFb'
 
 ## 텍스트 버튼(text button)에 선택됐지만(selected) 포커스되지(focused) 않았을 때
 ## 사용됩니다. 버튼(button)은 현재 화면이거나 설정값인 경우 선택됨(selected)이
 ## 됩니다.
-define gui.selected_color = '#FFF021'
+define gui.selected_color = '#ff4400'
 
 ## 텍스트 버튼(text button)이 선택되지(selected) 않았을 때 사용됩니다.
 define gui.insensitive_color = '#8888887f'
@@ -83,7 +84,7 @@ define gui.label_text_size = 36
 define gui.notify_text_size = 24
 
 ## 게임의 타이틀(title) 글자의 크기입니다.
-define gui.title_text_size = 75
+define gui.title_text_size = 150
 
 
 ## 메인과 게임 메뉴들 ##################################################################
@@ -210,7 +211,7 @@ define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = '#FFFFFF'
 define gui.choice_button_text_idle_outlines = [(1, "#000")]
-define gui.choice_button_text_hover_color = "#FFDF01"
+define gui.choice_button_text_hover_color = "#ff4400"
 define gui.choice_button_text_hover_outlines = [(1, "#000")]
 define gui.choice_button_text_insensitive_color = '#8888887f'
 define gui.choice_button_text_insensitive_outlines = [(1, "#4444447f")]
@@ -384,10 +385,10 @@ define gui.nvl_name_width = 225
 define gui.nvl_name_xalign = 1.0
 
 ## 대사 글자의 위치, 너비, 그리고 정렬입니다.
-define gui.nvl_text_xpos = 275
+define gui.nvl_text_xpos = .5
 define gui.nvl_text_ypos = 12
 define gui.nvl_text_width = 1370
-define gui.nvl_text_xalign = 0.0
+define gui.nvl_text_xalign = 0.5
 
 ## nvl_thought 글자의 위치, 너비, 정렬(nvl_narrator 캐릭터에 의해 표시되는 글자)
 ## 입니다.

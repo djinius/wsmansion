@@ -106,7 +106,7 @@ label cameraFound:
     if _return != 'complete':
         return
 
-    $ objectFound('camera')
+    $ objectRemove('camera')
     $ myInventory.append("photo")
     call screen explorePhotoFound
     hide screen explore
@@ -167,7 +167,7 @@ label ellyPart1:
     $ toReturn = None
     hide screen explore
 
-    if "camera" in myInventory:
+    if "photo" in myInventory:
         scene black
         show 엘리 눈썹보통 눈웃음 입미소:
             pos (.5, .05) anchor (.5, .0)

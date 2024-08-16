@@ -47,7 +47,8 @@ init -1 python:
     Shake = renpy.curry(_Shake)
 
 
-define whiteNoise = ImageDissolve("gui/transitions/whiteNoise.png", .5)
+define whiteNoise = ImageDissolve("gui/transitions/whitenoise.png", .5)
+define whiteNoiseSlow = ImageDissolve("gui/transitions/whitenoise.png", 5.)
 define fadeoutin = Fade(.5, .0, .5, color="#000")
 
 transform bgblur(radius=1.5):
@@ -56,3 +57,74 @@ transform bgblur(radius=1.5):
 transform timedblur(radius1=1.5, radius2=1., duration=.5):
     blur radius1
     linear duration blur radius2
+
+transform text5Seconds:
+    alpha .0
+    easein .5 alpha 1.
+    pause 5.
+    easein .5 alpha .0
+
+label effectsExample:
+    scene black
+
+    scene garden
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with dissolve
+
+    엘리 "show ... with dissolve"
+
+    hide 엘리 with dissolve
+    엘리 "hide 엘리 with dissolve"
+
+    scene living
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with fade
+    엘리 "show ... with fade"
+
+    scene home
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with whiteNoise
+    엘리 "show ... with whiteNoise"
+
+    scene living
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with pixellate
+    엘리 "show ... with pixellate"
+
+    scene bedroom
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with wipeleft
+    엘리 "show ... with wipeleft"
+
+    scene study2
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with slideleft
+    엘리 "show ... with slideleft"
+
+    scene study1
+    show 엘리:
+        pos (.5, .05) anchor (.5, .0)
+        zoom .5
+    with blinds
+    엘리 "show ... with blinds"
+
+    엘리 "with Shake" with Shake((0, 0, 0, 0), .5, dist=20)
+
+    엘리 "더 많은 효과는 {a=https://www.renpy.org/doc/html/transitions.html}{color=#FF0}여기{/color}{/a}를 참고하세요."
+
+    scene black with irisin
+    엘리 "그럼 irisin과 함께 안녕~"
+
+    return
