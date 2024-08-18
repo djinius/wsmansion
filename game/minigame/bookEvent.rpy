@@ -55,7 +55,7 @@ label makeUpStory:
     scene black with dissolve
 
     #배경: study1
-
+    play music tranquil3
     scene study1 with dissolve
     # ‘나’ 
     나 "……가슴을 쥐어뜯는 왕자님을 본 공주님이 걱정스러운 표정으로 물었습니다."
@@ -109,6 +109,7 @@ label makeUpStory:
  
     독백 "본인은 대충 얼버무렸지만, 난 그 쓸쓸한 미소를 다신 잊지 못할 것 같았다."
 
+    stop music
     scene black with dissolve
 
     return
@@ -128,17 +129,25 @@ label suitFitStory:
     scene black
 
     # 배경: 검은 화면
+
+    play sound "audio/sfx/heartonce.mp3" noloop
     # 효과음: 심장 소리 한 번
 
     독백 "답답하다, 숨이 막히고 가슴이 조여온다."
     독백 "하필이면 저택에 이런 게 있었을 줄이야, 당황스럽기 그지없다."
     
     # 효과음: 고조되는 심장 박동과 방문을 불규칙적으로 두드리는 소리
+    play sound "audio/sfx/heart.mp3" loop
+    play sound2 "audio/sfx/knock.mp3" loop
  
     독백 "처음 느껴보는 압박에 몸도 마음대로 움직여지지 않는다."
     독백 "도무지 벗어날 수가 없는데, 바깥에서는 협박조로 방문을 두드리고 있다."
     독백 "내가 옴짝달싹 못 하는 사이, 결국 참다 못해 방문을 제치고 들어온 누군가."
 
+    stop sound2
+    stop sound
+
+    play music tranquil2
     # 엘리 (scg x, 텍스트만)
     엘리 "…퍽 잘 어울리시네요. 안에서 계속 우는 소리를 내시던 것 치고는 말이죠."
 
@@ -177,6 +186,7 @@ label suitFitStory:
     # 엘리 (보통, 웃음, 무표정)
     엘리 눈썹보통 눈웃음 "그리고 아비게일, 아비게일 F. 엘리엇이예요, 아비든 애비든, 맘대로 부르시죠."
     hide 엘리 with dissolve
+    stop music
 
     # 엘리 퇴장
 
@@ -191,8 +201,8 @@ label suitFitStory:
 label birdFeedStory:
 
     hide screen exploreBase
-
-    scene garden
+    play music tranquil1
+    scene garden with dissolve
     # 배경: garden
 
     독백 "한가롭게 저택 테라스에서 마당을 바라본다."
@@ -240,6 +250,8 @@ label birdFeedStory:
     독백 "동시에 알 수 있었다. 과거에서 바로 날아온 것 같은 이 저택에서 나는 엘리와는 다르게 어울리지 않는다는 사실을."
     독백 "이곳은 집처럼 편안하지만, 그럼에도 내 {i}집{/i}은 아니라는 생각을 떨쳐낼 수 없었다."
     독백 "여행을 떠나는 것처럼 팔을 활짝 벌린 조각상들을 보며, 문득 {i}사람은 여행을 떠나야만 집의 소중함을 알게 된다{/i}는 어느 오랜 경구가 떠올랐다."
+
+    stop music
 
     # 엘리 (행복, 웃음, 미소)
     엘리 눈썹행복 눈웃음 "……."

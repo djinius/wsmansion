@@ -40,6 +40,7 @@ define fragmentPositions = [(1021, 956), (367, 918), (499, 882), (1606, 954), (3
 label page2Found:
     $ addFoundHistory("찢어진 책장", "page2")
     $ objectFound("page2")
+    play sound "audio/sfx/paper.mp3"
     call screen exploreFound("page2", (950, 687))
 
     독백 "오래된 책의 일부처럼 보인다."
@@ -105,6 +106,7 @@ label lockStory:
 
     # 배경: classroom
     # 효과음: 계속해서 고조되는 노이즈, 유리 깨지는 소리
+    play sound "audio/sfx/crack.mp3" noloop
 
     독자1 "저기, 이 공책 주웠는데··· 설마! 너 ◎◎야?"
     독백 "그만."
@@ -146,6 +148,7 @@ label clockFound:
         
         독백 "시계 한구석에 메모지가 끼워져 있네."
 
+    play sound "audio/sfx/clock.mp3"
     call screen clockPuzzle
 
     return
@@ -154,6 +157,7 @@ label fragFound(no):
 
     if "gloves" in myInventory:
         $ objectFound("frag" + str(no))
+        play sound "audio/sfx/alarm.mp3"
         call screen mirrorFragmentFound("frag" + str(no), fragmentPositions[no])
 
         if True not in fragmentsFound:
@@ -219,6 +223,7 @@ label mirrorPuzzle:
 label mirrorComplete:
     hide screen explore
 
+    play sound "audio/sfx/bell.mp3" noloop
     독백 "유리처럼 선명해지는 기억에 가슴팍이 욱신거린다."
 
     # 배경: 검은 화면
@@ -417,6 +422,7 @@ label mirrorComplete:
     독백 "소름 끼치는 감촉이 내 손에 닿았다."
 
     # 배경: 검은 화면
+    play music fear
     scene black with dissolve
 
     # 엘리 (scg x)
@@ -439,6 +445,7 @@ label mirrorComplete:
     독백 "말이 통하지 않으면 행동으로 보여줄 수밖엔 없다."
 
     # 배경: 살구색 화면, 블러 이펙트, scg x
+    stop music
     scene apricot
     show layer master at bgblur(30.)
 

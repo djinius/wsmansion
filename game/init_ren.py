@@ -23,3 +23,5 @@ config.underlay.append(custom_keymap)
 config.overlay_screens.append("quick_menu")
 
 renpy.random.seed(datetime.datetime.now())
+
+renpy.music.register_channel("sound2", "sfx")

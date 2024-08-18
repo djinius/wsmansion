@@ -38,17 +38,20 @@ screen pageContents(textContent):
 label glovesFound:
     $ addFoundHistory("장갑", "gloves")
     $ objectFound("gloves")
+    play sound "audio/sfx/paper.mp3"
     call screen exploreFound("gloves", (914, 247))
 
     독백 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
     return
 
 label bookCompleted:
+    play sound "audio/sfx/paper.mp3"
     call screen bookCompletion
     $ myInventory.remove("page1")
     $ myInventory.remove("page2")
     $ myInventory.remove("tornbook")
     $ objectFound("completeBook")
+    play sound "audio/sfx/oldbook.mp3"
     call screen bookFound
 
     return
@@ -56,6 +59,7 @@ label bookCompleted:
 label page1Found:
     $ addFoundHistory("찢어진 책장", "page1")
     $ objectFound("page1")
+    play sound "audio/sfx/paper.mp3"
     call screen exploreFound("page1", (795, 883))
     독백 "오래된 책의 일부 같다."
 
@@ -77,6 +81,7 @@ label page1Found:
 label tornbookFound:
     $ addFoundHistory("페이지가 뜯겨나간 책", "tornbook")
     $ objectFound("tornbook")
+    play sound "audio/sfx/oldbook.mp3"
     call screen exploreFound("tornbook", (549, 833))
     독백 "오래된 책이다. 페이지가 두 장 뜯겨나간 것 같다."
 
@@ -101,6 +106,7 @@ label cameraFound:
         $ addFoundHistory("카메라", "camera")
         독백 "오래된 카메라다. 무언가 보이는데 상이 흐릿하다……."
 
+    play sound "audio/sfx/clock.mp3"
     call screen cameraMinigame
 
     if _return != 'complete':
@@ -108,6 +114,8 @@ label cameraFound:
 
     $ objectRemove('camera')
     $ myInventory.append("photo")
+
+    play sound "audio/sfx/alarm.mp3"
     call screen explorePhotoFound
     hide screen explore
 

@@ -27,6 +27,7 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
+    activate_sound "audio/sfx/paper.mp3"
 
 style button_text is gui_text:
     properties gui.text_properties("button")

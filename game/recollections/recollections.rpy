@@ -2,46 +2,50 @@ screen recollections():
 
     tag menu
 
+    on "replace" action Stop("music")
+    on "replaced" action Play("music", audio.titleMusic)
+
     use game_menu(_("추억하기")):
-        grid 3 1:
+
+        hbox:
             style_prefix "recollections"
             xfill True
 
-            grid 1 3:
+            vbox:
+                label "다시보기"
+
+                grid 2 6:
+                    textbutton "도입부" action Replay("splashReplay")
+                    null
+
+                    textbutton "1장" action Replay("part1")
+                    textbutton "2장" action Replay("part2")
+
+                    textbutton "카메라" action Replay("cameraStory")
+                    textbutton "이야기 짓기" action Replay("makeUpStory")
+                    textbutton "양복 입기" action Replay("suitFitStory")
+                    textbutton "모이주기" action Replay("birdFeedStory")
+                    textbutton "자물쇠" action Replay("lockStory")
+                    textbutton "거울" action Replay("mirrorComplete")
+
+                    textbutton "트루엔딩" action Replay("trueEnding")
+                    textbutton "굿 엔딩" action Replay("goodEnding")
+
+            vbox:
+                vbox:
+                    label "화랑"
+                    grid 4 1:
+                        for (n, il) in enumerate(galleryNames):
+                            add g.make_button(il[0], unlocked=il[1], idle_border="gui/recollections/g" + str(n) + "_idle.png", hover_border="gui/recollections/g" + str(n) + "_hover.png", xalign=.5, yalign=.5) xysize (240, 96)
 
                 vbox:
-                    label "다시보기"
+                    style_prefix "musicroom"
+                    label "음악실"
 
-                    grid 2 6:
-                        textbutton "도입부" action Replay("splashReplay")
-                        null
+                    for (f, u, t, a) in musicRoomResource:
+                        textbutton t action NullAction()
 
-                        textbutton "1장" action Replay("part1")
-                        textbutton "2장" action Replay("part2")
-
-                        textbutton "카메라" action Replay("cameraStory")
-                        textbutton "이야기 짓기" action Replay("makeUpStory")
-                        textbutton "양복 입기" action Replay("suitFitStory")
-                        textbutton "모이주기" action Replay("birdFeedStory")
-                        textbutton "자물쇠" action Replay("lockStory")
-                        textbutton "거울" action Replay("mirrorComplete")
-
-                        textbutton "트루엔딩" action Replay("trueEnding")
-                        textbutton "굿 엔딩" action Replay("goodEnding")
-
-            vbox:
-                label "화랑"
-                grid 1 4:
-                    for (n, il) in enumerate(galleryNames):
-                        add g.make_button(il[0], unlocked=il[1], idle_border="gui/recollections/g" + str(n) + "_idle.png", hover_border="gui/recollections/g" + str(n) + "_hover.png", xalign=.5, yalign=.5)
-
-            vbox:
-                label "음악실"
-                textbutton "아싸라비야" action NullAction()
-                textbutton "콜롬비아" action NullAction()
-                textbutton "호이호이" action NullAction()
-
-    textbutton "effectsExample" action Replay("effectsExample", locked=False) align (1., 1.)
+    # textbutton "effectsExample" action Replay("effectsExample", locked=False) align (1., 1.)
 
 style recollections_vbox:
     spacing 20
@@ -68,6 +72,19 @@ style recollections_button_text is button_text:
 
 style recollections_label:
     xalign .5
+
+style musicroom_button:
+    xysize (650, 45)
+    xalign .5
+    idle_background Frame("gui/recollections/replay_idle.png", 30, 5)
+    hover_background Frame("gui/recollections/replay_hover.png", 30, 5)
+    insensitive_background Frame("gui/recollections/replay_insensitive.png", 30, 5)
+
+style musicroom_button_text is recollection_button_text:
+    size 20
+    xalign .5
+
+style musicroom_label is recollections_label
 
 screen _gallery(locked, displayables, index, count, gallery, **properties):
 

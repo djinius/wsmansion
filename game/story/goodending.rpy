@@ -1,5 +1,7 @@
 label goodEnding:
     # 배경: garden
+    play music goodending
+
     scene garden
     show 엘리 눈썹놀람 눈사백안 입미소 눈물 음영있음:
         pos (.5, .05) anchor (.5, .0)
@@ -135,6 +137,9 @@ label goodEnding:
     엘리 "제게 주어진 짐을 짊어질 수 있게, 언제까지고 당신과의 시간을 기억할 수 있게……."
 
     독백 "그것이 내가 온전히 사라지기 전, 엘리가 내게 건넨 마지막 질문이었다."
+
+    stop music
+    play sound "audio/sfx/whoosh.mp3" noloop
 
     # NVL, 텍스트 입력 창 등장 : 
     if not _in_replay:

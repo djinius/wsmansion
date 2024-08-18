@@ -17,6 +17,9 @@ label part2:
     with dissolve
 
     엘리 "그러게요, 무엇이 그리 중요하셨길래 한마디 말도 없이 여기저기 헤집고 다니셨나 싶었죠."
+
+    play music strain
+
     독백 "내가 소파에 앉아 정신이 팔린 사이 엘리가 나를 가만히 지켜보고 있었다."
     #엘리 (음영 on, 놀람, 실눈 웃음, 미소)
     엘리 눈썹놀람 눈실눈웃음1 입미소 음영있음 "이를 어째, 뒷정리를 깜박하셨더라고요."
@@ -27,6 +30,7 @@ label part2:
     독백 "결국 내가 파헤쳐서는 안 될 무언가에 손을 대고 만 걸까."
     독백 "이미 때는 늦어버렸고, 양쪽 뺨에 얼어붙을 것만 같은 한기가 느껴진다. "
 
+    stop music
     # 엘리 퇴장
     hide 엘리
 
@@ -43,6 +47,7 @@ label part2:
     엘리 "절 따라오세요. 보여드리고 싶은 게 있거든요."
 
     # 배경: living -> garden
+    play music tranquil1
     scene garden
 
     # 엘리 퇴장
@@ -120,7 +125,9 @@ label part2:
     hide 엘리 with dissolve
 
     독백 "내가 다가가자, 엘리는 가녀린 손가락으로 목뒤의 단추를 풀기 시작했다."
+    stop music
 
+    play music mystery1
     scene firstEvent with dissolve
  
     독백 "풀어헤친 상의 위쪽으로 엘리의 목덜미가 모두 드러났다."
@@ -135,8 +142,10 @@ label part2:
     독백 "그것은 실로 고혹적인, 나에게서 무언가를 더 이끌어내려는 듯한 눈빛이었다."
     독백 "그렇게 순수하던 엘리가 한순간에 마녀로 돌변해, 나 자신을 돌로 만들어진 상처 사이에 가둬버릴 것 같았다."
     독백 "모든 비밀이 매몰되어 있을 자신의 상처 속에."
+    stop music
 
     # 배경: garden
+    play music tranquil1
     scene garden
     show 엘리:
         pos (.5, .05) anchor (.5, .0)
@@ -169,6 +178,7 @@ label part2:
     # 엘리 (음영 on, 침울, 웃음, 미소)
     엘리 눈썹침울 눈웃음 입미소 음영있음 "……그렇네요."
     # 엘리 퇴장, 텍스트만
+    stop music
     scene black with dissolve
     엘리 "이야기의…… 주인공으로 남을 수 있다면 정말 행복할 것 같아요."
 

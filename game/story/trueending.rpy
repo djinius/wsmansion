@@ -82,6 +82,7 @@ label trueEnding:
     scene apricot with dissolve
 
     # 배경: home
+    play music titleMusic
     nvl clear
     엘리NVL "…경애하는 그대에게,"
     엘리NVL "이 말을 듣지는 못하시겠지만, 꼭 전하고 싶었어요."
@@ -143,6 +144,7 @@ label trueEnding:
 
     # 엘리 퇴장
     # 배경: 검은 화면
+    stop music
     scene black with dissolve
 
     # 엘리 (scg x)

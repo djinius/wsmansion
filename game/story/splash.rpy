@@ -63,6 +63,7 @@ label splashReplay:
    
     # ( 끼이익- 하는 사운드 이펙트 )
     # 배경: door -> living
+    play sound "audio/sfx/dooropen.mp3"
     scene living with dissolve
 
     독백 "아무것도 안 하는 것보단 낫기에 들어왔는데, 역시나 아무도 없었다."

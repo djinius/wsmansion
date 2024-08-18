@@ -301,6 +301,7 @@ screen lockPuzzle():
             yalign .5
             action [SetVariable("isBedroomUnlocked", True), Return()]
             sensitive (lockNumber0 == 1) and (lockNumber1 == 3) and (lockNumber2 == 1) and (lockNumber3 == 2)
+            activate_sound "audio/sfx/lock.mp3"
 
     textbutton "다른 곳을 탐색한다":
         align (1., 1.)

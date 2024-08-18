@@ -60,7 +60,8 @@ define config.has_voice = True
 ## 생합니다.
 
 # define config.main_menu_music = "main-menu-theme.ogg"
-
+define config.main_menu_music = audio.titleMusic
+define config.fade_music = .5
 
 ## 번역 ##########################################################################
 ##
