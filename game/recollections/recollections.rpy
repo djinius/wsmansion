@@ -2,6 +2,8 @@ screen recollections():
 
     tag menu
 
+    default startPlaying = False
+
     on "replace" action Stop("music")
     on "replaced" action Play("music", audio.titleMusic)
 
@@ -34,16 +36,52 @@ screen recollections():
             vbox:
                 vbox:
                     label "화랑"
-                    grid 4 1:
+                    grid 2 2:
                         for (n, il) in enumerate(galleryNames):
-                            add g.make_button(il[0], unlocked=il[1], idle_border="gui/recollections/g" + str(n) + "_idle.png", hover_border="gui/recollections/g" + str(n) + "_hover.png", xalign=.5, yalign=.5) xysize (240, 96)
+                            add g.make_button(il[0], unlocked=il[1], idle_border="gui/recollections/g" + str(n) + "_idle.png", hover_border="gui/recollections/g" + str(n) + "_hover.png", xalign=.5, yalign=.5)
 
                 vbox:
                     style_prefix "musicroom"
                     label "음악실"
 
-                    for (f, u, t, a) in musicRoomResource:
-                        textbutton t action NullAction()
+                    frame:
+                        background Frame("gui/tooltipframe.png", 50, 46, 77, 37)
+                        xsize 700
+                        padding (50, 50)
+
+                        imagemap:
+                            align (.5, .5)
+
+                            if startPlaying and renpy.music.is_playing():
+                                auto "gui/recollections/playing_%s.png"
+                            else:
+                                auto "gui/recollections/stopped_%s.png"
+
+                            for (n, f) in enumerate(musicRoomResource):
+                                hotspot (15 + (n % 5) * 60, 20 + (n // 5) * 50, 60, 50):
+                                    action [SetScreenVariable("startPlaying", True),
+                                            mr.Play(f)]
+                                    selected (startPlaying and renpy.music.get_playing() == f)
+
+                            hotbar (14, 224, 572, 17) value AudioPositionValue(update_interval=.5)
+                            hotspot (45 + 60 * 0, 245, 60, 60) action [SetScreenVariable("startPlaying", True), mr.Previous()] selected False
+                            hotspot (45 + 60 * 1, 245, 60, 60) action [SetScreenVariable("startPlaying", True), mr.Play()] selected (startPlaying and renpy.music.is_playing())
+                            hotspot (45 + 60 * 2, 245, 60, 60) action mr.TogglePause()
+                            hotspot (45 + 60 * 3, 245, 60, 60) action mr.Stop()
+                            hotspot (45 + 60 * 4, 245, 60, 60) action [SetScreenVariable("startPlaying", True), mr.Next()] selected False
+                            hotspot (45 + 60 * 5, 245, 60, 60) action mr.ToggleLoop()
+                            hotspot (45 + 60 * 6, 245, 60, 60) action mr.ToggleSingleTrack()
+                            hotspot (45 + 60 * 7, 245, 60, 60) action mr.ToggleShuffle()
+                            hotspot (45 + 60 * 8, 245, 60, 60):
+                                action OpenURL(getMusicURL())
+                                sensitive (startPlaying and renpy.music.is_playing())
+
+                        if startPlaying:
+                            text getMusicTitle() pos (20, 225) anchor (.0, 1.)
+                            text getMusicAuthor() pos (584, 225) anchor (1., 1.) style "musicroom_author_text"
+                        else:
+                            text "\n\n" pos (20, 225) anchor (.0, 1.)
+                            text "" pos (584, 225) anchor (1., 1.) style "musicroom_author_text"
 
     # textbutton "effectsExample" action Replay("effectsExample", locked=False) align (1., 1.)
 
@@ -85,6 +123,16 @@ style musicroom_button_text is recollection_button_text:
     xalign .5
 
 style musicroom_label is recollections_label
+
+style musicroom_text:
+    font "NEXON Lv2 Gothic Medium.ttf"
+    color "#FFDF01"
+    size 25
+
+style musicroom_author_text:
+    font "NEXON Lv2 Gothic Medium.ttf"
+    color "#FFDF01"
+    size 20
 
 screen _gallery(locked, displayables, index, count, gallery, **properties):
 
