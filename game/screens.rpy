@@ -280,14 +280,14 @@ screen tooltip(tt):
 
     frame:
         style_prefix "tooltip"
-        pos p anchor a xminimum 300
-        background Frame("gui/tooltipframe.png", 50, 46, 77, 37)
+        pos p anchor a xminimum 300 yminimum 240
+        background Frame("gui/tooltipframe.png")
         padding (40, 40)
         has vbox
-        xalign .5
+        align (.5, .5)
 
         text t size 35 xalign .5
-        null height(5)
+        null height(20)
         text d size 22 xalign .5
 
 style tooltip_text:

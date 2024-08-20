@@ -45,7 +45,7 @@ screen recollections():
                     label "음악실"
 
                     frame:
-                        background Frame("gui/tooltipframe.png", 50, 46, 77, 37)
+                        background Frame("gui/musicroomframe.png", 50, 46, 77, 37)
                         xsize 700
                         padding (50, 50)
 
