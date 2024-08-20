@@ -41,7 +41,7 @@ label trueEnding:
     # 엘리 (음영 on, 보통, 사백안, 무표정)
     엘리 눈썹보통 눈사백안 입무표정 "{font=Danjo-bold-Regular.otf}그러니까 빨리 제 눈앞에서 꺼져버리세요. 제 마음이 변하기 전에.{/font}"
 
-    독백 "소름 끼치는 엘리의 모습은 그렇다 치더라도, 내 기억과 상충되는 엘리의 태도에 떨떠름함을 감출 수 없었다."
+    독백 "소름 끼치는 엘리의 모습은 그렇다 치더라도, \n내 기억과 상충되는 엘리의 태도에 떨떠름함을 감출 수 없었다."
     독백 "동시에, 내게 이 기회가 두 번 다시 찾아오지 않으리라는 것도 잘 알고 있었다."
     
     stop music
@@ -52,7 +52,6 @@ label trueEnding:
     독백 "마지막으로 엘리와 악수를 나눈 뒤, 난 그대로 조각상들이 있는 곳을 향했다."
     독백 "엘리의 말대로 몸이 굳는 일은 일어나지 않았다."
 
-    play music fear
     # 배경: forest1
     scene forest1 with dissolve
 
@@ -75,8 +74,6 @@ label trueEnding:
     scene forest2_4 with dissolve
     독백 "그럴 일은 절대 없겠지만, 다시 저택으로 돌아가기에도 너무나 멀리 와 버렸다."
     독백 "한치 앞도 보이지 않는 풀숲 위에 쓰러지며 나는 물었다."
-
-    stop music
 
     # 배경: 검은색 배경
     scene black with dissolve
@@ -108,7 +105,7 @@ label trueEnding:
     엘리NVL "모든 것이 흐려진 제 마음에 무언가 다시 피어나는 것을 느꼈어요."
     엘리NVL "낡고 해진 종이 위로, 다시 펜을 들어 이야기를 써 내려가기 시작한 거예요."
 
-    #배경: study1
+    #배경: study1_bnw
     nvl clear
     scene study1 with dissolve
     엘리NVL "제가 처음에 툴툴댔던 거, 기억나요?"
