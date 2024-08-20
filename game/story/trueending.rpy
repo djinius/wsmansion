@@ -3,6 +3,7 @@ label trueEnding:
     scene garden with dissolve
     독백 "{i}내가 네 멱살을 쥐려고 들 때,{/i} 나는 대답했다."
 
+    play music tranquil1
     # 엘리 등장
     # 엘리 (음영 on, 놀람, 웃음, 미소)
     show 엘리 눈썹놀람 눈웃음 입미소 눈물 음영있음:
@@ -43,6 +44,7 @@ label trueEnding:
     독백 "소름 끼치는 엘리의 모습은 그렇다 치더라도, 내 기억과 상충되는 엘리의 태도에 떨떠름함을 감출 수 없었다."
     독백 "동시에, 내게 이 기회가 두 번 다시 찾아오지 않으리라는 것도 잘 알고 있었다."
     
+    stop music
     # 엘리 퇴장
     # 배경: sculpt
     scene sculpt with dissolve
@@ -50,6 +52,7 @@ label trueEnding:
     독백 "마지막으로 엘리와 악수를 나눈 뒤, 난 그대로 조각상들이 있는 곳을 향했다."
     독백 "엘리의 말대로 몸이 굳는 일은 일어나지 않았다."
 
+    play music fear
     # 배경: forest1
     scene forest1 with dissolve
 
@@ -73,11 +76,14 @@ label trueEnding:
     독백 "그럴 일은 절대 없겠지만, 다시 저택으로 돌아가기에도 너무나 멀리 와 버렸다."
     독백 "한치 앞도 보이지 않는 풀숲 위에 쓰러지며 나는 물었다."
 
+    stop music
+
     # 배경: 검은색 배경
     scene black with dissolve
 
     독백 "{i}내가 누구였지?{/i}"
 
+    
     # 배경: 살구색 배경, NVL
     scene apricot with dissolve
 
@@ -109,7 +115,7 @@ label trueEnding:
     엘리NVL "너무 오랜만에 어리광을 부리다 보니 익숙하지 않기도 했지만, 일부러 모질게 군 것도 없잖아 있었어요."
     엘리NVL "정원에 핀 꽃들이 아침 햇살을 향해 목을 뻗듯, 당신의 온화함에 몸과 마음을 모두 내어줄까 봐."
     엘리NVL "당신이 다가올 때마다 저는 제가 꺾이기라도 할 듯 가시를 세웠어요."
-    엘리NVL "사실은 제 목이 꺾이더라도 누군가 제개 와주길 바랬으면서, 참 제멋대로죠."
+    엘리NVL "사실은 제 목이 꺾이더라도 누군가 제게 와주길 바랬으면서, 참 제멋대로죠."
 
     #배경: flowers
     nvl clear

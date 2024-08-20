@@ -78,6 +78,8 @@ label lockStory:
     hide screen explore with dissolve
     scene street2 with dissolve
 
+    play music tranquil2
+
     독백 "나에게 있어 세상은 빈 도화지이다."
     독백 "텅 비어 있기에 무엇이든 채울 수 있는 도화지는, 이미 전부 남들의 어둡고 질척한 물감으로 물들어 있었다."
     독백 "소심하고 유약했던 나에게 그런 세상은 너무나도 무서웠다."
@@ -99,14 +101,15 @@ label lockStory:
     독백 "몇몇은 배경에 불과했던 나를 알아보기 시작했다. 가끔 어리숙한 부분을 지적받았지만, 풋풋한 로맨스 작가로서 미래가 기대된다는 칭찬도 종종 들었다."
     독백 "무엇보다 중요한 건, 나만을 위해 만들어진 세상에서 나는 완벽히 자유로울 수 있었다."
 
+    stop music
     # 배경: fairytale2
     scene fairytale2 with dissolve
 
+    play sound "audio/sfx/crack.mp3" noloop
     독백 "그런데."
 
     # 배경: classroom
     # 효과음: 계속해서 고조되는 노이즈, 유리 깨지는 소리
-    play sound "audio/sfx/crack.mp3" noloop
 
     독자1 "저기, 이 공책 주웠는데··· 설마! 너 ◎◎야?"
     독백 "그만."
@@ -271,7 +274,6 @@ label mirrorComplete:
 
     # 배경: garden
     scene garden with dissolve
-    stop music
 
     독백 "나는 내 손에 들린 조각상들을 엘리에게 보여주었다."
     독백 "날개를 편 채 돌처럼 굳어버린 작은 새 모양 조각상들."
@@ -413,6 +415,7 @@ label mirrorComplete:
     나 "무엇보다 엘리, 엘리 네가 있었기에 버티는 걸 넘어 행복할 수 있었어."
 
     # 엘리 등장
+    stop music
     # 엘리 (침울, 감은 눈, 미소)
     show 엘리 눈썹침울 눈실눈웃음1 입미소:
         pos (.5, .05) anchor (.5, .0)
@@ -452,7 +455,7 @@ label mirrorComplete:
     나 "그러니까 제발 날 이 망할 저택에서 나가게 해 달란 말이야!"
 
     독백 "나는 악을 쓰며 소리쳤다."
-    독백 "이제는 빨리 나가고 싶다기보단 엘리와의 마지막 작별에서도 후회를 남기고 싶지 않다는 마음이었다."
+    독백 "이제는 빨리 나가고 싶다기보단, 엘리와의 마지막 작별에서도 후회를 남기고 싶지 않다는 마음이었다."
     독백 "그리고 그런 나의 진심은 이제 아무 상관 없다는 듯이, 철판을 긁어대는 것 같은 웃음소리가 들려왔다."
     독백 "소름 끼치는 감촉이 내 손에 닿았다."
 
@@ -480,7 +483,7 @@ label mirrorComplete:
     독백 "말이 통하지 않으면 행동으로 보여줄 수밖엔 없다."
 
     # 배경: 살구색 화면, 블러 이펙트, scg x
-    stop music
+    
     scene apricot
     show layer master at bgblur(30.)
 
@@ -489,6 +492,8 @@ label mirrorComplete:
     독백 "둔탁한 충격이 가해지며 난,"
     독백 "난…."
     독백 "……."
+
+    stop music
 
     # 배경: 살구색 화면
     scene apricot
