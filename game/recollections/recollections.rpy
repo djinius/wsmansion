@@ -76,9 +76,11 @@ screen recollections():
                                 action OpenURL(getMusicURL())
                                 sensitive (startPlaying and renpy.music.is_playing())
 
-                        if startPlaying:
-                            text getMusicTitle() pos (20, 225) anchor (.0, 1.)
-                            text getMusicAuthor() pos (584, 225) anchor (1., 1.) style "musicroom_author_text"
+                        if startPlaying and renpy.music.get_playing():
+                            text getMusicTitle() pos (20, 205) anchor (.0, 1.)
+                            text getMusicAuthor() pos (584, 205) anchor (1., 1.) style "musicroom_author_text"
+                            add DynamicDisplayable(getMusicPosition) pos (20, 230) anchor (.0, 1.)
+                            add DynamicDisplayable(getMusicDuration) pos (584, 230) anchor (1., 1.)
                         else:
                             text "\n\n" pos (20, 225) anchor (.0, 1.)
                             text "" pos (584, 225) anchor (1., 1.) style "musicroom_author_text"
@@ -127,12 +129,12 @@ style musicroom_label is recollections_label
 style musicroom_text:
     font "NEXON Lv2 Gothic Medium.ttf"
     color "#FFDF01"
-    size 25
+    size 20
 
 style musicroom_author_text:
     font "NEXON Lv2 Gothic Medium.ttf"
     color "#FFDF01"
-    size 20
+    size 16
 
 screen _gallery(locked, displayables, index, count, gallery, **properties):
 

@@ -31,7 +31,7 @@ screen bookCompletion():
     add "images/minigame/page2.png":
         at pageMerge(myInventory.index("page2"), len(myInventory), (.75, .4))
 
-    add "images/minigame/tornbook.png" at bookMorphDisappear(myInventory.index("tornbook"), len(myInventory))
+    add "images/minigame/tornbook_large.png" at bookMorphDisappear(myInventory.index("tornbook"), len(myInventory))
     add "images/minigame/completebook.png" pos (.5, .6) anchor (.5, .5) at bookMorphAppear()
 
     timer 3.25 action Return()

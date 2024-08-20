@@ -10,7 +10,7 @@ default isMirrorFound = False
 # 탐색 오브젝트
 # 파트 2 귀걸이 => 시계, 칼 => 자물쇠
 default objectsPart1 = ["gloves", "tornbook", "page1", "camera"]
-default objectsPart2 = ["clock", "page2", "lock", "mirror", "frag0", "frag1", "frag2", "frag3", "frag4"]
+default objectsPart2 = ["clock", "page2", "ballet", "lock", "mirror", "frag0", "frag1", "frag2", "frag3", "frag4"]
 default objects = []
 default myInventory = []
 
@@ -339,40 +339,40 @@ screen exploreRooms(found = False, dim = 0):
         # 침실
         imagemap:
             auto "gui/minigame/bedroom_%s.png"
-            # 거울조각 4
-            hotspot (1606, 954, 156, 110):
-                if found:
-                    action NullAction()
-                else:
-                    action Return("frag3")
-                sensitive isFragmentSensitive(3)
-            # 거울조각 3
-            hotspot (499, 882, 112, 151):
-                action Return("frag2")
-                sensitive isFragmentSensitive(2)
             # 페이지 2
-            hotspot (950, 687, 175, 175):
+            hotspot (531, 802, 162, 161):
                 action Return("page2")
                 sensitive ("page2" not in myInventory) and ("completeBook" not in myInventory)
+            # 발레인형
+            hotspot (1176, 659, 161, 162):
+                action Return("ballet")
+                sensitive ("ballet" not in myInventory)
 
         # 거실 - 잠김
         if isBedroomUnlocked is False:
             imagemap:
                 auto "gui/minigame/living_%s.png"
                 # 거울조각 1
-                hotspot (1021, 956, 142, 265):
+                hotspot (1083, 926, 125, 247):
                     if found:
                         action NullAction()
                     else:
                         action Return("frag0")
                     sensitive isFragmentSensitive(0)
                 # 거울조각 2
-                hotspot (367, 918, 154, 151):
+                hotspot (374, 925, 140, 136):
                     if found:
                         action NullAction()
                     else:
                         action Return("frag1")
                     sensitive isFragmentSensitive(1)
+                # 거울조각 3
+                hotspot (868, 850, 106, 156):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag2")
+                    sensitive isFragmentSensitive(2)
                 # 카메라
                 hotspot (1549, 423, 135, 177):
                     if found:
@@ -412,7 +412,7 @@ screen exploreRooms(found = False, dim = 0):
             imagemap:
                 auto "gui/minigame/living_unlocked_%s.png"
                 # 거울조각 1
-                hotspot (1021, 956, 142, 265):
+                hotspot (1073, 926, 125, 247):
                     if found:
                         action NullAction()
                     else:
@@ -425,6 +425,13 @@ screen exploreRooms(found = False, dim = 0):
                     else:
                         action Return("frag1")
                     sensitive isFragmentSensitive(1)
+                # 거울조각 3
+                hotspot (868, 850, 106, 156):
+                    if found:
+                        action NullAction()
+                    else:
+                        action Return("frag2")
+                    sensitive isFragmentSensitive(2)
                 # 카메라
                 hotspot (1549, 423, 135, 177):
                     if found:
@@ -478,8 +485,15 @@ screen exploreRooms(found = False, dim = 0):
                 else:
                     action Return("page1")
                 sensitive ("page1" not in myInventory) and ("completeBook" not in myInventory)
+            # 거울조각 4
+            hotspot (405, 754, 162, 83):
+                if found:
+                    action NullAction()
+                else:
+                    action Return("frag3")
+                sensitive isFragmentSensitive(3)
             # 거울조각 5
-            hotspot (390, 719, 106, 125):
+            hotspot (387, 960, 91, 108):
                 if found:
                     action NullAction()
                 else:

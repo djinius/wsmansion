@@ -35,13 +35,13 @@ define 독자2 = Character('??!?', color="#C5CAB6", ctc = "ctc icon", ctc_positi
 define 독자3 = Character('？⑤＄', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
 define 독자4 = Character('ⓞ●◐', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
 define 독자5 = Character('＠', color="#C5CAB6", ctc = "ctc icon", ctc_position = 'nestled-close', what_prefix="“", what_suffix="”")
-define fragmentPositions = [(1021, 956), (367, 918), (499, 882), (1606, 954), (390, 719)]
+define fragmentPositions = [(1073, 926), (374, 925), (868, 850), (405, 754), (387, 960)]
 
 label page2Found:
     $ addFoundHistory("찢어진 책장", "page2")
     $ objectFound("page2")
     play sound "audio/sfx/paper.mp3"
-    call screen exploreFound("page2", (950, 687))
+    call screen exploreFound("page2", (531, 802))
 
     독백 "오래된 책의 일부처럼 보인다."
 
@@ -190,6 +190,39 @@ label frag4Found:
     call fragFound(4)
     return
 
+label balletFound:
+    $ addFoundHistory("발레리나 인형", "ballet")
+
+    # [발레리나 인형(침실, 이스터 에그) 발견 시 대사]
+
+    scene black with dissolve
+    show ballet_large:
+        align (.5, .5) zoom .5
+    with dissolve
+
+    독백 "발레리나 모양을 한 인형이다."
+    독백 "엘리도 아직은 이런 걸 가지고 놀 나이인가 -"
+
+    # (효과음:break, 목 위쪽 레이어가 사라짐.)
+    play sound "audio/sfx/break.mp3"
+    scene black
+    show balletbroken:
+        align (.5, .5) zoom .5
+    pause 1.
+    scene black
+    show balletheadless:
+        align (.5, .5) zoom .5
+    with dissolve
+
+    독백 "……."
+
+    $ objectFound("ballet")
+    call screen exploreFound("balletfound", (1176, 659))
+
+    scene black
+
+    return
+
 label mirrorFound:
     if isMirrorFound is False:
         $ isMirrorFound = True
@@ -228,6 +261,7 @@ label mirrorComplete:
 
     # 배경: 검은 화면
 
+    play music mystery2
     scene black
     # 엘리 (scg x)
     엘리 "함부로 나가면 안 돼요. 큰일 난다구요."
@@ -237,6 +271,7 @@ label mirrorComplete:
 
     # 배경: garden
     scene garden with dissolve
+    stop music
 
     독백 "나는 내 손에 들린 조각상들을 엘리에게 보여주었다."
     독백 "날개를 편 채 돌처럼 굳어버린 작은 새 모양 조각상들."
