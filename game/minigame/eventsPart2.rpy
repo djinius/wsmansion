@@ -298,7 +298,7 @@ label mirrorComplete:
 
     scene home with dissolve
 
-    독백 "대한민국에, 이런 곳에 있을 리 없는 괴담 속 대저택까지."
+    독백 "대한민국에, 이런 곳에 있을 리 없는 괴담 속 저택까지."
 
     # 배경: garden
     scene garden with dissolve
