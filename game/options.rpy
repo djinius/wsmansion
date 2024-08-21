@@ -45,7 +45,7 @@ define build.name = "wsmansion"
 
 define config.has_sound = True
 define config.has_music = True
-define config.has_voice = True
+define config.has_voice = False
 
 
 ## 사용자가 음향 또는 음성 채널에서 테스트 사운드를 재생할 수 있게 하려면 아래

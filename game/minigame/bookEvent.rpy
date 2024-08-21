@@ -152,7 +152,7 @@ label suitFitStory:
     엘리 "…퍽 잘 어울리시네요. 안에서 계속 우는 소리를 내시던 것 치고는 말이죠."
 
     # ECG 2 – 정장을 착용한 ‘난설’
-
+    scene secondEvent with dissolve
     나 "…크읏, 어울리긴 무슨……. 이게 뭐야, 불편하기만 하고!"
 
     # 엘리 (scg x, 텍스트만)

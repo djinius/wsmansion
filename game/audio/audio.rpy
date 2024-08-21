@@ -26,8 +26,14 @@ init -2:
     # https://pixabay.com/ko/music/separation-185196/
     define audio.tranquil3 = "audio/music/tranquil3.ogg"
 
+    # sonnet29 자작곡
+    define audio.pain1 = "audio/music/pain1.ogg"
+
     # https://pixabay.com/ko/music/mystery-horror-192898/
-    define audio.whitenoise3 = "audio/music/whitenoise3.ogg"
+    define audio.pain2 = "audio/music/pain2.ogg"
+
+    # https://pixabay.com/ko/sound-effects/heavy-raining-rain-on-tree-natural-clear-sound-abbas-ali-quiet-life-relaxing-music-11938/
+    define audio.raining = "audio/music/raining.ogg"
 
     define musicRoomResource = {
         audio.fear: ("https://pixabay.com/ko/music/horror-background-atmosphere-with-creepy-clown-laughter-172681/", "Horror Background Atmosphere with\nCreepy Clown Laughter", "UNIVERSFIELD"),
@@ -39,5 +45,6 @@ init -2:
         audio.tranquil1: ("https://pixabay.com/ko/music/nostalgic-love-203001/", "nostalgic love", "HarumachiMusic"),
         audio.tranquil2: ("https://pixabay.com/ko/music/coniferous-forest-142569/", "Coniferous forest", "orangery"),
         audio.tranquil3: ("https://pixabay.com/ko/music/separation-185196/", "Separation", "William_King"),
-        audio.whitenoise3: ("https://pixabay.com/ko/music/mystery-horror-192898/", "Mystery Horror", "UNIVERSFIELD")
+        audio.pain1: (None, "Anxiety", "92tennos"),
+        audio.pain2: ("https://pixabay.com/ko/music/mystery-horror-192898/", "Mystery Horror", "UNIVERSFIELD")
     }

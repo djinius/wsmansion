@@ -44,7 +44,7 @@ label trueEnding:
     독백 "소름 끼치는 엘리의 모습은 그렇다 치더라도, \n내 기억과 상충되는 엘리의 태도에 떨떠름함을 감출 수 없었다."
     독백 "동시에, 내게 이 기회가 두 번 다시 찾아오지 않으리라는 것도 잘 알고 있었다."
     
-    stop music
+    play music pain2
     # 엘리 퇴장
     # 배경: sculpt
     scene sculpt with dissolve
@@ -76,6 +76,7 @@ label trueEnding:
     독백 "한치 앞도 보이지 않는 풀숲 위에 쓰러지며 나는 물었다."
 
     # 배경: 검은색 배경
+    stop music
     scene black with dissolve
 
     독백 "{i}내가 누구였지?{/i}"
@@ -107,7 +108,7 @@ label trueEnding:
 
     #배경: study1_bnw
     nvl clear
-    scene study1 with dissolve
+    scene study1_bnw with dissolve
     엘리NVL "제가 처음에 툴툴댔던 거, 기억나요?"
     엘리NVL "너무 오랜만에 어리광을 부리다 보니 익숙하지 않기도 했지만, 일부러 모질게 군 것도 없잖아 있었어요."
     엘리NVL "정원에 핀 꽃들이 아침 햇살을 향해 목을 뻗듯, 당신의 온화함에 몸과 마음을 모두 내어줄까 봐."

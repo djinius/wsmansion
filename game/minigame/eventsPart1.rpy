@@ -120,6 +120,7 @@ label cameraFound:
     hide screen explore
 
 label cameraStory:
+    play music pain2
     # 배경: street1
     scene street1 with dissolve
 
@@ -140,6 +141,7 @@ label cameraStory:
     독백 "피사체를 돋보이게 할 뿐인 배경은, 그 아무도 신경 쓰지 않으니까."
 
     # 배경: 검은 화면, 빠르게 전환
+    play music rain
     scene black
 
     독백 "그렇다면, 다른 세상이 있다면, 나는 또렷한 하나의 피사체가 될 수 있었을까?"
@@ -161,6 +163,7 @@ label cameraStory:
     엘리 "……누구시죠."
     독백 "그러자 불쾌함을 감추지 않은 채 문을 열어주는 장발의 소녀."
     독백 "예상치 못한 등장에 당황한 나는 대답 대신 멋쩍게 웃어 보였다."
+    stop music
 
     # 엘리 (보통, 침울, 무표정)
     엘리 눈썹보통 눈침울 입무표정 "이만 돌아가세요. 당신 같은 사람이 있을 곳이 아니에요."

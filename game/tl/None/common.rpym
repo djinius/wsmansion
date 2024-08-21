@@ -6,12 +6,12 @@ translate None strings:
     new "대사 읽기를 끕니다."
 
     # renpy/common/00accessibility.rpy:29
-    old "Clipboard voicing enabled. "
-    new "대사 복사하기를 켭니다. "
+    old "Clipboard voicing enabled."
+    new "대사 복사하기를 켭니다."
 
     # renpy/common/00accessibility.rpy:30
-    old "Self-voicing enabled. "
-    new "대사 읽기를 켭니다. "
+    old "Self-voicing enabled."
+    new "대사 읽기를 켭니다."
 
     # renpy/common/00accessibility.rpy:32
     old "bar"

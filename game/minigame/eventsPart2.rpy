@@ -108,6 +108,7 @@ label lockStory:
     play sound "audio/sfx/crack.mp3" noloop
     독백 "그런데."
 
+    play music pain1
     # 배경: classroom
     # 효과음: 계속해서 고조되는 노이즈, 유리 깨지는 소리
 
@@ -137,6 +138,8 @@ label lockStory:
     독백 "……."
     독백 "도망칠까."
     독백 "{i}영원히.{/i}"
+
+    stop music
 
     scene black with dissolve
     # 효과음: 빗소리 페이드 아웃
@@ -414,7 +417,7 @@ label mirrorComplete:
     독백 "분노한 엘리가 내 쪽으로 성큼성큼 다가오기 시작했다."
     독백 "눈앞이 아찔해졌다, 이번엔 진짜 마지막이라는 생각이 들었다."
     독백 "그러자 신기하게도 오히려 마음이 편안하고 침착해지는 것이었다."
-    독백 "심호흡을 했다. 생각해 보니 나 또한 엘리에게 미처 전하지 못한 것들이 있었다. " 
+    독백 "심호흡을 했다. 생각해 보니 나 또한 엘리에게 미처 전하지 못한 것들이 있었다." 
     독백 "아니, 전해야만 했다."
 
     stop music
@@ -483,6 +486,8 @@ label mirrorComplete:
     엘리 "끅, 끄흐흑, 끼히히히히히히힛."
 
     # ECG 3 – 엘리의 절규
+
+    scene thirdEvent with dissolve
 
     # 엘리 
     엘리 "…아뇨, 하나도, 하나도 이해가 가지 않아요."
