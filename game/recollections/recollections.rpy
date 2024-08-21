@@ -74,7 +74,7 @@ screen recollections():
                             hotspot (45 + 60 * 7, 245, 60, 60) action mr.ToggleShuffle()
                             hotspot (45 + 60 * 8, 245, 60, 60):
                                 action OpenURL(getMusicURL())
-                                sensitive (startPlaying and renpy.music.is_playing())
+                                sensitive (startPlaying and renpy.music.is_playing() and (getMusicURL() is not None))
 
                         if startPlaying and renpy.music.get_playing():
                             text getMusicTitle() pos (20, 205) anchor (.0, 1.)

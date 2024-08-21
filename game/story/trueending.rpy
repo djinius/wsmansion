@@ -44,7 +44,7 @@ label trueEnding:
     독백 "소름 끼치는 엘리의 모습은 그렇다 치더라도, \n내 기억과 상충되는 엘리의 태도에 떨떠름함을 감출 수 없었다."
     독백 "동시에, 내게 이 기회가 두 번 다시 찾아오지 않으리라는 것도 잘 알고 있었다."
     
-    stop music
+    play music pain2
     # 엘리 퇴장
     # 배경: sculpt
     scene sculpt with dissolve
@@ -76,6 +76,7 @@ label trueEnding:
     독백 "한치 앞도 보이지 않는 풀숲 위에 쓰러지며 나는 물었다."
 
     # 배경: 검은색 배경
+    stop music
     scene black with dissolve
 
     독백 "{i}내가 누구였지?{/i}"
