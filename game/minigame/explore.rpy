@@ -226,6 +226,7 @@ screen mirrorMiniGame():
                     draggable True
                     droppable False
                     dragged fragmentDropped
+                    focus_mask True
 
                     has imagebutton
                     idle "gui/minigame/mirror/frag"+str(n)+"_large_idle.png"

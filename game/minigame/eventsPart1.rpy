@@ -141,7 +141,7 @@ label cameraStory:
     독백 "피사체를 돋보이게 할 뿐인 배경은, 그 아무도 신경 쓰지 않으니까."
 
     # 배경: 검은 화면, 빠르게 전환
-    play music rain
+    play music raining fadein 1.
     scene black
 
     독백 "그렇다면, 다른 세상이 있다면, 나는 또렷한 하나의 피사체가 될 수 있었을까?"
