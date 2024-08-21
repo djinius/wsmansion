@@ -4,9 +4,9 @@ init -1 python:
 
 galleryNames = [
     ("alwaysUnlocked", "gui/recollections/g0.png", "gui/recollections/sample0/g0.png"),
-    ("sample1", "gui/recollections/g1.png", "firstEvent"),
-    ("sample2", "gui/recollections/g2.png", "images/gallery/sample2/s0.png", "images/gallery/sample2/s1.png"),
-    ("sample3", "gui/recollections/g3.png", "images/gallery/sample3/s0.png")]
+    ("egc1", "gui/recollections/g1.png", "firstEvent"),
+    ("ecg2", "gui/recollections/g2.png", "secondEvent"),
+    ("ecg3", "gui/recollections/g3.png", "thirdEvent")]
 
 g = Gallery()
 

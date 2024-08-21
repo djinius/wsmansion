@@ -484,6 +484,8 @@ label mirrorComplete:
 
     # ECG 3 – 엘리의 절규
 
+    scene thirdEvent with dissolve
+
     # 엘리 
     엘리 "…아뇨, 하나도, 하나도 이해가 가지 않아요."
     엘리 "혼자서 버티는 이 영원은 저에게 있어 쓰라린 고통이었어요."

@@ -107,6 +107,8 @@ screen cameraMinigame:
 
     modal True
 
+    style_prefix "puzzle"
+
     add Solid("#0004")
 
     frame:
@@ -181,6 +183,8 @@ screen mirrorMiniGame():
     tag puzzle
     modal True
 
+    style_prefix "puzzle"
+
     add Solid("#000")
 
     frame:
@@ -239,6 +243,7 @@ screen mirrorMiniGame():
 # 시계 메모
 screen clockPuzzle():
     tag puzzle
+    style_prefix "puzzle"
 
     use exploreRooms(True)
 
@@ -269,6 +274,7 @@ screen lockPuzzle():
     use exploreRooms(True)
 
     add Solid("#000C")
+    style_prefix "puzzle"
 
     hbox:
         style_prefix "lockPuzzle"
@@ -306,6 +312,10 @@ screen lockPuzzle():
     textbutton "다른 곳을 탐색한다":
         align (1., 1.)
         action Return()
+
+style puzzle_button_text is button_text:
+    idle_color "#FFF"
+    hover_color "#77F"
 
 style lockPuzzle_text:
     size 100
