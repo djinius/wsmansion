@@ -182,6 +182,6 @@ label part2:
     # 엘리 퇴장, 텍스트만
     stop music
     scene black with dissolve
-    엘리 "이야기의…… 주인공으로 남을 수 있다면 정말 행복할 것 같아요."
+    엘리 "그 재미난 이야기가…… 끝나지 않을 수만 있다면 더 완벽하겠죠."
 
     return
