@@ -264,6 +264,7 @@ label birdFeedStory:
     scene black with dissolve
 
     #사운드 이펙트: fall
+    play sound "audio/sfx/fall.mp3"
     독백 "어라."
 
     return

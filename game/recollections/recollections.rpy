@@ -14,7 +14,10 @@ screen recollections():
             xfill True
 
             vbox:
-                label "다시보기"
+                if persistent.myName is None:
+                    label "다시보기"
+                else:
+                    label persistent.myName + "의 이야기"
 
                 grid 2 6:
                     textbutton "도입부" action Replay("splashReplay")

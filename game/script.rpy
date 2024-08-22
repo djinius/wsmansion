@@ -4,6 +4,7 @@ init python:
 
 default persistent.replayPrologue = True
 default persistent.skyBackground = False
+default persistent.myName = None
 
 # 여기에서부터 게임이 시작합니다.
 label start:

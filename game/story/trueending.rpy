@@ -118,7 +118,7 @@ label trueEnding:
 
     #배경: flowers
     nvl clear
-    scene flowers with dissolve
+    scene time with dissolve
     엘리NVL "그래요, 저는 진즉에 알고 있었는지도 몰라요."
     엘리NVL "언젠가 당신이 절 떠날 순간이 온다는 사실을 말이에요."
     엘리NVL "그렇게 되면 전 다시 홀로 남겨지고, 제 남은 기억과 존재 모두 잊히고 말겠죠."
@@ -157,5 +157,8 @@ label trueEnding:
 
     # 타이틀 화면으로 복귀
     $ persistent.skyBackground = False
+
+    if not _in_replay:
+        $ persistent.myName = None
 
     return

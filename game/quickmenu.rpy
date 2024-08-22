@@ -100,10 +100,13 @@ screen quick_menu():
                 activate_sound "audio/sfx/paper.mp3"
                 tooltip ["숨기기({u}{color=008}H{/color}{/u})", "게임 인터페이스를 숨깁니다.", (1920, 1020), (1., 1.)]
 
-            if quickMenuAutoHide == 0:
-                at quickMenuHide
-            elif quickMenuAutoHide == 1:
-                at quickMenuAppear
+            if persistent.showQuickMenu == 2:
+                at quickMenuFix
+            if persistent.showQuickMenu == 1:
+                if quickMenuAutoHide == 0:
+                    at quickMenuHide
+                elif quickMenuAutoHide == 1:
+                    at quickMenuAppear
 
         # 자동 숨기기
         if persistent.showQuickMenu == 1:

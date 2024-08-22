@@ -73,6 +73,10 @@ label lockFound:
 
     $ objectRemove("lock")
 
+    show text "자물쇠를 클릭하여 침실에 입장할 수 있습니다." at truecenter
+    pause
+    scene black with dissolve
+
 label lockStory:
     # 배경: street2
     hide screen explore with dissolve

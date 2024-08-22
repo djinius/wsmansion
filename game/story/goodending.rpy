@@ -144,9 +144,11 @@ label goodEnding:
     # NVL, 텍스트 입력 창 등장 : 
 label inputName:
     if not _in_replay:
-        $ myName = renpy.input("“당신의 이름을 알려주세요.”")
+        $ myName = renpy.input("“당신의 이름을 알려주세요.”", length=5)
         if myName == "":
             jump inputName
+
+        $ persistent.myName = myName
 
     # 플레이어가 이름을 입력한 뒤 타이틀 화면으로 복귀, 타이틀 CG에 엘리 대신 파랗고 쾌청한 하늘이 나타남
     $ persistent.skyBackground = True
