@@ -35,6 +35,7 @@ label splashReplay:
 
     # 배경: sculpt -> sculpt_blur
     scene sculpt_blur with dissolve
+    play music pain1
 
     독백 "나는 {i}누구{/i}고?"
     독백 "정신없이 주머니를 뒤적였지만, 전화기는커녕 내 이름이 써진 물건조차 없었다."
@@ -45,6 +46,8 @@ label splashReplay:
     독백 "조각상들이 흐드러진 들판 위, 나 자신을 증명해 줄 수 있는 건 아무것도 없었다."
     독백 "모든 기억을 잃어버렸다는 사실이 당황스러웠다. 숨이 막혔다."
     독백 "그러자 내게 보인 장엄하고 거대한 무언가."
+
+    stop music
 
     # 배경: sculpt_noise -> home)
     scene home with dissolve
