@@ -41,7 +41,7 @@ label glovesFound:
     play sound "audio/sfx/paper.mp3"
     call screen exploreFound("gloves", (914, 247))
 
-    독백 "검은색 장갑이 떨어져 있다. 혹시 모르니 일단 챙겨두자."
+    독백 "검은색 장갑이 놓여 있다. 혹시 모르니 일단 챙겨두자."
     return
 
 label bookCompleted:
