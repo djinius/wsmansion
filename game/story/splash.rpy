@@ -22,7 +22,7 @@ label splashReplay:
 
     scene apricot with dissolve
     독백 "감은 눈 사이로 빛이 녹아들었다."
-    독백 "나는 따사로운 햇살을 받으며 한껏 나른해진 몸을 일으켰다."
+    독백 "따사로운 햇살을 받으며 한껏 나른해진 몸을 일으켰다."
 
     scene sculpt with dissolve
 
