@@ -1,7 +1,7 @@
 label trueEnding:
 
     scene garden with dissolve
-    독백 "{i}내가 네 멱살을 쥐려고 들 때,{/i} 나는 대답했다."
+    독백 "{i}너와 실랑이를 벌였을 때,{/i} 나는 대답했다."
 
     play music tranquil1
     # 엘리 등장
@@ -10,10 +10,10 @@ label trueEnding:
         pos (.5, .05) anchor (.5, .0)
         zoom .5
     with dissolve
-    엘리 "아아, 그렇군요."
+    엘리 "……아아, 그렇군요."
 
     # 엘리 (음영 on, 보통, 실눈 웃음, 미소, 눈물)
-    엘리 눈썹보통 눈실눈웃음1 "…다행이에요. 정말 다행이야."
+    엘리 눈썹보통 눈실눈웃음1 "다행이에요. 정말 다행이야."
 
     독백 "영문 모를 반응의 엘리."
 
