@@ -240,10 +240,15 @@ label mirrorFound:
         $ isMirrorFound = True
         $ addFoundHistory("거울", "mirror")
 
+        play music pain2
+        
         독백 "유리가 깨진 거울이다. 맞춰야만 할 것 같은 강한 위화감이 든다."
 
         if True not in fragmentsFound:
             독백 "나머지 조각들은 어디 떨어져 있는지 보이지 않는다."
+
+            stop music
+
             return
         else:
             독백 "깨진 파편들을 맞추고 싶은 강한 충동이 든다."
