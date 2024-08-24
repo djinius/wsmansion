@@ -487,11 +487,11 @@ screen about():
                             yalign .5
                             idle "gui/icon_stove_24.png"
                             hover "gui/icon_stove_24.png"
-                            action OpenURL("https://store.onstove.com/ko/games/2594")
+                            action OpenURL("https://store.onstove.com/ko/games/2834")
 
                         null width(-16)
 
-                        text "{a=https://store.onstove.com/ko/games/2594}은혜 갚은 새색시{/a} 출시" style "about_public_text"
+                        text "{a=https://store.onstove.com/ko/games/2834}은혜 갚은 새색시{/a} 출시" style "about_public_text"
 
                 null height(10)
                 text "Special thanks to 命" xpos 10
