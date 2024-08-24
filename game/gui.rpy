@@ -90,7 +90,7 @@ define gui.title_text_size = 130
 ## 메인과 게임 메뉴들 ##################################################################
 
 ## 이미지들은 메인(main)과 게임 메뉴(game menu)에 사용됩니다.
-define gui.main_menu_background = "images/title.png"
+define gui.main_menu_background = "images/events/title.png"
 define gui.game_menu_background = "gui/game_menu.png"
 
 
@@ -274,7 +274,7 @@ define gui.page_spacing = 0
 define gui.slot_spacing = 15
 
 ## 메인 메뉴 글자의 위치입니다.
-define gui.main_menu_text_xalign = 1.0
+define gui.main_menu_text_xalign = 1.
 
 
 ## 프레임들 ########################################################################

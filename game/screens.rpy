@@ -174,7 +174,7 @@ screen main_menu():
     if persistent.skyBackground:
         add "images/bgs/sky.jpg"
     else:
-        add gui.main_menu_background
+        add gui.main_menu_background align (.5, .5)
 
     ## 이 빈 프레임은 기본 메뉴를 어둡게 만듭니다.
     # frame:
@@ -217,15 +217,15 @@ screen main_menu():
         vbox:
             style "main_menu_vbox"
 
-            text "빛 바랜\n날개": # "[config.name!t]":
+            text "빛 바랜  \n날개": # "[config.name!t]":
                 style "main_menu_title"
                 text_align 1.
-                xoffset -100
+                xoffset -240
                 color "#000000"
 
             text "[config.version]":
                 style "main_menu_version"
-                xoffset -100
+                xoffset -240
                 color "#000000"
             
             at mainMenuAppear
@@ -311,7 +311,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
         if persistent.skyBackground:
             add "images/bgs/sky.jpg"
         else:
-            add gui.main_menu_background
+            add gui.main_menu_background align (.5, .5)
 
     # add gui.game_menu_background
     add Solid("#E8D4ACE0")
@@ -463,13 +463,35 @@ screen about():
 
             vbox:
                 label "제작진"
-                grid 2 3:
+                grid 2 4:
                     text "시나리오:" xalign 1.
                     text "소네트29" xpos 20
+
                     text "일러스트:" xalign 1.
                     text "기차" xpos 20
+
                     text "프로그래밍:" xalign 1.
                     text "달납줄개" xpos 20
+
+                    null
+                    hbox:
+                        imagebutton:
+                            yalign .5
+                            idle "gui/icon_twitterx_24.png"
+                            hover "gui/icon_twitterx_24.png"
+                            action OpenURL("https://x.com/rhodeusatremius")
+
+                        null width(8)
+
+                        imagebutton:
+                            yalign .5
+                            idle "gui/icon_stove_24.png"
+                            hover "gui/icon_stove_24.png"
+                            action OpenURL("https://store.onstove.com/ko/games/2594")
+
+                        null width(-16)
+
+                        text "{a=https://store.onstove.com/ko/games/2594}은혜 갚은 새색시{/a} 출시" style "about_public_text"
 
                 null height(10)
                 text "Special thanks to 命" xpos 10
@@ -508,10 +530,21 @@ style about_label_text is gui_label_text
 style about_text is gui_text:
     font FontGroup().add("GowunBatang-Bold.ttf", 0x0000, 0x00FF).add("GowunBatang-Bold.ttf", 0xAC00, 0xD7A3).add("cwTeXQKaiZH-Medium.ttf", 0x0000, 0x2FA1F)
     color "#000000"
+    yalign 1.
+
+style about_public_text is gui_text:
+    font "GowunBatang-Bold.ttf"
+    size 20
+    xoffset 20
+    yalign .0
+    color "#000000"
 
 style about_label_text:
     size gui.label_text_size
 
+style about_hbox:
+    xpos 20
+    spacing 0
 
 ## Load 그리고 Save 스크린 ###########################################################
 ##

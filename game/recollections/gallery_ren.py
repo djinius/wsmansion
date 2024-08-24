@@ -3,7 +3,7 @@ init -1 python:
 """
 
 galleryNames = [
-    ("alwaysUnlocked", "gui/recollections/g0.png", "gui/recollections/sample0/g0.png"),
+    ("title", "gui/recollections/g0.png", "title_orig", "title_darken"),
     ("egc1", "gui/recollections/g1.png", "firstEvent"),
     ("ecg2", "gui/recollections/g2.png", "secondEvent"),
     ("ecg3", "gui/recollections/g3.png", "thirdEvent")]
@@ -21,9 +21,9 @@ def initGallery():
         g.button(il[0])
 
         for galleryImages in il[2:]:
-            g.unlock_image(galleryImages)
-
-        if n == 0:
-            g.condition("False")
+            if n == 0:
+                g.image(galleryImages)
+            else:
+                g.unlock_image(galleryImages)
 
 initGallery()

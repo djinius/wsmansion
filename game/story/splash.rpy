@@ -84,11 +84,12 @@ label splashReplay:
     독백 "그 순간, 누군가 가냘픈 손으로 나를 잡아당겼다."
 
     # 배경: 검은 화면 -> 타이틀 화면 CG
-    scene title with dissolve
+    scene title_orig with dissolve
 
     독백 "…신비한 저택에서 홀로 살고 있는 소녀가."
 
     # 타이틀 화면으로 완전 전환 후 게임 시작
+    scene title_darken with dissolve
 
 label splashFinished:
     $ persistent.splashPlayed = True

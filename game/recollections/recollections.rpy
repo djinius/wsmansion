@@ -80,7 +80,7 @@ screen recollections():
                                 sensitive (startPlaying and renpy.music.is_playing() and (getMusicURL() is not None))
 
                         if startPlaying and renpy.music.get_playing():
-                            text getMusicTitle() pos (20, 205) anchor (.0, 1.)
+                            text getMusicTitle() pos (584, 185) anchor (1., 1.)
                             text getMusicAuthor() pos (584, 205) anchor (1., 1.) style "musicroom_author_text"
                             add DynamicDisplayable(getMusicPosition) pos (20, 230) anchor (.0, 1.)
                             add DynamicDisplayable(getMusicDuration) pos (584, 230) anchor (1., 1.)
@@ -133,6 +133,7 @@ style musicroom_text:
     font "NEXON Lv2 Gothic Medium.ttf"
     color "#FFDF01"
     size 20
+    text_align 1.
 
 style musicroom_author_text:
     font "NEXON Lv2 Gothic Medium.ttf"
