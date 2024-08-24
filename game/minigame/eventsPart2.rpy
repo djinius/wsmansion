@@ -241,7 +241,7 @@ label mirrorFound:
         $ addFoundHistory("거울", "mirror")
 
         play music pain2
-        
+
         독백 "유리가 깨진 거울이다. 맞춰야만 할 것 같은 강한 위화감이 든다."
 
         if True not in fragmentsFound:
@@ -447,7 +447,7 @@ label mirrorComplete:
     독백 "아니, 전해야만 했다."
 
     stop music
-    play music tranquil3
+    play music tranquil2
     # ‘나’ 
     나 "…나도 엘리 네게 모든 걸 말하진 않았어."
     나 "사람들이 싫어서, 그냥 이 세상 사람들이 무서워서, 여기서 죽으려고 온 거였어."
